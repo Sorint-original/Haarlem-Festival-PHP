@@ -3,6 +3,10 @@ body{
     min-height: 100vh;
 }
 
+.navbar{
+    height: 10vh;
+}
+
 .fontCdark *{
     color: black ;
 }
@@ -38,3 +42,14 @@ body{
         text-decoration-thickness: 2px;
     }
 }
+
+.flag{
+    height: 40px !important;
+    width: 40px;
+}
+
+.dropdown-menu{
+    background-color: rgb(255, 255, 255);
+    opacity:0.8;
+}
+
