@@ -32,14 +32,12 @@
         <?php endif?>
         
         <li class="nav-item dropdown p-2">
-            <a class="nav-link dropdown-toggle p-0" href="#" role="button" data-bs-toggle="dropdown"  aria-expanded="false">
+            <a class="nav-link dropdown-toggle p-0"  role="button" data-bs-toggle="dropdown"  aria-expanded="false">
                 <img src="assets/images/english.png" class="flag" >
             </a>
             <div class="dropdown-menu dropdown-menu-end">
-                <a class="dropdown-item" href="#"><img src="assets/images/english.png" class="flag" ></a>
-                <a class="dropdown-item" href="#">B</a>
-                <a class="dropdown-item" href="#">C</a>
-                <a class="dropdown-item" href="#">D</a>
+                <a class="dropdown-item " href="#"><img src="assets/images/english.png" class="flag" ></a>
+                <a class="dropdown-item " href="#"><img src="assets/images/dutch.png" class="flag" ></a>
             </div>
         </li>
     </ul>
