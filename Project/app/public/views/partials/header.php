@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <?php
+#restart session if needed
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -23,7 +25,9 @@ $loggedIn = isset($_SESSION['user_id']);
 </head>
 
 <?php 
+#default background color
 $gradientColors = " #F7F4E9";
+#based on the current page it will change the gradient used
 if($page_type =="homepage"){
     $gradientColors = ", #F7F4E9, #FF7A6D, #FF6B9E";
     $fontColoring = 'fontCdark';
