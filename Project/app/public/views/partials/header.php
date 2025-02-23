@@ -14,5 +14,11 @@
         src="/assets/js/main.js"></script>
 </head>
 
-<body>
+<?php 
+if($page_type =="homepage"){
+    $gradientColors = ", #F7F4E9, #FF7A6D, #FF6B9E";
+}
+?>
+
+<body style = "background-image: linear-gradient(135deg <?php echo $gradientColors; ?>">
     <?php require(__DIR__ . "/header_nav.php");
