@@ -26,6 +26,10 @@ body.homepage{
     font-weight: 400;
 }
 
+.nav-link .favicon{
+    height: 50%;
+}
+
 .nav-item:hover {
     .nav-link {
         color: rgb(0, 0, 0);
