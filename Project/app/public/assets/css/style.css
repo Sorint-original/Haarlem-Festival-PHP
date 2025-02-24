@@ -57,6 +57,12 @@ body {
 /* Main Picture Style */
 
 /* Welcoming Style */
+.hero-section{
+    background-image: url("../images/info.png");
+    background-size: cover;
+    background-position: center;
+    margin-top: 20px;
+}
 .card {
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(5px);
@@ -102,11 +108,8 @@ body {
     box-shadow: none !important;
     background-color: transparent !important;
 }
-.accordion-button:hover {
-    font-weight: 600;
-}
-.accordion-button:focus {
-    font-weight: 800;
+.accordion-button:hover{
+    color: rgb(112, 112, 112);
 }
 .accordion-button:not(.collapsed) {
     color:black;
