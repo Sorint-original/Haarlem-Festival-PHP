@@ -4,7 +4,7 @@
         <a class="align-middle navbar-brand NavHeader p-0" href="/">Haarlem Festival</a>
     </div>
     <ul class = "navbar-nav flex-row h-100">
-        <li class = " nav-item  <?php if($page_type =="yummy") echo "current"; ?> p-2 h-100">
+        <li class = " nav-item   <?php if($page_type =="yummy") echo "current"; ?> p-2 h-100">
             <a class="d-flex nav-link NavHeader p-0 h-100" href="#">
                 <img src="assets/favicons/yummy.png" class="image-fluid align-self-center favicon"><div class="align-self-center">Food</div>
             </a>
