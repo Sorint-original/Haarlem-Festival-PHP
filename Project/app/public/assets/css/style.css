@@ -3,8 +3,17 @@ body {
     min-height: 100vh;
 }
 
+body.homepage{
+    background-image: linear-gradient(135deg , #F7F4E9, #FF7A6D, #FF6B9E);
+}
+
+/* navigation bar styles */
 .navbar {
     height: 10vh;
+}
+
+.navbar.homepage {
+    background-image: linear-gradient(to right , #F7F4E9, #FF7A6D, #FF6B9E);
 }
 
 .fontCdark * {

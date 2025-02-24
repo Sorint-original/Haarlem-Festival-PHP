@@ -1,4 +1,4 @@
-<nav style = "background-image: linear-gradient(to right <?php echo $gradientColors; ?>" class="navbar justify-content-between navbar-expand-lg p-0 border-bottom border-dark <?php echo $fontColoring; ?>" data-bs-theme="dark">
+<nav class="navbar justify-content-between navbar-expand-lg p-0 border-bottom border-dark <?php echo $fontColoring; ?> <?php  echo $page_type; ?>" data-bs-theme="dark">
     <div class = "nav-item <?php if($page_type =="homepage") echo "current"; ?> p-2">
         <a class="navbar-brand NavHeader p-0" href="/">Haarlem Festival</a>
     </div>

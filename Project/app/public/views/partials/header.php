@@ -34,5 +34,5 @@ if($page_type =="homepage"){
 }
 ?>
 
-<body style = "background-image: linear-gradient(135deg <?php echo $gradientColors; ?>">
+<body class = "<?php  echo $page_type; ?>">
     <?php require(__DIR__ . "/header_nav.php");
