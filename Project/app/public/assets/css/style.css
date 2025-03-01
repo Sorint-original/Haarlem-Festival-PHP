@@ -116,6 +116,15 @@ body.homepage{
 }
 
 /* Event Dates Style */
+
+.eventDates {
+    background-image: url("../images/SchedualeDay1.png");
+    background-size: cover;
+    background-position: center;
+    aspect-ratio: 1.75/1;
+    width: auto;
+    height: auto;
+}
 /* Map Style */
 
 /* FAQ Style */
