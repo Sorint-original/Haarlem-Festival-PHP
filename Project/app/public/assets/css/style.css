@@ -1,4 +1,14 @@
-/* Add custom styles here */
+
+
+
+/* Base typography */
+
+.H2{
+    font-family: Merienda One;
+    font-size: 50.63px;
+}
+
+
 body {
     min-height: 100vh;
 }
@@ -117,7 +127,7 @@ body.homepage{
 
 /* Event Dates Style */
 
-.eventDates {
+#eventDates {
     background-image: url("../images/SchedualeDay1.png");
     background-size: cover;
     background-position: center;
@@ -125,6 +135,25 @@ body.homepage{
     width: auto;
     height: auto;
 }
+
+.btn.eventDate{
+    border:none !important;
+}
+
+.btn.eventDate:hover{
+    background: linear-gradient(to right,#13BEF2,#937AFF,#EB15AE);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btn.eventDate.current{
+    background: linear-gradient(to right,#13BEF2,#937AFF,#EB15AE);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 /* Map Style */
 
 /* FAQ Style */
