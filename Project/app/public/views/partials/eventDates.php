@@ -1,13 +1,35 @@
 
 
-<section id="eventDates" class ="container-fluid m-5 p-0">
+<section id="eventDates" class ="container-fluid d-flex flex-column m-5 p-0">
+    <!--The buttons to change the date-->
     <menu class = "d-flex flex-row d-flex justify-content-between px-5 pt-5 m-0 w-100">
         <button type="button" class ="btn eventDate H2 current">Thursday Jul 24</button >
         <button type="button"  class ="btn eventDate H2">Friday Jul 25</button >
         <button type="button"  class ="btn eventDate H2">Saturday Jul 26</button >
         <button type="button"  class ="btn eventDate H2">Sunday Jul 27</button >
     </menu>
+
+    <!--The event schedule-->
+    <div class = "container-fluid d-flex flex-row justify-content-between p-5">
+        <a id="Jazzlist"  class ="eventcard" href="#">
+            <section class = "eventlist container-fluid p-3 pb-0"> </section>
+        </a>
+        <a id = "Historylist" class =" eventcard " href="#">
+            <section class = "eventlist container-fluid p-3 pb-0"> </section>
+        </a>
+        <a id ="Yummylist" class =" eventcard " href="#">
+            <section class = "eventlist container-fluid p-3 pb-0"> </section>
+        </a>
+        <a id ="Magiclist" class =" eventcard " href="#">
+            <section class = "eventlist container-fluid p-3 pb-0"> </section>
+        </a>
+        <a id ="Storieslist" class =" eventcard " href="#">
+            <section class = "eventlist container-fluid p-3 pb-0"> </section>
+        </a>
+    </div>
 </section>
+
+
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
