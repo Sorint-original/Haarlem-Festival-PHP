@@ -1,57 +1,141 @@
 /* Add custom styles here */
-body{
+body {
     min-height: 100vh;
 }
 
-.navbar{
+body.homepage{
+    background-image: linear-gradient(135deg , #F7F4E9, #FF7A6D, #FF6B9E);
+}
+
+/* navigation bar styles */
+.navbar {
     height: 10vh;
 }
 
-.fontCdark *{
-    color: black ;
+.navbar.homepage {
+    background-image: linear-gradient(to right , #F7F4E9, #FF7A6D, #FF6B9E);
 }
 
-.NavHeader{
+.fontCdark * {
+    color: black;
+}
+
+.NavHeader {
     font-family: "Merienda One";
-    font-size: 30px ;
+    font-size: 30px;
     font-weight: 400;
 }
 
-.nav-item:hover{
-    .nav-link{
-        color:rgb(0, 0, 0);
+.nav-link .favicon{
+    height: 50%;
+}
+
+.nav-item:hover {
+    .nav-link {
+        color: rgb(0, 0, 0);
         text-shadow: 0px 3px 5px;
     }
+    .nav-link .favicon{
+        -webkit-filter: drop-shadow(0px 3px 5px #222);
+        filter: drop-shadow(0px 3px 5px #222);
+    }
 
-    .navbar-brand{
-        color:rgb(0, 0, 0) ;
+    .navbar-brand {
+        color: rgb(0, 0, 0);
         text-shadow: 0px 3px 5px;
     }
 }
 
 .current {
-    .nav-link{
-        font-size: 40px ;
+    .nav-link {
+        font-size: 40px;
         text-decoration: underline;
-        text-decoration-thickness: 1px;
+        text-decoration-thickness: 2px;
+    }
+    .nav-link .favicon{
+        height: 80%;
     }
 
-    .navbar-brand{
-        font-size: 40px ;
+    .navbar-brand {
+        font-size: 40px;
         text-decoration: underline;
         text-decoration-thickness: 2px;
     }
 }
 
-.flag{
-    height: 40px ;
+.flag {
+    height: 40px;
 }
 
-.dropdown-menu{
+.dropdown-menu {
     --bs-dropdown-min-width: 0;
     background-color: rgb(255, 255, 255);
-    opacity:0.8;
+    opacity: 0.8;
 }
+
+/*------- HOMEPAGE Style *---------/
+/* Main Picture Style */
+
+/* Welcoming Style */
+.hero-section{
+    background-image: url("../images/info.png");
+    background-size: cover;
+    background-position: center;
+    margin-top: 20px;
+}
+.card {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+.card-title {
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.card-text {
+    color: #444;
+    line-height: 1.6;
+}
+.btn-custom {
+    background-color: #3a4d39;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+.btn-custom:hover {
+    background-color: #4a6349;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Event Dates Style */
+/* Map Style */
+
+/* FAQ Style */
+
+.accordion-item {
+    padding: 6px;
+}
+.accordion-button {
+    text-decoration: underline;
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+.accordion-button:hover{
+    color: rgb(112, 112, 112);
+}
+.accordion-button:not(.collapsed) {
+    color:black;
+}
+/* Footer Style */
+
 
 /* login css */
 
@@ -214,3 +298,4 @@ body {
         padding: 10px;
     }
 }
+
