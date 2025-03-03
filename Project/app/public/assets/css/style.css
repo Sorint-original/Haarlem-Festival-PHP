@@ -134,6 +134,34 @@ body.homepage{
 .accordion-button:not(.collapsed) {
     color:black;
 }
+
 /* Footer Style */
+footer {
+    font-family: "Merienda", sans-serif; /* Footer yazı tipini Merienda olarak ayarlıyoruz */
+    background-color: #610627;
+
+}
+
+footer.h5 {
+    font-family: "Merienda", sans-serif; /* Footer başlıkları için Merienda fontu */
+    font-weight: 800; 
+    /* Başlıklar biraz daha kalın olabilir */
+    text-decoration: underline; 
+    text-transform: capitalize;
+}
+
+footer a {
+    font-family: "Merienda", sans-serif; /* Linklerin yazı tipini Merienda yapıyoruz */
+    text-decoration: none; /* Linklerde alt çizgi olmasın */
+    color: inherit; /* Link renklerini inheritleyerek başlıkla uyumlu yapıyoruz */
+}
+
+footer a:hover {
+    color: #FF6B9E; /* Linklere hover efekti ekleyelim */
+}
+
+footer .text-start {
+    font-family: "Merienda", sans-serif; /* Footer içerisindeki text-start kısmı için de fontu uyguluyoruz */
+}
 
 
