@@ -11,6 +11,7 @@ require(__DIR__ . "/../partials/slideshow.php");
 require(__DIR__ . "/../partials/welcoming.php");
 
 // event dates
+require(__DIR__ . "/../partials/eventDates.php");
 
 // map
 
