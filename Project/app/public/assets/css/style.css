@@ -137,3 +137,165 @@ body.homepage{
 /* Footer Style */
 
 
+/* login css */
+
+/* Apply background only to the login page */
+.login-page {
+    background: url('/assets/images/background.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Ensure other pages are not affected */
+body {
+    background: none; /* Remove global background */
+}
+
+/* Dark Overlay for Readability (Only for Login Page) */
+.login-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.login-container {
+    position: relative;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+}
+
+/* Logo Styling */
+.logo-container {
+    text-align: center;
+}
+
+.logo-image {
+    width: 120px;
+    height: auto;
+}
+
+.form-outline {
+    position: relative;
+    width: 100%;
+}
+.form-control {
+    color: white;
+}
+
+.form-outline .form-control:focus {
+    border-color: #66B2E8;
+    box-shadow: 0 0 8px rgba(102, 178, 232, 0.5);
+    background: transparent;
+    color: white;
+}
+
+.form-outline .form-label {
+    color: rgba(200, 200, 200, 0.8) !important; 
+    transition: color 0.3s ease-in-out;
+}
+
+.form-control::placeholder {
+    color: lightgray;
+    opacity: 1; 
+}
+
+.form-outline .form-control:focus + .form-label {
+    color: #66B2E8 !important; 
+}
+
+.btn-login {
+    background-color: #66B2E8;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 0.8rem;
+}
+
+.btn-login:hover {
+    background-color: #4D9CCF;
+}
+
+.forgot-password {
+    font-size: 0.9rem;
+}
+
+.forgot-password a {
+    color: white;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+/* Yummy_Main_page */
+
+/* ✅ Apply the exact gradient background only to Yummy pages */
+.yummy-page {
+    background: linear-gradient(to bottom, #A0E4F1 0%, #5BB2C6 50%, #F9F9F9 100%);
+    background-size: cover;
+}
+
+/* ✅ Yummy Intro Section */
+.yummy-intro {
+    text-align: left;
+    padding: 60px 0;
+}
+
+/* ✅ Title Styling */
+.intro-title {
+    color: #0A3D62;
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-style: italic;
+    text-align: center;
+}
+
+/* ✅ Paragraph Styling */
+.intro-text {
+    color: #2C3E50;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 900px;  
+    text-align: left;  
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ✅ Note Box */
+.note-box {
+    background-color: rgba(239, 236, 205, 0.5);
+    border-left: 5px solid #1A237E; 
+    padding: 15px;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 900px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ Responsive Adjustments */
+@media (max-width: 768px) {
+    .intro-title {
+        font-size: 2rem;
+    }
+    
+    .intro-text {
+        font-size: 1.1rem;
+    }
+    
+    .note-box {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
+
