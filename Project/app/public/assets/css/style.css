@@ -159,6 +159,7 @@ body.homepage{
 }
 
 .eventcard{
+    aspect-ratio: 0.445/1;
     width: calc(92%/5);
     background-size: 100% 100%;
     color:black;
@@ -167,8 +168,15 @@ body.homepage{
 
 .eventlist{
     position: relative;
-    top: 20%;
     height: 75%;
+    overflow-y: auto;
+    top: 20%;
+
+    *{
+        width: 90%;
+        align-self: center;
+        text-align: center;
+    }
 }
 
 #Jazzlist{

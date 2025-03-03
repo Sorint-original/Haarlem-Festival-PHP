@@ -12,19 +12,19 @@
     <!--The event schedule-->
     <div class = "container-fluid d-flex flex-row justify-content-between p-5">
         <a id="Jazzlist"  class ="eventcard" href="#">
-            <section class = "eventlist container-fluid p-3 pb-0"> </section>
+            <section class = "eventlist d-flex flex-column  align-items-center container-fluid mt-3"></section>
         </a>
         <a id = "Historylist" class =" eventcard " href="#">
-            <section class = "eventlist container-fluid p-3 pb-0"> </section>
+            <section class = "eventlist d-flex flex-column  align-items-center container-fluid mt-3"> </section>
         </a>
         <a id ="Yummylist" class =" eventcard " href="#">
-            <section class = "eventlist container-fluid p-3 pb-0"> </section>
+            <section class = "eventlist d-flex flex-column  align-items-center container-fluid mt-3"> </section>
         </a>
         <a id ="Magiclist" class =" eventcard " href="#">
-            <section class = "eventlist container-fluid p-3 pb-0"> </section>
+            <section class = "eventlist d-flex flex-column  align-items-center container-fluid mt-3"> </section>
         </a>
         <a id ="Storieslist" class =" eventcard " href="#">
-            <section class = "eventlist container-fluid p-3 pb-0"> </section>
+            <section class = "eventlist d-flex flex-column  align-items-center container-fluid mt-3"> </section>
         </a>
     </div>
 </section>
