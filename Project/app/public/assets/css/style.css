@@ -5,7 +5,7 @@
 
 .H2{
     font-family: Merienda One;
-    font-size: 2.5vw;
+    font-size: 2.8vw;
 }
 
 
@@ -32,7 +32,7 @@ body.homepage{
 
 .NavHeader {
     font-family: "Merienda One";
-    font-size: 30px;
+    font-size: 1.8vw;
     font-weight: 400;
 }
 
@@ -58,7 +58,7 @@ body.homepage{
 
 .current {
     .nav-link {
-        font-size: 40px;
+        font-size: 2.5vw;
         text-decoration: underline;
         text-decoration-thickness: 2px;
     }
@@ -67,7 +67,7 @@ body.homepage{
     }
 
     .navbar-brand {
-        font-size: 40px;
+        font-size: 2.5vw;
         text-decoration: underline;
         text-decoration-thickness: 2px;
     }
