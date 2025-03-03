@@ -23,6 +23,9 @@ require_once(__DIR__ . "/lib/Route.php");
  */
 require_once(__DIR__ . "/routes/index.php");
 require_once(__DIR__ . "/routes/user.php");
+require_once(__DIR__ . "/routes/login.php");
+require_once(__DIR__ . "/routes/yummy_main.php");
+
 
 // Start the router, enabling handling requests
 Route::run();
