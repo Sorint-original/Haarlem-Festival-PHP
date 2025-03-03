@@ -79,9 +79,11 @@ body.homepage{
 /* Welcoming Style */
 .hero-section{
     background-image: url("../images/info.png");
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     margin-top: 20px;
+    background-repeat: no-repeat;
+    min-height: 70vh;
 }
 .card {
     background: rgba(255, 255, 255, 0.3);
@@ -119,9 +121,14 @@ body.homepage{
 /* Map Style */
 
 /* FAQ Style */
-
+.accordion{
+    background-color: transparent;
+}
 .accordion-item {
+    border-color: black;
+    border-width: 0.2px;
     padding: 6px;
+    background-color: transparent;
 }
 .accordion-button {
     text-decoration: underline;
@@ -135,6 +142,9 @@ body.homepage{
     color:black;
 }
 /* Footer Style */
+
+
+
 
 
 /* login css */
