@@ -136,11 +136,16 @@ body.homepage{
     aspect-ratio: 1.75/1;
     width: auto;
     height: auto;
+
+    menu{
+        height: 20%;
+
+    }
+    div{
+        flex:1;
+    }
 }
 
-#eventDates div{
-    flex:1;
-}
 
 .btn.eventDate{
     border:none !important;
