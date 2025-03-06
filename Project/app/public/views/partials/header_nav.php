@@ -5,7 +5,7 @@
     </div>
     <ul class = "navbar-nav flex-row h-100">
         <li class = " nav-item   <?php if($page_type =="yummy") echo "current"; ?> p-2 h-100">
-            <a class="d-flex nav-link NavHeader p-0 h-100" href="#">
+            <a class="d-flex nav-link NavHeader p-0 h-100" href="/yummy">
                 <img src="assets/favicons/yummy.png" class="image-fluid align-self-center favicon"><div class="align-self-center">Food</div>
             </a>
         </li>
@@ -41,8 +41,8 @@
                 </a>
             </li>
         <?php else: ?>
-            <li class = "nav-item <?php if($page_type =="login ") echo "current"; ?>  p-2 h-100">
-                <a class="d-flex  nav-link NavHeader p-0 h-100" href="#">
+            <li class = "nav-item <?php if($page_type =="login") echo "current"; ?>  p-2 h-100">
+                <a class="d-flex  nav-link NavHeader p-0 h-100" href="/login">
                     <img src="assets/favicons/login.png" class="image-fluid align-self-center favicon"><div class="align-self-center">Login</div>
                 </a>
             </li>
