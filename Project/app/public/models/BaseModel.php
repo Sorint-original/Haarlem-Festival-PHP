@@ -1,33 +1,32 @@
 <?php
 
-/**
- * NOTE! this base model handles initializing PDO
- * 
- * To use PDO in a derived class, use self::$pdo
- */
 
 class BaseModel
 {
 
-    protected static $pdo;
+    protected static $db;
 
     function __construct()
     {
-        if (!self::$pdo) {
+        try {
+            // Get MongoDB connection string from environment variable
+            $mongoUri = getenv('MONGO_URI');
+        
+            // Create a new MongoDB client
+            $manager = new MongoDB\Driver\Manager($mongoUri);
 
-            $host = $_ENV["DB_HOST"];
-            $db = $_ENV["DB_NAME"];
-            $user = $_ENV["DB_USER"];
-            $pass = $_ENV["DB_PASSWORD"];
-            $charset = $_ENV["DB_CHARSET"];
+            $filter = [];
+            $options = [];
 
-            $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-            $options = [
-                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            ];
+            $query = new MongoDB\Driver\Query($filter, $options);
+            $cursor = $manager->executeQuery('HaarlemFestival.Users', $query);
 
-            self::$pdo = new PDO($dsn, $user, $pass, $options);
+            foreach ($cursor as $document) {
+                var_dump($document);
+            }
+                    
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
         }
     }
 }

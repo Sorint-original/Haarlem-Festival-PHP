@@ -3,6 +3,7 @@
 /**
  * Set env variables and enable error reporting in local environment
  */
+
 require_once(__DIR__ . "/lib/env.php"); // sets global env variables (database configuration)
 require_once(__DIR__ . "/lib/error_reporting.php"); // enables error reporting locally
 
