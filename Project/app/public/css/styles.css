@@ -1,0 +1,11 @@
+#teylers, #lorentz {
+    margin-bottom: 20px; /* Reduce vertical spacing between sections */
+}
+
+#teylers img, #lorentz img {
+    margin-right: 10px; /* Ensure consistent spacing between images and text */
+}
+
+#teylers .text, #lorentz .text {
+    margin-left: 10px; /* Ensure consistent spacing between images and text */
+}

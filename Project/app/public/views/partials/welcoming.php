@@ -1,4 +1,4 @@
-<div class="container-fluid hero-section ">
+<div class="container-fluid hero-section">
     <!-- Header Section -->
     <div class="row mb-5">
         <div class="col-12 text-center">
@@ -9,7 +9,7 @@
     </div>
     <!-- Cards Section -->
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-lg-10 col-xl-8">
             <div class="row g-4" id="cards-container"></div>
         </div>
     </div>
