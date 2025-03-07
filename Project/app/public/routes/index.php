@@ -1,19 +1,13 @@
 <?php
 
-require_once(__DIR__ . "/../models/EventModel.php");
+require_once(__DIR__ . "/../controllers/HomepageController.php");
 
 
 Route::add('/', function () {
     // homepage is simply loading a static page
     // view the user routes for example following the MVC pattern
-    $model = new EventModel;
-    $events = $model->GetAllEventsOfDay(0);
-    foreach ($events as $type => $eventList) {
-        echo "Events for type $type:\n";
-        foreach ($eventList as $event) {
-            var_dump($event);
-        }
-    }
+    $controller = new HomepageController;
+    
     
     require(__DIR__ . "/../views/pages/index.php");
 });
