@@ -255,34 +255,59 @@ body.homepage{
     color:black;
 }
 
+
 /* Footer Style */
-footer {
-    font-family: "Merienda", sans-serif; /* Footer yazı tipini Merienda olarak ayarlıyoruz */
+.custom-footer {
+    font-family: "Merienda", sans-serif;
     background-color: #610627;
-
+    padding-top: 20px; 
 }
 
-footer.h5 {
-    font-family: "Merienda", sans-serif; /* Footer başlıkları için Merienda fontu */
-    font-weight: 800; 
-    /* Başlıklar biraz daha kalın olabilir */
-    text-decoration: underline; 
+/* Footer Titles */
+.footer-title {
+    font-family: "Merienda", sans-serif;
+    font-weight: 800;
+    text-decoration: underline;
     text-transform: capitalize;
+    text-decoration-color: white;
+     color: white;
 }
 
-footer a {
-    font-family: "Merienda", sans-serif; /* Linklerin yazı tipini Merienda yapıyoruz */
-    text-decoration: none; /* Linklerde alt çizgi olmasın */
-    color: inherit; /* Link renklerini inheritleyerek başlıkla uyumlu yapıyoruz */
+/* Footer Links */
+.myfooter {
+    margin-top: 50px;
+}
+.footer-link {
+    font-family: "Merienda", sans-serif;
+    text-decoration: none;
+    color: white;
 }
 
-footer a:hover {
-    color: #FF6B9E; /* Linklere hover efekti ekleyelim */
+.footer-link:hover {
+    color: #FF6B9E;
 }
 
-footer .text-start {
-    font-family: "Merienda", sans-serif; /* Footer içerisindeki text-start kısmı için de fontu uyguluyoruz */
+/* Social Media Icons */
+.footer-icon {
+    width: 30px;
 }
+
+
+/*.footer-icon:hover{
+    color: #FF6B9E !important;
+}*/
+
+/* Footer buttom part */
+.footer-bottom {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: white;
+}
+
+/* Footer Ektra Links*/
+.footer-extra-links {
+    gap: 0.1rem;
+}
+
 
 
 
