@@ -4,7 +4,7 @@
 class BaseModel
 {
 
-    protected static $db;
+    protected $manager;
 
     function __construct()
     {
@@ -13,17 +13,7 @@ class BaseModel
             $mongoUri = getenv('MONGO_URI');
         
             // Create a new MongoDB client
-            $manager = new MongoDB\Driver\Manager($mongoUri);
-
-            $filter = [];
-            $options = [];
-
-            $query = new MongoDB\Driver\Query($filter, $options);
-            $cursor = $manager->executeQuery('HaarlemFestival.Users', $query);
-
-            foreach ($cursor as $document) {
-                var_dump($document);
-            }
+            $this->manager = new MongoDB\Driver\Manager($mongoUri);
                     
         } catch (Exception $e) {
             echo "Error: " . $e->getMessage();
