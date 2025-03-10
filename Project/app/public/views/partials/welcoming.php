@@ -1,4 +1,4 @@
-<div class="container-fluid hero-section ">
+<div class="container-fluid hero-section">
     <!-- Header Section -->
     <div class="row mb-5">
         <div class="col-12 text-center">
@@ -7,14 +7,12 @@
             </h1>
         </div>
     </div>
-
     <!-- Cards Section -->
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-lg-10 col-xl-8">
             <div class="row g-4" id="cards-container"></div>
         </div>
     </div>
-
     <!-- Button Section -->
     <div class="row mt-5">
         <div class="col-12 text-center">
@@ -22,7 +20,6 @@
         </div>
     </div>
 </div>
-
 <script>
     const cardsData = [
         {
@@ -38,7 +35,6 @@
             text: "A delicious journey! Taste the best local dishes, try amazing food from all over, and experience meals full of flavor and joy. Every bite is a celebration of good food and vibrant festival energy!"
         }
     ];
-
     const cardsContainer = document.getElementById("cards-container");
     cardsData.forEach(({ title, text }) => {
         const cardHTML = `
