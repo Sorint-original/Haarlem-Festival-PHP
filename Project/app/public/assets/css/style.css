@@ -261,6 +261,8 @@ body.homepage{
     font-family: "Merienda", sans-serif;
     background-color: #610627;
     padding-top: 20px; 
+    width: 100%;
+    margin: 0;
 }
 
 /* Footer Titles */
@@ -276,7 +278,12 @@ body.homepage{
 /* Footer Links */
 .myfooter {
     margin-top: 50px;
+    width: 100%;
+    margin-left: 0;
+    padding-left: 0;
+ 
 }
+
 .footer-link {
     font-family: "Merienda", sans-serif;
     text-decoration: none;
@@ -504,3 +511,4 @@ body {
     color: white;
 }
 
+/* Stories */
