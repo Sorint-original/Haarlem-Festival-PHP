@@ -149,7 +149,6 @@ body.yummy {
 
 /* login css */
 
-/* Apply background only to the login page */
 .login-page {
     background: url('/assets/images/background.png') no-repeat center center fixed;
     background-size: cover;
@@ -247,14 +246,12 @@ body.yummy {
     padding: 60px 0;
 }
 
-/* ✅ Title Styling - Centered */
 .intro-title {
     font-size: 2.5rem;
     font-weight: 700;
     font-style: italic;
 }
 
-/* ✅ Paragraph Styling - Left-Aligned */
 .intro-text {
     font-size: 1.2rem;
     line-height: 1.6;
