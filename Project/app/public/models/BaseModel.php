@@ -1,9 +1,6 @@
 <?php
-
-
 class BaseModel
 {
-
     protected $manager;
 
     function __construct()

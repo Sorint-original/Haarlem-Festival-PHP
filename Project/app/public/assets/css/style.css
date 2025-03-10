@@ -22,7 +22,9 @@ body.yummy {
     background: linear-gradient(to bottom, #A0E4F1 0%, #5BB2C6 50%, #F9F9F9 100%);
     background-size: cover;
 }
-
+body.museum{
+    background-image: linear-gradient(135deg , #F7F4E9, #F10555 , #F07C3A);
+}
 /* navigation bar styles */
 .navbar {
     height: 10vh;
@@ -34,6 +36,9 @@ body.yummy {
 /* yummy-nav colors */
 .navbar.yummy {
     background: linear-gradient(to right, #A0E4F1, #5BB2C6, #F9F9F9);
+}
+.navbar.museum{
+    background-image: linear-gradient(135deg , #F7F4E9, #F10555, #F07C3A);
 }
 
 .fontCdark * {
