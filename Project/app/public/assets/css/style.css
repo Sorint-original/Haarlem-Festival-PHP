@@ -98,7 +98,7 @@ body.yummy {
 
 /* Welcoming Style */
 .hero-section{
-    background-image: url("../images/info.png");
+    background-image: url("../images/complexLayouts/info.png");
     background-size: contain;
     background-position: center;
     margin-top: 20px;
@@ -165,7 +165,7 @@ body.yummy {
 /* Event Dates Style */
 
 #eventDates {
-    background-image: url("../images/SchedualeDay1.png");
+    background-image: url("../images/complexLayouts/SchedualeDay1.png");
     background-size: cover;
     background-position: center;
     aspect-ratio: 1.75/1;
@@ -222,23 +222,23 @@ body.yummy {
 }
 
 #Jazzlist{
-    background-image: url("../images/EventlistJazz.png");
+    background-image: url("../images/complexLayouts/EventlistJazz.png");
 }
 
 #Historylist{
-    background-image: url("../images/EventlistHistory.png");
+    background-image: url("../images/complexLayouts/EventlistHistory.png");
 }
 
 #Storieslist{
-    background-image: url("../images/EventlistStories.png");
+    background-image: url("../images/complexLayouts/EventlistStories.png");
 }
 
 #Magiclist{
-    background-image: url("../images/EventlistMagic.png");
+    background-image: url("../images/complexLayouts/EventlistMagic.png");
 }
 
 #Yummylist{
-    background-image: url("../images/EventlistYummy.png");
+    background-image: url("../images/complexLayouts/EventlistYummy.png");
 }
 
 /* Map Style */

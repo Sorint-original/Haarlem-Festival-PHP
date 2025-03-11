@@ -32,6 +32,15 @@
 
 
 <script>
+    function getDayEvents = (clickedButton) =>{
+        const day = DateButtons.indexOf(clickedButton)
+        var events;
+        if( day == 0){
+            events = <?php $contrller->getAllEventsofDay(0) ?>
+        }
+        return events;
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
     const DateButtons = document.getElementsByClassName('eventDate');
     const DateSection = document.getElementById('eventDates');
@@ -41,7 +50,8 @@
             button.classList.remove('current');
         });
         clickedButton.classList.add('current');
-        DateSection.style.backgroundImage = `url(assets/images/${image}.png)`;
+        DateSection.style.backgroundImage = `url(assets/images/complexLayouts/${image}.png)`;
+
     };
 
     const specificParameters = ['SchedualeDay1', 'SchedualeDay2', 'SchedualeDay3', 'SchedualeDay4'];

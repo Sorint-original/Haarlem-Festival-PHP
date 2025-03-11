@@ -11,8 +11,9 @@ class HomepageController
     }
 
 
-    public function getAllEvents($day)
+    public function getAllEventsofDay($day)
     {
         return $this->eventModel->GetAllEventsOfDay($day);
     }
+
 }
