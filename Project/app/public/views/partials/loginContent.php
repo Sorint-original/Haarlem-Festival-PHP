@@ -1,5 +1,5 @@
 <div class="container vh-100 justify-content-center align-items-start mt-5">
-        <div class="row justify-content-center">
+    <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="logincard p-4 shadow-lg">
                 <!-- Tab Navigation -->
@@ -15,24 +15,24 @@
                 <div class="tab-content">
                     <!-- Login Form -->
                     <div id="login" class="tab-pane fade show active">
-                        <form>
+                        <form action="/login" method="POST">
                             <div class="text-center mb-3">
                                 <p>Sign in with:</p>
                                 <div class="d-flex justify-content-center gap-2">
-                                <button type="button" class="btn btn-social btn-sm mx-1"><i class="fab fa-facebook-f"></i></button>
-                                <button type="button" class="btn btn-social btn-sm mx-1"><i class="fab fa-google"></i></button>
-                                <button type="button" class="btn btn-social btn-sm mx-1"><i class="fab fa-twitter"></i></button>
-                                <button type="button" class="btn btn-social btn-sm mx-1"><i class="fab fa-github"></i></button>
+                                    <button type="button" class="btn btn-social btn-sm mx-1"><i class="fab fa-facebook-f"></i></button>
+                                    <button type="button" class="btn btn-social btn-sm mx-1"><i class="fab fa-google"></i></button>
+                                    <button type="button" class="btn btn-social btn-sm mx-1"><i class="fab fa-twitter"></i></button>
+                                    <button type="button" class="btn btn-social btn-sm mx-1"><i class="fab fa-github"></i></button>
                                 </div>
                             </div>
 
                             <p class="text-center">or:</p>
 
                             <div class="mb-3">
-                                <input type="email" class="form-control" placeholder="Email or username" required>
+                                <input type="email" name="email" class="form-control" placeholder="Email or username" required>
                             </div>
                             <div class="mb-3">
-                                <input type="password" class="form-control" placeholder="Password" required>
+                                <input type="password" name="password" class="form-control" placeholder="Password" required>
                             </div>
 
                             <div class="d-flex justify-content-between">
@@ -53,7 +53,7 @@
 
                     <!-- Registration Form -->
                     <div id="register" class="tab-pane fade">
-                        <form>
+                        <form action="/register" method="POST">
                             <div class="text-center mb-3">
                                 <p>Sign up with:</p>
                                 <button type="button" class="btn btn btn-social btn-sm mx-1"><i class="fab fa-facebook-f"></i></button>
@@ -65,24 +65,24 @@
                             <p class="text-center">or:</p>
 
                             <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Full Name" required>
+                                <input type="text" name="full_name" class="form-control" placeholder="Full Name" required>
                             </div>
                             <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Username" required>
+                                <input type="text" name="username" class="form-control" placeholder="Username" required>
                             </div>
                             <div class="mb-3">
-                                <input type="email" class="form-control" placeholder="Email" required>
+                                <input type="email" name="email" class="form-control" placeholder="Email" required>
                             </div>
                             <div class="mb-3">
-                                <input type="password" class="form-control" placeholder="Password" required>
+                                <input type="password" name="password" class="form-control" placeholder="Password" required>
                             </div>
                             <div class="mb-3">
-                                <input type="password" class="form-control" placeholder="Repeat Password" required>
+                                <input type="password" name="confirm_password" class="form-control" placeholder="Repeat Password" required>
                             </div>
 
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="termsCheck" required>
-                                <label class="form-check-label" for="termsCheck">I agree to the terms & conditions</label>
+                                <label class="form-check-label" for="termsCheck">I agree to the terms &amp; conditions</label>
                             </div>
 
                             <button type="submit" class="btn btn-primary w-100 mt-3">Sign Up</button>
@@ -108,4 +108,3 @@
         document.getElementById("login-tab").click();
     });
 </script>
-</>

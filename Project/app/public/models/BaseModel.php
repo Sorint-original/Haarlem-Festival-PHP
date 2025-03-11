@@ -1,3 +1,4 @@
+this is the basemodel i have now 
 <?php
 
 class BaseModel
@@ -37,16 +38,23 @@ class BaseModel
     }
 
     protected function executeWrite($bulkWrite, $collectionName)
-    {
-        try {
-            // Execute write operation
-            $writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY);
-            $result = $this->manager->executeBulkWrite("{$this->databaseName}.{$collectionName}", $bulkWrite, $writeConcern);
-            return $result;
-        } catch (Exception $e) {
-            error_log("MongoDB Write Error: " . $e->getMessage());
-            return false;
-        }
+ {
+    try {
+        // If you need a custom WriteConcern:
+        $writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY);
+
+        // Pass it as an array option
+        $result = $this->manager->executeBulkWrite(
+            "{$this->databaseName}.{$collectionName}",
+            $bulkWrite,
+            ['writeConcern' => $writeConcern]
+        );
+
+        return $result;
+    } catch (Exception $e) {
+        error_log("MongoDB Write Error: " . $e->getMessage());
+        return false;
     }
+ }
 }
 ?>
