@@ -28,7 +28,6 @@ class HomepageController
         $events = $this->getAllEventsofDay($day);
     
         // Return events as JSON
-        header('Content-Type: application/json');
         echo json_encode($events);
         exit;
     }

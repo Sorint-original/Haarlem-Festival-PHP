@@ -5,7 +5,7 @@ require_once(__DIR__ . "/BaseModel.php");
 class EventModel extends BaseModel
 {
     protected $dates;
-    protected $eventTypes = ['jazz', 'history', 'yummy', 'magic', 'stories'];
+    protected $eventTypes = ['jazz', 'history', 'yummy', 'magic', 'storie'];
     protected $collectionName = 'HaarlemFestival.Events'; 
     
 
@@ -17,6 +17,7 @@ class EventModel extends BaseModel
 
     public function GetAllEventsOfDay($day)
     {
+        echo $day;
         $filter = $this->GetDayFilter($day);
         $options = [];
 
@@ -42,5 +43,6 @@ class EventModel extends BaseModel
         $endOfDay = new MongoDB\BSON\UTCDateTime(strtotime($this->dates[$day] . ' +1 day') * 1000);
         return ['startTime' => ['$gte' => $startOfDay,'$lt' => $endOfDay]];
     }
+
 
 }

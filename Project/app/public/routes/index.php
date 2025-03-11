@@ -10,4 +10,9 @@ Route::add('/', function () {
     require(__DIR__ . "/../views/pages/index.php");
 });
 
+Route::add('/get-events', function () {
+    $controller = new HomepageController();
+    $controller->getEvents();
+}, 'post');
+
 
