@@ -337,94 +337,69 @@ body.museum{
 
 /* login css */
 
-.login-page {
+.login {
     background: url('/assets/images/background.png') no-repeat center center fixed;
     background-size: cover;
 }
 
-.login-page::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: -1;
-}
-
-.login-container {
-    position: relative;
-    z-index: 2;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 2rem;
+.logincard {
+    background: rgba(48, 48, 48, 1);
+    color: white;
     border-radius: 10px;
-    color: white;
-    text-align: center;
+    padding: 2rem;
 }
 
-/* Logo Styling */
-.logo-container {
-    text-align: center;
+.nav-pills .nav-link {
+    background: rgb(60, 60, 60);
+    color: rgb(167, 167, 167);;
 }
 
-.logo-image {
-    width: 120px;
-    height: auto;
+.nav-pills .nav-link.active {
+    background: rgba(14, 22, 39, 1);
+    color: rgb(32, 76, 169);
 }
 
-.form-outline {
-    position: relative;
-    width: 100%;
-}
 .form-control {
+    background: rgba(255, 255, 255, 0.1);
     color: white;
-}
-
-.form-outline .form-control:focus {
-    border-color: #66B2E8;
-    box-shadow: 0 0 8px rgba(102, 178, 232, 0.5);
-    background: transparent;
-    color: white;
-}
-
-.form-outline .form-label {
-    color: rgba(200, 200, 200, 0.8) !important; 
-    transition: color 0.3s ease-in-out;
+    border: none;
 }
 
 .form-control::placeholder {
-    color: lightgray;
-    opacity: 1; 
+    color: rgb(211, 211, 211);
 }
 
-.form-outline .form-control:focus + .form-label {
-    color: #66B2E8 !important; 
+.btn-primary {
+    background: #66B2E8;
+    border: none;
 }
 
-.btn-login {
-    background-color: #66B2E8;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    padding: 0.8rem;
+.btn-primary:hover {
+    background: #4D9CCF;
 }
 
-.btn-login:hover {
-    background-color: #4D9CCF;
-}
-
-.forgot-password {
-    font-size: 0.9rem;
-}
-
-.forgot-password a {
-    color: white;
+a {
+    color: #66B2E8;
     text-decoration: none;
 }
 
-.forgot-password a:hover {
+a:hover {
     text-decoration: underline;
+}
+.btn-social {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; 
+    background-color: #B0C4EE; 
+    color: #0E1627; 
+    font-size: 20px;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-social:hover {
+    background-color: #4870C4; 
+    color: white !important;
 }
 
 /* Yummy_Main_page */
