@@ -15,7 +15,7 @@ services:
         volumes:
             - ./app:/app
         environment:
-            MONGO_URI: "mongodb://SlabzTech:SlabzTech123@cluster0.tjteh.mongodb.net/HaarlemFestival?retryWrites=true&w=majority&tlsAllowInvalidCertificates=true"
+            MONGO_URI: "mongodb+srv://SlabzTech:SlabzTech123@cluster0.tjteh.mongodb.net/HaarlemFestival?retryWrites=true&w=majority&tlsAllowInvalidCertificates=true"
     mysql:
         image: mariadb:latest
         environment:

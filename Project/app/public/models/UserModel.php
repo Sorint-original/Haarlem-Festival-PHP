@@ -4,7 +4,7 @@ require_once(__DIR__ . '/BaseModel.php');
 
 class UserModel extends BaseModel
 {
-    private $collectionName = 'HaarlemFestival.Users';
+    private $collectionName = 'Users';
 
     
     public function getUserByEmail($email)
