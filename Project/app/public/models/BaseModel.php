@@ -1,4 +1,3 @@
-this is the basemodel i have now 
 <?php
 
 class BaseModel
@@ -12,7 +11,7 @@ class BaseModel
             // Get MongoDB connection string from environment variable
             $mongoUri = getenv('MONGO_URI');
 
-            // Create a new MongoDB Manager (Connection)
+            // Create a new MongoDB Manager 
             $this->manager = new MongoDB\Driver\Manager($mongoUri);
 
             // Define database name
@@ -40,7 +39,7 @@ class BaseModel
     protected function executeWrite($bulkWrite, $collectionName)
  {
     try {
-        // If you need a custom WriteConcern:
+       
         $writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY);
 
         // Pass it as an array option
