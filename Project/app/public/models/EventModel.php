@@ -5,7 +5,7 @@ require_once(__DIR__ . "/BaseModel.php");
 class EventModel extends BaseModel
 {
     protected $dates;
-    protected $eventTypes = ['jazz', 'history', 'yummy', 'magic', 'stories'];
+    protected $eventTypes = ['jazz', 'history', 'yummy', 'magic', 'storie'];
     protected $collectionName = 'HaarlemFestival.Events'; 
     
 
@@ -30,11 +30,11 @@ class EventModel extends BaseModel
     private function QuerryEvents($filter, $options){
         $query = new MongoDB\Driver\Query($filter, $options);
         $documents = $this->manager->executeQuery($this->collectionName, $query);
-        return $documents;
+        return $documents->toArray();
     }
 
     private function GetTypeFilter($type){
-        return ['Type' => $type];
+        return ['type' => $type];
     }
 
     private function GetDayFilter($day){
@@ -42,5 +42,6 @@ class EventModel extends BaseModel
         $endOfDay = new MongoDB\BSON\UTCDateTime(strtotime($this->dates[$day] . ' +1 day') * 1000);
         return ['startTime' => ['$gte' => $startOfDay,'$lt' => $endOfDay]];
     }
+
 
 }
