@@ -19,7 +19,6 @@ $loggedIn = isset($_SESSION['user_id']);
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="/assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet">
-    <script src="/assets/js/main.js"></script>
 </head>
 
 
