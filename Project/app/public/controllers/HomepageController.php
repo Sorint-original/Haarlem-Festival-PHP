@@ -26,7 +26,6 @@ class HomepageController
     
         // Fetch events for the day
         $events = $this->getAllEventsofDay($day);
-    
         // Return events as JSON
         echo json_encode($events);
         exit;

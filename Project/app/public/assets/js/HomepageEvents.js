@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 const DateButtons = document.getElementsByClassName('eventDate');
 const DateSection = document.getElementById('eventDates');
-const eventContainers = document.getElementsByClassName('eventContainers');
+const eventContainers = document.getElementsByClassName('eventlist');
 
 const changeeventDates  = async (image,clickedButton) => {
     //removee current from previous
@@ -42,7 +42,7 @@ const populateEvents = (events) => {
     for (let i = 0; i < 5; i++) {
         events[eventType[i]].forEach((event) => {
             eventContainers[i].innerHTML = `
-                <h3>${event.title}</h3>
+                <b>${event.title}</b>
                 <p>${event.startTime}</p>
             `;
         });

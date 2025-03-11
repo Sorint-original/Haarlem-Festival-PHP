@@ -17,7 +17,6 @@ class EventModel extends BaseModel
 
     public function GetAllEventsOfDay($day)
     {
-        echo $day;
         $filter = $this->GetDayFilter($day);
         $options = [];
 
@@ -31,11 +30,11 @@ class EventModel extends BaseModel
     private function QuerryEvents($filter, $options){
         $query = new MongoDB\Driver\Query($filter, $options);
         $documents = $this->manager->executeQuery($this->collectionName, $query);
-        return $documents;
+        return $documents->toArray();
     }
 
     private function GetTypeFilter($type){
-        return ['Type' => $type];
+        return ['type' => $type];
     }
 
     private function GetDayFilter($day){
