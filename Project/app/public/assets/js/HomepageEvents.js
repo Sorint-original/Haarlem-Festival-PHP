@@ -44,7 +44,7 @@ const populateEvents = (events) => {
         //add current events
         events[eventType[i]].forEach((event) => {
             eventContainers[i].innerHTML += `
-                <b>${event.title}</b>
+                <b class= "EventTitle">${event.title}</b>
                 <p>${event.startTime}</p>
             `;
         });
