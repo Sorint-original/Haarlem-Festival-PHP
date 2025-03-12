@@ -76,7 +76,48 @@ body.homepage{
 /*------- HOMEPAGE Style *---------/
 /* Main Picture Style */
 
+.fadein {
+    position:relative; 
+    height:550px; 
+}
+.fadein img{
+        position:absolute;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.overlay-content {
+    display: flex;
+    flex-direction: column; /* Stacks image and text */
+    align-items: center; /* Centers content horizontally */
+    text-align: center;
+    width: 150px; /* Set a fixed width for consistency */
+}
+
+.overlay-image {
+    width: 100%; /* Adjust size as needed */
+    height: auto;
+    margin-bottom: 10px; /* Space between logo and text */
+}
+
+.overlay-text {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    width: 100%; /* Ensure text is the same width as the image */
+    text-align: center;
+}
 /* Welcoming Style */
+
 .hero-section{
     background-image: url("../images/info.png");
     background-size: cover;
