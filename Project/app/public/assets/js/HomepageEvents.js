@@ -38,10 +38,12 @@ const getDayEvents = async (day) => {
 
 const populateEvents = (events) => {
     const eventType =['jazz', 'history', 'yummy', 'magic', 'storie'];
-    // Clear existing event content
     for (let i = 0; i < 5; i++) {
+        //empty content
+        eventContainers[i].innerHTML ="";
+        //add current events
         events[eventType[i]].forEach((event) => {
-            eventContainers[i].innerHTML = `
+            eventContainers[i].innerHTML += `
                 <b>${event.title}</b>
                 <p>${event.startTime}</p>
             `;
@@ -56,4 +58,8 @@ Array.from(DateButtons).forEach(button => {
     const img = specificParameters[Array.from(DateButtons).indexOf(button)];
     button.addEventListener('click',  () => changeeventDates(img,button));
 });
+
+//Trigger first button
+DateButtons[0].click();
+
 });
