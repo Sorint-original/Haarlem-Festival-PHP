@@ -27,7 +27,6 @@
             </a>
           </div>
         </div>
-
         <!-- Links -->
         <div class="col-lg-2 col-md-2 text-center d-flex justify-content-center">
           <div class="footer-links">
@@ -83,3 +82,8 @@
   </footer>
   <!-- Footer -->
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</body>
+</html>
+

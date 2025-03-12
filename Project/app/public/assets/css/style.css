@@ -11,12 +11,20 @@
 
 body {
     min-height: 100vh;
+    font-family: "Merienda One";
 }
 
 body.homepage{
     background-image: linear-gradient(135deg , #F7F4E9, #FF7A6D, #FF6B9E);
 }
-
+/* yummy-page colors */
+body.yummy {
+    background: linear-gradient(to bottom, #A0E4F1 0%, #5BB2C6 50%, #F9F9F9 100%);
+    background-size: cover;
+}
+body.museum{
+    background-image: linear-gradient(135deg , #F7F4E9, #F10555 , #F07C3A);
+}
 /* navigation bar styles */
 .navbar {
     height: 10vh;
@@ -24,6 +32,13 @@ body.homepage{
 
 .navbar.homepage {
     background-image: linear-gradient(to right , #F7F4E9, #FF7A6D, #FF6B9E);
+}
+/* yummy-nav colors */
+.navbar.yummy {
+    background: linear-gradient(to right, #A0E4F1, #5BB2C6, #F9F9F9);
+}
+.navbar.museum{
+    background-image: linear-gradient(135deg , #F7F4E9, #F10555, #F07C3A);
 }
 
 .fontCdark * {
@@ -88,7 +103,7 @@ body.homepage{
 
 /* Welcoming Style */
 .hero-section{
-    background-image: url("../images/info.png");
+    background-image: url("../images/complexLayouts/info.png");
     background-size: contain;
     background-position: center;
     margin-top: 20px;
@@ -155,7 +170,7 @@ body.homepage{
 /* Event Dates Style */
 
 #eventDates {
-    background-image: url("../images/SchedualeDay1.png");
+    background-image: url("../images/complexLayouts/SchedualeDay1.png");
     background-size: cover;
     background-position: center;
     aspect-ratio: 1.75/1;
@@ -212,23 +227,23 @@ body.homepage{
 }
 
 #Jazzlist{
-    background-image: url("../images/EventlistJazz.png");
+    background-image: url("../images/complexLayouts/EventlistJazz.png");
 }
 
 #Historylist{
-    background-image: url("../images/EventlistHistory.png");
+    background-image: url("../images/complexLayouts/EventlistHistory.png");
 }
 
 #Storieslist{
-    background-image: url("../images/EventlistStories.png");
+    background-image: url("../images/complexLayouts/EventlistStories.png");
 }
 
 #Magiclist{
-    background-image: url("../images/EventlistMagic.png");
+    background-image: url("../images/complexLayouts/EventlistMagic.png");
 }
 
 #Yummylist{
-    background-image: url("../images/EventlistYummy.png");
+    background-image: url("../images/complexLayouts/EventlistYummy.png");
 }
 
 /* Map Style */
@@ -322,164 +337,90 @@ body.homepage{
 
 /* login css */
 
-/* Apply background only to the login page */
-.login-page {
+.login {
     background: url('/assets/images/background.png') no-repeat center center fixed;
     background-size: cover;
 }
 
-/* Ensure other pages are not affected */
-body {
-    background: none; /* Remove global background */
-}
-
-/* Dark Overlay for Readability (Only for Login Page) */
-.login-page::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: -1;
-}
-
-.login-container {
-    position: relative;
-    z-index: 2;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 2rem;
+.logincard {
+    background: rgba(48, 48, 48, 1);
+    color: white;
     border-radius: 10px;
-    color: white;
-    text-align: center;
+    padding: 2rem;
 }
 
-/* Logo Styling */
-.logo-container {
-    text-align: center;
+.nav-pills .nav-link {
+    background: rgb(60, 60, 60);
+    color: rgb(167, 167, 167);;
 }
 
-.logo-image {
-    width: 120px;
-    height: auto;
+.nav-pills .nav-link.active {
+    background: rgba(14, 22, 39, 1);
+    color: rgb(32, 76, 169);
 }
 
-.form-outline {
-    position: relative;
-    width: 100%;
-}
 .form-control {
+    background: rgba(255, 255, 255, 0.1);
     color: white;
-}
-
-.form-outline .form-control:focus {
-    border-color: #66B2E8;
-    box-shadow: 0 0 8px rgba(102, 178, 232, 0.5);
-    background: transparent;
-    color: white;
-}
-
-.form-outline .form-label {
-    color: rgba(200, 200, 200, 0.8) !important; 
-    transition: color 0.3s ease-in-out;
+    border: none;
 }
 
 .form-control::placeholder {
-    color: lightgray;
-    opacity: 1; 
+    color: rgb(211, 211, 211);
 }
 
-.form-outline .form-control:focus + .form-label {
-    color: #66B2E8 !important; 
+.btn-primary {
+    background: #66B2E8;
+    border: none;
 }
 
-.btn-login {
-    background-color: #66B2E8;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    padding: 0.8rem;
+.btn-primary:hover {
+    background: #4D9CCF;
 }
 
-.btn-login:hover {
-    background-color: #4D9CCF;
-}
-
-.forgot-password {
-    font-size: 0.9rem;
-}
-
-.forgot-password a {
-    color: white;
+a {
+    color: #66B2E8;
     text-decoration: none;
 }
 
-.forgot-password a:hover {
+a:hover {
     text-decoration: underline;
+}
+.btn-social {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; 
+    background-color: #B0C4EE; 
+    color: #0E1627; 
+    font-size: 20px;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-social:hover {
+    background-color: #4870C4; 
+    color: white !important;
 }
 
 /* Yummy_Main_page */
 
-/* ✅ Apply the exact gradient background only to Yummy pages */
-.yummy-page {
-    background: linear-gradient(to bottom, #A0E4F1 0%, #5BB2C6 50%, #F9F9F9 100%);
-    background-size: cover;
-}
-
-/* ✅ Yummy Intro Section */
+/* Yummy Intro Section */
 .yummy-intro {
-    text-align: left;
     padding: 60px 0;
 }
 
-/* ✅ Title Styling */
 .intro-title {
-    color: #0A3D62;
     font-size: 2.5rem;
     font-weight: 700;
     font-style: italic;
-    text-align: center;
 }
 
-/* ✅ Paragraph Styling */
 .intro-text {
-    color: #2C3E50;
     font-size: 1.2rem;
     line-height: 1.6;
-    max-width: 900px;  
-    text-align: left;  
-    margin-left: auto;
-    margin-right: auto;
 }
-
-/* ✅ Note Box */
-.note-box {
-    background-color: rgba(239, 236, 205, 0.5);
-    border-left: 5px solid #1A237E; 
-    padding: 15px;
-    font-size: 1rem;
-    line-height: 1.5;
-    max-width: 900px;
-    margin: 20px auto;
-    border-radius: 10px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* ✅ Responsive Adjustments */
-@media (max-width: 768px) {
-    .intro-title {
-        font-size: 2rem;
-    }
-    
-    .intro-text {
-        font-size: 1.1rem;
-    }
-    
-    .note-box {
-        font-size: 0.9rem;
-        padding: 10px;
-    }
+.card.bg-light{
+    background-color: rgba(239, 236, 205, 0.7) !important;
 }
 
 
