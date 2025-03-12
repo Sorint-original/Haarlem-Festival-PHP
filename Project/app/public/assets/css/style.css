@@ -215,6 +215,7 @@ body.museum{
 
 .eventlist{
     position: relative;
+    font-size: 0.8vw;
     height: 75%;
     overflow-y: auto;
     top: 20%;
@@ -224,6 +225,10 @@ body.museum{
         align-self: center;
         text-align: center;
     }
+}
+
+.EventTitle{
+    font-size: 1vw;
 }
 
 #Jazzlist{

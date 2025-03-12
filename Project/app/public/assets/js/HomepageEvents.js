@@ -38,12 +38,17 @@ const getDayEvents = async (day) => {
 
 const populateEvents = (events) => {
     const eventType =['jazz', 'history', 'yummy', 'magic', 'storie'];
-    // Clear existing event content
     for (let i = 0; i < 5; i++) {
+        //empty content
+        eventContainers[i].innerHTML ="";
+        //add current events
         events[eventType[i]].forEach((event) => {
-            eventContainers[i].innerHTML = `
-                <b>${event.title}</b>
-                <p>${event.startTime}</p>
+            const start = new Date(parseInt(event.startTime.$date.$numberLong));
+            const end= new Date(parseInt(event.endTime.$date.$numberLong));
+            console.log(start);
+            eventContainers[i].innerHTML += `
+                <b class= "EventTitle">${event.title}</b>
+                <p>${start.getUTCHours()}:${String(start.getUTCMinutes()).padStart(2, '0')} - ${end.getUTCHours()}:${String(end.getUTCMinutes()).padStart(2, '0')}</p>
             `;
         });
     }
@@ -56,4 +61,8 @@ Array.from(DateButtons).forEach(button => {
     const img = specificParameters[Array.from(DateButtons).indexOf(button)];
     button.addEventListener('click',  () => changeeventDates(img,button));
 });
+
+//Trigger first button
+DateButtons[0].click();
+
 });

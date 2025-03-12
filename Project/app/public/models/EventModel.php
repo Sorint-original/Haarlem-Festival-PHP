@@ -6,7 +6,7 @@ class EventModel extends BaseModel
 {
     protected $dates;
     protected $eventTypes = ['jazz', 'history', 'yummy', 'magic', 'storie'];
-    protected $collectionName = 'HaarlemFestival.Events'; 
+    protected $collectionName = 'Events'; 
     
 
     public function __construct()
@@ -18,19 +18,13 @@ class EventModel extends BaseModel
     public function GetAllEventsOfDay($day)
     {
         $filter = $this->GetDayFilter($day);
-        $options = [];
+        $options = ['sort' => ['startTime' => 1]];
 
         foreach($this->eventTypes as $type){
             $Qfilter = array_merge($filter,$this->GetTypeFilter($type));
-            $events[$type] = $this->QuerryEvents($Qfilter,$options);
+            $events[$type] = $this->executeQuery($this->collectionName,$Qfilter,$options);
         }
         return $events;
-    }
-
-    private function QuerryEvents($filter, $options){
-        $query = new MongoDB\Driver\Query($filter, $options);
-        $documents = $this->manager->executeQuery($this->collectionName, $query);
-        return $documents->toArray();
     }
 
     private function GetTypeFilter($type){
