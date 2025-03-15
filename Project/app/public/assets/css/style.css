@@ -418,11 +418,13 @@ a:hover {
 .jazz-Section{
     background: rgba(122, 255, 104, 0.2);
     border-radius: 0 0 50px 50px;
-    min-height: 500px;
+    min-height: 600px;
 }
 
 #jazz-day{
     height: 300px;
+    background-position: center;
+
     header{
         max-width:35%;
         color: white;
@@ -430,6 +432,11 @@ a:hover {
         background-size: 100% 100%;
         -webkit-background-clip: text;
         -webkit-text-stroke: 5px transparent;
+    }
+
+    button{
+        border:none !important;
+        background-color: transparent;
     }
 }
 
