@@ -25,6 +25,9 @@ body.yummy {
 body.museum{
     background-image: linear-gradient(135deg , #F7F4E9, #F10555 , #F07C3A);
 }
+body.jazz{
+    background-image: linear-gradient(135deg , #13BEF2, #937AFF , #EB15AE);
+}
 /* navigation bar styles */
 .navbar {
     height: 10vh;
@@ -38,8 +41,12 @@ body.museum{
     background: linear-gradient(to right, #A0E4F1, #5BB2C6, #F9F9F9);
 }
 .navbar.museum{
-    background-image: linear-gradient(135deg , #F7F4E9, #F10555, #F07C3A);
+    background-image: linear-gradient(to right , #F7F4E9, #F10555, #F07C3A);
 }
+.navbar.jazz{
+    background-image: linear-gradient(to right , #13BEF2, #937AFF , #EB15AE);
+}
+
 
 .fontCdark * {
     color: black;
@@ -407,6 +414,45 @@ a:hover {
     color: white !important;
 }
 
+/* Jazz */
+.jazz-Section{
+    background: rgba(122, 255, 104, 0.2);
+    border-radius: 0 0 50px 50px;
+    min-height: 600px;
+}
+
+#jazz-day{
+    height: 300px;
+    background-position: center;
+
+    header{
+        max-width:35%;
+        color: white;
+        background: linear-gradient(to bottom,#13BEF2,#937AFF,#EB15AE);
+        background-size: 100% 100%;
+        -webkit-background-clip: text;
+        -webkit-text-stroke: 5px transparent;
+    }
+
+    button{
+        border:none !important;
+        background-color: transparent;
+    }
+}
+
+.jazz-btn{
+    background-color:rgba(255, 255, 255, 0.4) ;
+    border: 5px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to bottom,#F7F7F7,#F07C3A,#F10555);
+}
+
+.jazz-btn:hover{
+    background-color:rgba(255, 255, 255, 0.6) ;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+
+}
 /* Yummy_Main_page */
 
 /* Yummy Intro Section */

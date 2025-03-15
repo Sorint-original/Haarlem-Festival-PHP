@@ -10,12 +10,6 @@ class HomepageController
         $this->eventModel = new EventModel();
     }
 
-
-    public function getAllEventsofDay($day)
-    {
-        return $this->eventModel->GetAllEventsOfDay($day);
-    }
-
     public function getEvents() {
         // Read the raw input from the request body
         $input = file_get_contents('php://input');
@@ -25,7 +19,7 @@ class HomepageController
         $day = $data['day'];
     
         // Fetch events for the day
-        $events = $this->getAllEventsofDay($day);
+        $events = $this->eventModel->GetAllEventsOfDay($day);
         // Return events as JSON
         echo json_encode($events);
         exit;

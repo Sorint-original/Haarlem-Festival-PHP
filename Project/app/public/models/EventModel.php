@@ -27,6 +27,16 @@ class EventModel extends BaseModel
         return $events;
     }
 
+    public function GetTypeEventsOfDay($day,$type)
+    {
+        $filter = $this->GetDayFilter($day);
+        $filter = array_merge($filter,$this->GetTypeFilter($type));
+        $options = ['sort' => ['startTime' => 1]];
+        $events = $this->executeQuery($this->collectionName,$filter,$options);
+
+        return $events;
+    }
+
     private function GetTypeFilter($type){
         return ['type' => $type];
     }

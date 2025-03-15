@@ -45,7 +45,6 @@ const populateEvents = (events) => {
         events[eventType[i]].forEach((event) => {
             const start = new Date(parseInt(event.startTime.$date.$numberLong));
             const end= new Date(parseInt(event.endTime.$date.$numberLong));
-            console.log(start);
             eventContainers[i].innerHTML += `
                 <b class= "EventTitle">${event.title}</b>
                 <p>${start.getUTCHours()}:${String(start.getUTCMinutes()).padStart(2, '0')} - ${end.getUTCHours()}:${String(end.getUTCMinutes()).padStart(2, '0')}</p>
