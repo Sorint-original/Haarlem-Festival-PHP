@@ -2,6 +2,8 @@
 require_once(__DIR__ . "/../controllers/JazzController.php");
 
 Route::add('/jazz', function () {
+    $controller = new JazzController();
+    $JazzPasses = $controller->getDayPasses();
     require(__DIR__ . "/../views/pages/jazz.php");
 });
 
