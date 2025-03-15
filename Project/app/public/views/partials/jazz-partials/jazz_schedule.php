@@ -9,6 +9,7 @@
         <ul id="BandList" class = "d-flex flex-column  align-items-center container-fluid "> </ul>
         <ul id="TimeList" class = "d-flex flex-column  align-items-center container-fluid "> </ul>
         <ul id="LocationList" class = "d-flex flex-column  align-items-center container-fluid "> </ul>
+        <ul id="SeatsList" class = "d-flex flex-column  align-items-center container-fluid "> </ul>
     </div>
 
 </section>

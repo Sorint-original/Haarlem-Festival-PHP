@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const BandList =document.getElementById('BandList');
     const TimeList =document.getElementById('TimeList');
     const LocationList =document.getElementById('LocationList');
+    const SeatsList =document.getElementById('SeatsList');
 
 
     const dayBackgrounds = ['D0','D1','D2','D3',];
@@ -27,13 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
         BandList.innerHTML = '<b class="h1 mb-3">Bands</b>'
         TimeList.innerHTML = '<b class="h1 mb-3">Time</b>'
         LocationList.innerHTML = '<b class="h1 mb-3">Location</b>'
-        console.log(events);
+        SeatsList.innerHTML = '<b class="h1 mb-3">Seats Left</b>'
         events.forEach(event => {
             const start = new Date(parseInt(event.startTime.$date.$numberLong));
             const end= new Date(parseInt(event.endTime.$date.$numberLong));
             BandList.innerHTML += `<a class="h3" href="/jazz/band/${event.band.$oid}">${event.title}</a>`
             TimeList.innerHTML += `<p class="h3 ">${start.getUTCHours()}:${String(start.getUTCMinutes()).padStart(2, '0')} - ${end.getUTCHours()}:${String(end.getUTCMinutes()).padStart(2, '0')}</p>`
             LocationList.innerHTML += `<p class="h3 ">${event.location}</p>`
+            SeatsList.innerHTML += `<p class="h3 ">${event.availableSeats}</p>`
         });
     }
 
