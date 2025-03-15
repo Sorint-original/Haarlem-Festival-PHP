@@ -440,6 +440,19 @@ a:hover {
     }
 }
 
+.jazz-btn{
+    background-color:rgba(255, 255, 255, 0.4) ;
+    border: 5px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to bottom,#F7F7F7,#F07C3A,#F10555);
+}
+
+.jazz-btn:hover{
+    background-color:rgba(255, 255, 255, 0.6) ;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+
+}
 /* Yummy_Main_page */
 
 /* Yummy Intro Section */

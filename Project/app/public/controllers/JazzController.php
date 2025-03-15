@@ -16,7 +16,7 @@ class JazzController
 
     public function getDayPasses(){
         $passes['daypass'] = $this->ticketModel->GetShopTicketsByEventId("jazzDayPass")[0];
-        $passes['weekpass'] = $this->ticketModel->GetShopTicketsByEventId("jazzDWeekPass")[0];
+        $passes['weekpass'] = $this->ticketModel->GetShopTicketsByEventId("jazzWeekPass")[0];
         return $passes;
     }
 
