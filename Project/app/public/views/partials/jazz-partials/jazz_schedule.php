@@ -5,6 +5,11 @@
         <header type="button"  id = "CurrentDay" class ="display-1 text-center"></header>
         <button type="button"  id="NextDay"><img src = "/assets/images/jazz/Next.png"></button>
     </menu>
+    <div class ="d-flex flex-row d-flex justify-content-even w-100 py-3">
+        <ul id="BandList" class = "d-flex flex-column  align-items-center container-fluid "> </ul>
+        <ul id="TimeList" class = "d-flex flex-column  align-items-center container-fluid "> </ul>
+        <ul id="LocationList" class = "d-flex flex-column  align-items-center container-fluid "> </ul>
+    </div>
 
 </section>
 

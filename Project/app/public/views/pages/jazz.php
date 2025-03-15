@@ -19,3 +19,5 @@ require(__DIR__ . "/../partials/header.php");
 <?php
 require(__DIR__ . "/../partials/jazz-partials/jazz_schedule.php");
 
+require(__DIR__ . "/../partials/footer.php");
+
