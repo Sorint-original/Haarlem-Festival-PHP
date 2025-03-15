@@ -20,7 +20,7 @@
             </a>
         </li>
         <li class = "nav-item <?php if($page_type =="jazz") echo "current"; ?> p-2 h-100">
-            <a class="d-flex nav-link NavHeader p-0 h-100" href="#">
+            <a class="d-flex nav-link NavHeader p-0 h-100" href="/jazz">
                 <img src="assets/favicons/jazz.png" class="image-fluid align-self-center favicon"><div class="align-self-center">Jazz</div>
             </a>
         </li>
@@ -37,7 +37,7 @@
         <?php if ($loggedIn): ?>
             <li class = "nav-item  p-2 h-100">
                 <a class="d-flex  nav-link NavHeader p-0 h-100" href="#">
-                    <img src="assets/favicons/login.png" class="image-fluid align-self-center favicon"><div class="align-self-center">Logout</div>
+                    <img src="assets/favicons/login.png" class="image-fluid align-self-center favicon"><div class="align-self-center">Profile</div>
                 </a>
             </li>
         <?php else: ?>
