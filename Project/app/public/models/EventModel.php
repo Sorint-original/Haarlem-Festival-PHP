@@ -21,7 +21,7 @@ class EventModel extends BaseModel
         $options = ['sort' => ['startTime' => 1]];
 
         foreach($this->eventTypes as $type){
-            $Qfilter = array_merge($filter,$this->GetTypeFilter($type));
+            $Qfilter = array_merge($filter,['type' => $type]);
             $events[$type] = $this->executeQuery($this->collectionName,$Qfilter,$options);
         }
         return $events;
@@ -30,21 +30,25 @@ class EventModel extends BaseModel
     public function GetTypeEventsOfDay($day,$type)
     {
         $filter = $this->GetDayFilter($day);
-        $filter = array_merge($filter,$this->GetTypeFilter($type));
+        $filter = array_merge($filter,['type' => $type]);
         $options = ['sort' => ['startTime' => 1]];
         $events = $this->executeQuery($this->collectionName,$filter,$options);
 
         return $events;
     }
 
-    private function GetTypeFilter($type){
-        return ['type' => $type];
-    }
-
     private function GetDayFilter($day){
         $startOfDay = new MongoDB\BSON\UTCDateTime(strtotime($this->dates[$day]) * 1000);
         $endOfDay = new MongoDB\BSON\UTCDateTime(strtotime($this->dates[$day] . ' +1 day') * 1000);
         return ['startTime' => ['$gte' => $startOfDay,'$lt' => $endOfDay]];
+    }
+
+
+    //Sub collection functions
+
+    //Band SubCollection
+    public function GetBandById($Id){
+
     }
 
 
