@@ -39,4 +39,8 @@ class JazzController
         exit;
     }
 
+    public function getBand($Id){
+        return null;
+    }
+
 }
