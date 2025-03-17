@@ -19,7 +19,7 @@
     // Loop through the images array and display each image in the slideshow
     foreach ($slides as $img):
     ?>
-        <img src="assets/slideshow/<?php echo $img; ?>" alt="Slideshow Image" class="h-100 w-100">
+        <img src="/../assets/Slideshow/<?php echo $img;?>" alt="Slideshow Image" class="h-100 w-100">
     <?php endforeach; ?>
 </div>
 <!-- Overlay Image and Text -->

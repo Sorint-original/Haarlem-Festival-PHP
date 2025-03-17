@@ -152,8 +152,11 @@ body.jazz{
     -webkit-text-stroke: 2px black;
 }
 .overlay-text.jazz{
-    -webkit-text-stroke: 2px black;
     font-size: 7vw;
+    background: linear-gradient(to right,#13BEF2,#937AFF,#EB15AE);
+    background-size: 100% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 5px transparent;
 }
 /* Welcoming Style */
 
