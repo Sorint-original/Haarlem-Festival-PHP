@@ -2,13 +2,12 @@
 
 
 $page_type = "homepage"; #this way we can set which color backround is set in the header based on the page type
-$images = [ 
+$slides = [ 
     'front slide 1.png',
     'front slide 2.png',
     'front slide 3.png',
     'front slide 4.png',
     'front slide 5.png'
-
 ];
 
 $title = "Haarlem Festival";
