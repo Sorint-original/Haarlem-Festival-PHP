@@ -107,9 +107,12 @@ body.jazz{
 
 /*------- HOMEPAGE Style *---------/
 /* Main Picture Style */
-
+.header-content{
+    height: 550px;
+    position: static;
+}
 .fadein {
-    position:relative; 
+    position:absolute; 
     height:550px; 
 }
 .fadein img{
@@ -117,10 +120,8 @@ body.jazz{
 }
 .overlay {
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
+    height: 550px;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -8,7 +8,7 @@
             }, 10000); // Change images every 10 seconds
     });
 </script>
-
+<div class="header-content w-100">
 <div class="fadein w-100">
     <?php
     // Loop through the images array and display each image in the slideshow
@@ -17,7 +17,6 @@
         <img src="assets/slideshow/<?php echo $img; ?>" alt="Slideshow Image" class="h-100 w-100">
     <?php endforeach; ?>
 </div>
-
 <!-- Overlay Image and Text -->
 <div class="overlay">
     <div class="overlay-content">
@@ -26,4 +25,5 @@
         <?php } ?>
         <p class="overlay-text <?php echo $page_type; ?>" ><?php echo $title; ?></p>
     </div>
+</div>
 </div>
