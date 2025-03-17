@@ -46,6 +46,4 @@ class EventModel extends BaseModel
         $endOfDay = new MongoDB\BSON\UTCDateTime(strtotime($this->dates[$day] . ' +1 day') * 1000);
         return ['startTime' => ['$gte' => $startOfDay,'$lt' => $endOfDay]];
     }
-
-
 }
