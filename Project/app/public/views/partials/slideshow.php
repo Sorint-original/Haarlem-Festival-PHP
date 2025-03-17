@@ -12,7 +12,7 @@
 <div class="fadein w-100">
     <?php
     // Loop through the images array and display each image in the slideshow
-    foreach ($images as $img):
+    foreach ($slides as $img):
     ?>
         <img src="assets/slideshow/<?php echo $img; ?>" alt="Slideshow Image" class="h-100 w-100">
     <?php endforeach; ?>
