@@ -1,6 +1,4 @@
 <?php
-
-
 $page_type = "homepage"; #this way we can set which color backround is set in the header based on the page type
 $images = [ 
     'front slide 1.png',
