@@ -108,7 +108,51 @@ body.jazz{
 /*------- HOMEPAGE Style *---------/
 /* Main Picture Style */
 
+.fadein {
+    position:relative; 
+    height:550px; 
+}
+.fadein img{
+        position:absolute;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.overlay-content {
+    display: flex;
+    flex-direction: column; /* Stacks image and text */
+    align-items: center; /* Centers content horizontally */
+    text-align: center;
+}
+
+.overlay-image {
+    width: 80%; /* Adjust size as needed */
+    height: auto;
+    margin-bottom: 10px; /* Space between logo and text */
+}
+.overlay-text{
+    
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    width: 100%; /* Ensure text is the same width as the image */
+    text-align: center;
+}
+.overlay-text.homepage{
+    
+    -webkit-text-stroke: 2px black
+}
 /* Welcoming Style */
+
 .hero-section{
     background-image: url("../images/complexLayouts/info.png");
     background-size: contain;
