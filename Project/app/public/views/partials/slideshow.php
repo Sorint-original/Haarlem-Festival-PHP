@@ -22,6 +22,6 @@
 <div class="overlay">
     <div class="overlay-content">
         <img src="assets/favicons/logo.png" alt="Haarlem Festival Logo" class="overlay-image">
-        <p class="overlay-text">Haarlem Festival</p>
+        <p class="overlay-text-homepage <?php echo $page_type; ?>" >Haarlem Festival</p>
     </div>
 </div>

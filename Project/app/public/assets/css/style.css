@@ -100,18 +100,17 @@ body.homepage{
     flex-direction: column; /* Stacks image and text */
     align-items: center; /* Centers content horizontally */
     text-align: center;
-    width: 150px; /* Set a fixed width for consistency */
 }
 
 .overlay-image {
-    width: 100%; /* Adjust size as needed */
+    width: 80%; /* Adjust size as needed */
     height: auto;
     margin-bottom: 10px; /* Space between logo and text */
 }
 
-.overlay-text {
+.overlay-text-homepage {
     color: white;
-    font-size: 30px;
+    font-size: 60px;
     font-weight: bold;
     width: 100%; /* Ensure text is the same width as the image */
     text-align: center;
