@@ -39,8 +39,14 @@ class JazzController
         exit;
     }
 
-    public function getBand($Id){
-        return null;
+    public function GetBand($Id){
+        $Band = $this->eventModel->GetBandById(new MongoDB\BSON\ObjectID($Id));
+        return $Band[0];
+    }
+
+    public function GetBandShows($Id){
+        $Shows = $this->eventModel->GetJazzByBand(new MongoDB\BSON\ObjectID($Id));
+        return $Shows;
     }
 
 }

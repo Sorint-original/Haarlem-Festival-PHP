@@ -24,7 +24,7 @@ $loggedIn = isset($_SESSION['user_id']);
 </head>
 
 
-<body class = "<?php  echo $page_type; ?>">
+<body class = "d-flex flex-column <?php  echo $page_type; ?>">
 <?php
 if ($page_type != "login") {
      require(__DIR__ . "/header_nav.php");

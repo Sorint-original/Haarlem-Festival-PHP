@@ -5,7 +5,7 @@ require_once(__DIR__ . "/BaseModel.php");
 class EventModel extends BaseModel
 {
     protected $dates;
-    protected $eventTypes = ['jazz', 'history', 'yummy', 'magic', 'storie'];
+    protected $eventTypes = ['jazz', 'history', 'yummy', 'museum', 'story'];
     protected $collectionName = 'Events'; 
     
 
@@ -48,7 +48,19 @@ class EventModel extends BaseModel
 
     //Band SubCollection
     public function GetBandById($Id){
+        $filter = ['_id' =>$Id];
+        $options = [];
 
+        $Band = $this->executeQuery("Bands",$filter,$options);
+        return $Band;
+    }
+
+    public function GetJazzByBand($Id){
+        $filter = ['band' =>$Id];
+        $options = [];
+
+        $Shows = $this->executeQuery($this->collectionName,$filter,$options);
+        return $Shows;
     }
 
 

@@ -9,9 +9,9 @@ require(__DIR__ . "/../partials/header.php");
 
 ?>
 
-<header class="display-1 text-center pt-3"> Listen to Haarlem’s  Jazz</header>
+<header class="display-3 text-center py-3"> Listen to Haarlem’s  Jazz</header>
 
-<p class="h1 text-center px-5 mx-5">Haarlem Jazz is an enchanting music festival held annually, celebrating through the amazing sounds of jazz,
+<p class="h3 text-center  w-75 align-self-center">Haarlem Jazz is an enchanting music festival held annually, celebrating through the amazing sounds of jazz,
      the event brings together renowned international artists, emerging talents, and local performers for a multi-day musical experience. 
     Whether you’re a jazz aficionado or a casual listener, Haarlem Jazz promises unforgettable moments of artistry, connection, and celebration.
 </p>
