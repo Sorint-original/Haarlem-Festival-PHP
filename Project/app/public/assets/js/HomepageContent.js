@@ -35,7 +35,7 @@ const getDayEvents = async (day) => {
 };
 
 const populateEvents = (events) => {
-    const eventType =['jazz', 'history', 'yummy', 'magic', 'storie'];
+    const eventType =['jazz', 'history', 'yummy', 'museum', 'story'];
     for (let i = 0; i < 5; i++) {
         //empty content
         eventContainers[i].innerHTML ="";
