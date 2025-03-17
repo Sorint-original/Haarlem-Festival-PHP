@@ -16,7 +16,6 @@ class BaseModel
 
             // Define database name
             $this->databaseName = 'HaarlemFestival';
-
         } catch (Exception $e) {
             error_log("MongoDB Connection Error: " . $e->getMessage());
             die("Database connection failed. Try again later.");
@@ -37,23 +36,45 @@ class BaseModel
     }
 
     protected function executeWrite($bulkWrite, $collectionName)
- {
-    try {
-       
-        $writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY);
+    {
+        try {
 
-        // Pass it as an array option
-        $result = $this->manager->executeBulkWrite(
-            "{$this->databaseName}.{$collectionName}",
-            $bulkWrite,
-            ['writeConcern' => $writeConcern]
-        );
+            $writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY);
 
-        return $result;
-    } catch (Exception $e) {
-        error_log("MongoDB Write Error: " . $e->getMessage());
-        return false;
+            // Pass it as an array option
+            $result = $this->manager->executeBulkWrite(
+                "{$this->databaseName}.{$collectionName}",
+                $bulkWrite,
+                ['writeConcern' => $writeConcern]
+            );
+
+            return $result;
+        } catch (Exception $e) {
+            error_log("MongoDB Write Error: " . $e->getMessage());
+            return false;
+        }
     }
- }
+    // New update method
+    protected function update($collectionName, $filter, $updateData)
+    {
+        try {
+            // Create update operation
+            $update = ['$set' => $updateData]; // Use $set to update fields
+
+            // Create a bulk write object with update operation
+            $bulkWrite = new MongoDB\Driver\BulkWrite();
+            $bulkWrite->update(
+                $filter, // Filter to match the document
+                $update, // Update operation
+                ['multi' => false, 'upsert' => false] // Don't update multiple documents, no upsert
+            );
+
+            // Execute the update operation
+            return $this->executeWrite($bulkWrite, $collectionName);
+
+        } catch (Exception $e) {
+            error_log("Update Error: " . $e->getMessage());
+            return false;
+        }
+    }
 }
-?>
