@@ -40,7 +40,7 @@
                         <a class="nav-link" href="#">Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin-user">Users</a>
+                        <a class="nav-link" href="/admin/users">Users</a>
                     </li>
                 </ul>
             </div>
