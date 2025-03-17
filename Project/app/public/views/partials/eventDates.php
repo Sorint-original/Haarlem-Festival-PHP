@@ -29,4 +29,4 @@
     </div>
 </section>
 
-<script src="/assets/js/HomepageEvents.js"></script>
+<script src="/assets/js/HomepageContent.js"></script>

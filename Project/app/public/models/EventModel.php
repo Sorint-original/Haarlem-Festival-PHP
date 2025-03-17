@@ -43,7 +43,6 @@ class EventModel extends BaseModel
         return ['startTime' => ['$gte' => $startOfDay,'$lt' => $endOfDay]];
     }
 
-
     //Sub collection functions
 
     //Band SubCollection
@@ -62,6 +61,5 @@ class EventModel extends BaseModel
         $Shows = $this->executeQuery($this->collectionName,$filter,$options);
         return $Shows;
     }
-
 
 }
