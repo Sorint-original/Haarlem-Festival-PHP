@@ -3,9 +3,17 @@
 $page_type = "jazz"; #this way we can set which color backround is set in the header based on the page type
 $fontColoring = 'fontCdark'; #this is how we define how the font should be colored based on the background
 
+$slides = [ 
+    'jazz slide.png',
+];
+
+$title = "Haarlem Jazz";
+
+
 require(__DIR__ . "/../partials/header.php");
 
 ///Image slideshow
+require(__DIR__ . "/../partials/slideshow.php");
 
 ?>
 

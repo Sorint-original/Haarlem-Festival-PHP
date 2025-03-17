@@ -23,7 +23,7 @@
         <?php if ($page_type == "homepage") {?>
         <img src="assets/favicons/logo.png" alt="Haarlem Festival Logo" class="overlay-image">
         <?php } ?>
-        <p class="overlay-text font-weight-bold <?php echo $page_type; ?>" ><?php echo $title; ?></p>
+        <p class="overlay-text display-1 font-weight-bold <?php echo $page_type; ?>" ><?php echo $title; ?></p>
     </div>
 </div>
 </div>
