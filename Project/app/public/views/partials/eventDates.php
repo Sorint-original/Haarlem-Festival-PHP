@@ -28,5 +28,3 @@
         </a>
     </div>
 </section>
-
-<script src="/assets/js/HomepageContent.js"></script>

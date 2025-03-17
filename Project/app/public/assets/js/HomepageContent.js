@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
 const DateButtons = document.getElementsByClassName('eventDate');
 const DateSection = document.getElementById('eventDates');
