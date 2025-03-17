@@ -144,11 +144,16 @@ body.jazz{
     
     color: white;
     font-weight: bold;
+    font-size: 5vw;
     width: 100%; /* Ensure text is the same width as the image */
     text-align: center;
 }
 .overlay-text.homepage{
-    -webkit-text-stroke: 2px black
+    -webkit-text-stroke: 2px black;
+}
+.overlay-text.jazz{
+    -webkit-text-stroke: 2px black;
+    font-size: 7vw;
 }
 /* Welcoming Style */
 
