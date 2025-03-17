@@ -21,7 +21,9 @@
 <!-- Overlay Image and Text -->
 <div class="overlay">
     <div class="overlay-content">
+        <?php if ($page_type == "homepage") {?>
         <img src="assets/favicons/logo.png" alt="Haarlem Festival Logo" class="overlay-image">
-        <p class="overlay-text-homepage <?php echo $page_type; ?>" >Haarlem Festival</p>
+        <?php } ?>
+        <p class="overlay-text <?php echo $page_type; ?>" ><?php echo $title; ?></p>
     </div>
 </div>

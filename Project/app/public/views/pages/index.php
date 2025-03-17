@@ -11,6 +11,8 @@ $images = [
 
 ];
 
+$title = "Haarlem Festival";
+
 $fontColoring = 'fontCdark'; #this is how we define how the font should be colored based on the background
 require(__DIR__ . "/../partials/header.php");
 
