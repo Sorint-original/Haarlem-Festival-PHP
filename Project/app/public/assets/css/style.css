@@ -507,7 +507,7 @@ a:hover {
 
 .imageCluster{
     position: relative;
-    height: 50vh;
+    height: 38vw;
     img{
         position:absolute;
         border: 5px solid;

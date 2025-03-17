@@ -23,7 +23,9 @@ require(__DIR__ . "/../partials/slideshow.php");
     <img id= "img_3" src= "/assets/images/jazz/<?php echo $band->name; ?>3.png">  
 </div>
 
-<?php 
+
+
+<?php
 require(__DIR__ . "/../partials/jazz-partials/bandShows.php");
 
 require(__DIR__ . "/../partials/jazz-partials/bandTracks.php");

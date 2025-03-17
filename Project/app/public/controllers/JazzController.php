@@ -30,9 +30,7 @@ class JazzController
     
         // Fetch events for the day
         $events = $this->eventModel->GetTypeEventsOfDay($day,"jazz");
-        for($i=0; $i<count($events);$i++){
-            $events[$i]->ticket = $this->ticketModel->GetShopTicketsByEventId($events[$i]->_id)[0];
-        }
+        $events = $this->IntegrateTicketsinEvents($events);
 
         // Return events as JSON
         echo json_encode($events);
@@ -45,8 +43,16 @@ class JazzController
     }
 
     public function GetBandShows($Id){
-        $Shows = $this->eventModel->GetJazzByBand(new MongoDB\BSON\ObjectID($Id));
-        return $Shows;
+        $events = $this->eventModel->GetJazzEventsByBand(new MongoDB\BSON\ObjectID($Id));
+        $events = $this->IntegrateTicketsinEvents($events);
+        return $events;
+    }
+
+    private function IntegrateTicketsinEvents($events){
+        for($i=0; $i<count($events);$i++){
+            $events[$i]->tickets = $this->ticketModel->GetShopTicketsByEventId($events[$i]->_id);
+        }
+        return $events;
     }
 
 }
