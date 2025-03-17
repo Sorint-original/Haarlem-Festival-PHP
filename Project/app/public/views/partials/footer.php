@@ -33,7 +33,7 @@
             <h5 class="footer-title mb-2">Explore</h5>
             <ul class="list-unstyled mb-0">
               <li><a href="#!" class="footer-link">Food</a></li>
-              <li><a href="#!" class="footer-link">Jazz</a></li>
+              <li><a href="/jazz" class="footer-link">Jazz</a></li>
               <li><a href="#!" class="footer-link">Stories</a></li>
               <li><a href="#!" class="footer-link">History</a></li>
               <li><a href="#!" class="footer-link">Teylers Museum</a></li>

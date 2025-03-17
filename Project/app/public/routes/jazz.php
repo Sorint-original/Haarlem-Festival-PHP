@@ -12,3 +12,9 @@ Route::add('/jazz/get-events', function () {
     $controller->getEvents();
 }, 'post');
 
+Route::add('/jazz/band/([a-z-0-9-]*)', function ($bandId) {
+    $controller = new JazzController(); // create a new user controller
+    $band = $controller->getBand($bandId); // get data for the view
+    $shows = $controller->GetBandShows($bandId);
+    require_once(__DIR__ . "/../views/pages/jazzBand.php"); // load the view
+});

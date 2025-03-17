@@ -32,14 +32,19 @@ document.addEventListener('DOMContentLoaded', () => {
         SeatsList.innerHTML = '<b class="h1 mb-3">Seats Left</b>'
         PriceList.innerHTML = '<b class="h1 mb-3">Ticket Price</b>'
         events.forEach(event => {
-            console.log(event);
             const start = new Date(parseInt(event.startTime.$date.$numberLong));
             const end= new Date(parseInt(event.endTime.$date.$numberLong));
             BandList.innerHTML += `<a class="h3" href="/jazz/band/${event.band.$oid}">${event.title}</a>`
             TimeList.innerHTML += `<p class="h3 ">${start.getUTCHours()}:${String(start.getUTCMinutes()).padStart(2, '0')} - ${end.getUTCHours()}:${String(end.getUTCMinutes()).padStart(2, '0')}</p>`
             LocationList.innerHTML += `<p class="h3 ">${event.location}</p>`
             SeatsList.innerHTML += `<p class="h3 ">${event.availableSeats}</p>`
-            PriceList.innerHTML += `<p class="h3 ">€${event.ticket.price}</p>`
+            if(typeof event.ticket !== 'undefined'){
+                PriceList.innerHTML += `<p class="h3 ">€${event.ticket.price}</p>`
+            }
+            else{
+                PriceList.innerHTML += `<p class="h3 ">Free entry</p>`
+            }
+
         });
     }
 

@@ -462,8 +462,8 @@ a:hover {
 /* Jazz */
 .jazz-Section{
     background: rgba(122, 255, 104, 0.2);
-    border-radius: 0 0 50px 50px;
-    min-height: 600px;
+    border-radius:  50px;
+
 }
 
 #jazz-day{
@@ -497,6 +497,38 @@ a:hover {
     text-decoration: underline;
     text-decoration-thickness: 2px;
 
+}
+
+.imageCluster{
+    position: relative;
+    height: 50vh;
+    img{
+        position:absolute;
+        border: 5px solid;
+        border-image-slice: 1;
+        border-image-source: linear-gradient(45deg ,#F2D7D9,#9D42A6,#8049D6);
+
+    }
+
+    #img_1{
+        aspect-ratio:1.8/1; 
+        width: 35%;
+        left: 50%;
+
+    }
+    #img_2{
+        aspect-ratio:1.55/1; 
+        width: 40%;
+        left: 15%;
+        top: 20%;
+        border-image-source: linear-gradient(-45deg ,#F2D7D9,#9D42A6,#8049D6);
+    }
+    #img_3{
+        aspect-ratio:1.2/1; 
+        width: 25%;
+        left: 50%;
+        top: 40%;
+    }
 }
 /* Yummy_Main_page */
 
