@@ -1,101 +1,112 @@
 document.addEventListener('DOMContentLoaded', () =>{
 
-const progressContainer = document.getElementById('progress-container');
-const disc = document.getElementById('disc');
-const progress = document.getElementById('progress');
-const timer = document.getElementById('timer');
-const duration = document.getElementById('duration');
-const play = document.getElementById('play');
-let songIndex = 0;
+const progressContainerArray = document.getElementsByClassName('progress-container');
+const discArray = document.getElementsByClassName('disc');
+const progressArray = document.getElementsByClassName('progress');
+const timerArray = document.getElementsByClassName('timer');
+const durationArray = document.getElementsByClassName('duration');
+const playArray = document.getElementsByClassName('play');
 
-function playPauseMedia() {
-    if (disc.paused) {
-        disc.play();
+function playPauseMedia(index) {
+    if (discArray[index].paused) {
+        discArray[index].play();
     } else {
-        disc.pause();
+        discArray[index].pause();
     }
 }
 
-function updatePlayPauseIcon() {
-    if (disc.paused) {
-        play.classList.remove('fa-pause');
-        play.classList.add('fa-play');
+function updatePlayPauseIcon(index) {
+
+    if (discArray[index].paused) {
+        playArray[index].classList.remove('fa-pause');
+        playArray[index].classList.add('fa-play');
     } else {
-        play.classList.remove('fa-play');
-        play.classList.add('fa-pause');
+        playArray[index].classList.remove('fa-play');
+        playArray[index].classList.add('fa-pause');
     }
 }
 
 
 // Update progress bar
-function updateProgress() {
-    progress.style.width = (disc.currentTime / disc.duration) * 100 + '%';
+function updateProgress(index) {
+    progressArray[index].style.width = (discArray[index].currentTime / discArray[index].duration) * 100 + '%';
 
-    let minutes = Math.floor(disc.currentTime / 60);
-    let seconds = Math.floor(disc.currentTime % 60);
+    let minutes = Math.floor(discArray[index].currentTime / 60);
+    let seconds = Math.floor(discArray[index].currentTime % 60);
     if (seconds < 10) {
         seconds = '0' + seconds;
     }
-    timer.textContent = `${minutes}:${seconds}`;
+    timerArray[index].textContent = `${minutes}:${seconds}`;
 }
 
 // Change song progress when clicked on progress bar
-function setProgress(ev) {
+function setProgress(ev,index) {
     const totalWidth = this.clientWidth;
     const clickWidth = ev.offsetX;
     const clickWidthRatio = clickWidth / totalWidth;
-    disc.currentTime = clickWidthRatio * disc.duration;
+    discArray[index].currentTime = clickWidthRatio * discArray[index].duration;
 }
 
 // Navigate song slider
-function progressSlider(ev) {
-    var is_playing = !disc.paused
+function progressSlider(index,ev) {
+    var is_playing = !discArray[index].paused
     if (is_playing)
-        disc.pause()
-    const totalWidth = this.clientWidth;
+        discArray[index].pause()
+
+    const totalWidth = progressContainerArray[index].clientWidth;
     const clickWidth = ev.offsetX;
     const clickWidthRatio = clickWidth / totalWidth;
-    disc.currentTime = clickWidthRatio * disc.duration;
+    discArray[index].currentTime =clickWidthRatio * discArray[index].duration;
     if (is_playing)
-        disc.play()
-    document.addEventListener('mousemove', slideMoving);
+        discArray[index].play()
+    document.addEventListener('mousemove', slideMoving(ev,index));
     document.addEventListener('mouseup', function() {
         if (is_playing)
-            disc.play()
-        document.removeEventListener('mousemove', slideMoving);
+            discArray[index].play()
+        document.removeEventListener('mousemove', slideMoving(ev,index));
     });
 
 }
 
 // Navigate song slider while moving
-function slideMoving(ev) {
-    var is_playing = !disc.paused
+function slideMoving(ev,index) {
+    var is_playing = !discArray[index].paused
     if (is_playing)
-        disc.pause()
-    const totalWidth = progressContainer.clientWidth;
+        discArray[index].pause()
+    const totalWidth = progressContainerArray[index].clientWidth;
     const clickWidth = ev.offsetX;
     const clickWidthRatio = clickWidth / totalWidth;
-    disc.currentTime = clickWidthRatio * disc.duration;
+    discArray[index].currentTime = clickWidthRatio * discArray[index].duration;
     if (is_playing)
-        disc.play()
+        discArray[index].play()
 }
-play.addEventListener('click', playPauseMedia);
 
-// Various events on disc
-disc.addEventListener('play', updatePlayPauseIcon);
-disc.addEventListener('pause', updatePlayPauseIcon);
-disc.addEventListener('timeupdate', updateProgress);
-
-
-// Move to different place in the song
-progressContainer.addEventListener('mousedown', progressSlider);
-
-disc.addEventListener('canplaythrough', function() {
-    dur = disc.duration
+function SetSong(index){
+    dur = discArray[index].duration
     mins = Math.floor(Math.abs(dur / 60))
     mins = String(mins).padStart('2', 0)
     sec = Math.floor(dur - (parseInt(mins) * 60))
     sec = String(sec).padStart('2', 0)
-    duration.textContent = `${mins}:${sec}`
-})
+    durationArray[index].textContent = `${mins}:${sec}`
+}
+
+for(i=0;i<playArray.length;i++){
+
+    (function (index) {
+        //The play button event
+        playArray[index].addEventListener('click',  () => playPauseMedia(index));
+        // Various events on disc
+        discArray[index].addEventListener('play',  () => updatePlayPauseIcon(index));
+        discArray[index].addEventListener('pause',() => updatePlayPauseIcon(index));
+        discArray[index].addEventListener('timeupdate',() =>  updateProgress(index));
+        // Move to different place in the song
+        progressContainerArray[index].addEventListener('mousedown',(ev) =>  progressSlider(index,ev));
+
+        discArray[index].addEventListener('canplaythrough', () => SetSong(index));
+    })(i);
+
+
+}
+
+
 })
