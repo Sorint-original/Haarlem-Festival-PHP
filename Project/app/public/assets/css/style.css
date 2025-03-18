@@ -25,6 +25,9 @@ body.yummy {
 body.museum{
     background-image: linear-gradient(135deg , #F7F4E9, #F10555 , #F07C3A);
 }
+body.jazz{
+    background-image: linear-gradient(135deg , #13BEF2, #937AFF , #EB15AE);
+}
 /* navigation bar styles */
 .navbar {
     height: 10vh;
@@ -38,8 +41,12 @@ body.museum{
     background: linear-gradient(to right, #A0E4F1, #5BB2C6, #F9F9F9);
 }
 .navbar.museum{
-    background-image: linear-gradient(135deg , #F7F4E9, #F10555, #F07C3A);
+    background-image: linear-gradient(to right , #F7F4E9, #F10555, #F07C3A);
 }
+.navbar.jazz{
+    background-image: linear-gradient(to right , #13BEF2, #937AFF , #EB15AE);
+}
+
 
 .fontCdark * {
     color: black;
@@ -100,8 +107,59 @@ body.museum{
 
 /*------- HOMEPAGE Style *---------/
 /* Main Picture Style */
+.header-content{
+    height: 700px;
+    position: static;
+}
+.fadein {
+    position:absolute; 
+    height:700px; 
+}
+.fadein img{
+        position:absolute;
+}
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
 
+.overlay-content {
+    display: flex;
+    flex-direction: column; /* Stacks image and text */
+    align-items: center; /* Centers content horizontally */
+    text-align: center;
+}
+
+.overlay-image {
+    width: 80%; /* Adjust size as needed */
+    height: auto;
+    margin-bottom: 10px; /* Space between logo and text */
+}
+.overlay-text{
+    
+    color: white;
+    font-weight: bold;
+    font-size: 5vw;
+    width: 100%; /* Ensure text is the same width as the image */
+    text-align: center;
+}
+.overlay-text.homepage{
+    -webkit-text-stroke: 2px black;
+}
+.overlay-text.jazz{
+    font-size: 7vw;
+    background: linear-gradient(to right,#13BEF2,#937AFF,#EB15AE);
+    background-size: 100% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 5px transparent;
+}
 /* Welcoming Style */
+
 .hero-section{
     background-image: url("../images/complexLayouts/info.png");
     background-size: contain;
@@ -215,6 +273,7 @@ body.museum{
 
 .eventlist{
     position: relative;
+    font-size: 0.8vw;
     height: 75%;
     overflow-y: auto;
     top: 20%;
@@ -224,6 +283,10 @@ body.museum{
         align-self: center;
         text-align: center;
     }
+}
+
+.EventTitle{
+    font-size: 1vw;
 }
 
 #Jazzlist{
@@ -402,6 +465,77 @@ a:hover {
     color: white !important;
 }
 
+/* Jazz */
+.jazz-Section{
+    background: rgba(122, 255, 104, 0.2);
+    border-radius:  50px;
+
+}
+
+#jazz-day{
+    height: 300px;
+    background-position: center;
+
+    header{
+        max-width:35%;
+        color: white;
+        background: linear-gradient(to bottom,#13BEF2,#937AFF,#EB15AE);
+        background-size: 100% 100%;
+        -webkit-background-clip: text;
+        -webkit-text-stroke: 5px transparent;
+    }
+
+    button{
+        border:none !important;
+        background-color: transparent;
+    }
+}
+
+.jazz-btn{
+    background-color:rgba(255, 255, 255, 0.4) ;
+    border: 5px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to bottom,#F7F7F7,#F07C3A,#F10555);
+}
+
+.jazz-btn:hover{
+    background-color:rgba(255, 255, 255, 0.6) ;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+
+}
+
+.imageCluster{
+    position: relative;
+    height: 50vh;
+    img{
+        position:absolute;
+        border: 5px solid;
+        border-image-slice: 1;
+        border-image-source: linear-gradient(45deg ,#F2D7D9,#9D42A6,#8049D6);
+
+    }
+
+    #img_1{
+        aspect-ratio:1.8/1; 
+        width: 35%;
+        left: 50%;
+
+    }
+    #img_2{
+        aspect-ratio:1.55/1; 
+        width: 40%;
+        left: 15%;
+        top: 20%;
+        border-image-source: linear-gradient(-45deg ,#F2D7D9,#9D42A6,#8049D6);
+    }
+    #img_3{
+        aspect-ratio:1.2/1; 
+        width: 25%;
+        left: 50%;
+        top: 40%;
+    }
+}
 /* Yummy_Main_page */
 
 /* Yummy Intro Section */

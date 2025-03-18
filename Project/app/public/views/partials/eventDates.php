@@ -11,22 +11,20 @@
 
     <!--The event schedule-->
     <div class = "container-fluid d-flex flex-row justify-content-between p-5">
-        <a id="Jazzlist"  class ="eventcard" href="#">
-            <section class = "eventlist d-flex flex-column  align-items-center container-fluid mt-3"></section>
+        <a id="Jazzlist"  class ="eventcard" href="/jazz">
+            <ul class = "eventlist d-flex flex-column  align-items-center container-fluid mt-3"></ul>
         </a>
         <a id = "Historylist" class =" eventcard " href="#">
-            <section class = "eventlist d-flex flex-column  align-items-center container-fluid mt-3"> </section>
+            <ul class = "eventlist d-flex flex-column  align-items-center container-fluid mt-3"> </ul>
         </a>
         <a id ="Yummylist" class =" eventcard " href="#">
-            <section class = "eventlist d-flex flex-column  align-items-center container-fluid mt-3"> </section>
+            <ul class = "eventlist d-flex flex-column  align-items-center container-fluid mt-3"> </ul>
         </a>
         <a id ="Magiclist" class =" eventcard " href="#">
-            <section class = "eventlist d-flex flex-column  align-items-center container-fluid mt-3"> </section>
+            <ul class = "eventlist d-flex flex-column  align-items-center container-fluid mt-3"> </ul>
         </a>
         <a id ="Storieslist" class =" eventcard " href="#">
-            <section class = "eventlist d-flex flex-column  align-items-center container-fluid mt-3"> </section>
+            <ul class = "eventlist d-flex flex-column  align-items-center container-fluid mt-3"> </ul>
         </a>
     </div>
 </section>
-
-<script src="/assets/js/HomepageEvents.js"></script>
