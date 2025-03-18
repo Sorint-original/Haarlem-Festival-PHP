@@ -1,8 +1,8 @@
 
 
-<section class="audio-play d-flex flex-row align-items-center justify-content-center w-100">
-    <audio id="disc" ><source src="/assets/audio/show me the sky.mp3" type="audio/mp3"></audio>
-    <header class="h2 me-5">Song Name</header>
+<section class="audio-play d-flex flex-row align-items-center justify-content-center w-100 py-3">
+    <audio id="disc" ><source src="/../assets/audio/<?php echo $track; ?>.mp3" type="audio/mp3"></audio>
+    <header class="h2 me-5"><?php echo $track; ?></header>
     <i id="play" class="special-btn fas fa-play"></i>
     <div class="d-flex flex-column w-50">
         <div id="progress-container">
