@@ -563,6 +563,7 @@ a:hover {
 .special-btn {
     background-color: #000;
     width: fit-content;
+    height: fit-content;
     color: #fff;
     font-size: 2.2rem;
     margin: 0 1rem;
