@@ -1,5 +1,6 @@
 
 
+
 <section class="audio-play d-flex flex-row align-items-center justify-content-around w-100 py-3 px-5">
     <header class="h2 me-5 w-50 text-center"><?php echo $track; ?></header>
     <div class="w-50 d-flex flex-row">
