@@ -1,4 +1,4 @@
-
+<section class="jazz-Section py-5 w-75 align-self-center d-flex flex-column">
     <header class="h1 align-self-left ps-5 py-3">Festival Schedule</header>
     <?php foreach($shows as $show){ ?>
         <div class="d-flex flex-row w-100 justify-content-around align-items-center flex-wrap">
@@ -13,3 +13,4 @@
             <button class ="h4 jazz-btn  p-2">Buy Tickets</button>
         </div>
     <?php }?>
+</section>
