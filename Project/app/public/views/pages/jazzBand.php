@@ -27,7 +27,7 @@ require(__DIR__ . "/../partials/slideshow.php");
 
 <?php require(__DIR__ . "/../partials/jazz-partials/bandShows.php");?>
 
-<section class="jazz-Section py-5 w-75 align-self-center d-flex flex-column ">
+<section class="jazz-Section py-5 w-75 align-self-center   ">
 
 <?php 
 foreach($band->tracks as $track){
