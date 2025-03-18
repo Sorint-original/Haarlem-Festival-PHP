@@ -536,6 +536,55 @@ a:hover {
         top: 40%;
     }
 }
+
+#progress-container {
+    height: 7px;
+    width: 100%;
+    background-color: rgb(255 255 255 / 33%);
+    margin: 2rem 0 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+#progress {
+    background-image: linear-gradient(to right,#13BEF2,#937AFF,#EB15AE) ;
+    width: 0%;
+    height: inherit;
+    border-radius: inherit;
+    transition: width 100ms ease-in;
+}
+
+#timer-bar {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.7rem;
+}
+
+.btn {
+    display: inline-block;
+    font-size: 1.6rem;
+    padding: 1rem;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 4rem;
+    color: #a0a0a0;
+    transition: background 200ms linear, color 200ms linear;
+}
+
+.special-btn {
+    background-color: #000;
+    color: #fff;
+    font-size: 2.2rem;
+    margin: 0 1rem;
+    padding: 1.4rem;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 4rem;
+    transition: opacity 200ms linear;
+}
+
 /* Yummy_Main_page */
 
 /* Yummy Intro Section */
