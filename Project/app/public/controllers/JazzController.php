@@ -2,16 +2,19 @@
 
 require_once(__DIR__ . "/../models/EventModel.php");
 require_once(__DIR__ . "/../models/TicketModel.php");
+require_once(__DIR__ . "/../models/PageModel.php");
 
 class JazzController
 {
     private $eventModel;
     private $ticketModel;
+    private $pageModel;
     
     public function __construct()
     {
         $this->eventModel = new EventModel();
         $this->ticketModel = new TicketModel();
+        $this->pageModel = new PageModel();
     }
 
     public function getDayPasses(){
@@ -53,6 +56,11 @@ class JazzController
             $events[$i]->tickets = $this->ticketModel->GetShopTicketsByEventId($events[$i]->_id);
         }
         return $events;
+    }
+
+    public function GetJazzPage(){
+        $page = $this->pageModel->getPageById("67dbf703ed593eb7a526a613")[0];
+        return $page;
     }
 
 }
