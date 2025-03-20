@@ -587,3 +587,6 @@ a:hover {
 }
 
 /* Stories */
+body.stories{
+    background-color:linear-gradient(135deg, #C08402, #610627, #A41C42, #CD2B52, #E7325C); 
+}

@@ -59,7 +59,11 @@ Array.from(DateButtons).forEach(button => {
 //Trigger first button
 DateButtons[0].click();
 
+
+//buradan asagisina bak kendi sayfan icin......................................
+
 });
+
 function displayCards(cards) {
     const cardsContainer = document.getElementById("cards-container");
     cardsContainer.innerHTML = '';

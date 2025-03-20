@@ -10,6 +10,7 @@ class PageModel extends BaseModel{
     {
         parent::__construct();
     }
+
     // get page by id 
     public function getPageById($id)
     {
@@ -17,6 +18,7 @@ class PageModel extends BaseModel{
         $pageData = $this->executeQuery($this->collectionName, $filter);
         return $pageData;
     }
+    
     // update page content
     public function updatePage($pageId, $data) {
         // Filter to find the page by ID

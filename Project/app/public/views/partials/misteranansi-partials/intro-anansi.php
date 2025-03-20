@@ -26,4 +26,8 @@
         margin-top: 30px;
         
     }
+
+    .intro-anansi {
+        background-color: linear-grediant(90deg, #F5F5F5, #F5F5F5);
+        }
 </style>
