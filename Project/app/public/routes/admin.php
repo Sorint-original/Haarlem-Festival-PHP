@@ -20,13 +20,32 @@ Route::add('/admin/admin-homepage', function () {
 Route::add('/admin/users', function () {
     require(__DIR__ . "/../views/pages/admin/admin-users.php");
 });
+//get user by user id 
+Route::add('/admin/getUserById', function () {
+    $controller = new AdminController();
+    $controller->getUserByUserId();
+}, 'get');
+
+
+// get all users
+Route::add('/admin/users-getAllUsers', function () {
+    $controller = new AdminController();
+    $controller->getAllUsers();
+}, 'get');
 
 // update users 
+Route::add('/admin/updateUser', function () {
+    $controller = new AdminController();
+    $controller->updateUser();
+}, 'post');
 
 // add user
 
 // delete user
-
+Route::add('/admin/deleteUser', function () {
+    $controller = new AdminController();
+    $controller->deleteUser();
+}, 'post');
 
 
 

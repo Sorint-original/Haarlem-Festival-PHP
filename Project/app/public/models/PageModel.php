@@ -10,7 +10,7 @@ class PageModel extends BaseModel{
     {
         parent::__construct();
     }
-    // get page by id 
+    // get page by id
     public function getPageById($id)
     {
         $filter = ['_id' => new MongoDB\BSON\ObjectId($id)];
@@ -24,6 +24,5 @@ class PageModel extends BaseModel{
         // Use the update method from BaseModel
         return $this->update($this->collectionName, $filter, $data);
     }
-
 }
 
