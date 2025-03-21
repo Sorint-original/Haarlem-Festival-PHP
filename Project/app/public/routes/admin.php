@@ -8,6 +8,9 @@ Route::add('/admin', function () {
 
 // get admin homepage data
 Route::add('/admin/admin-homepage', function () {
+    $controller = new AdminController();
+    $controller->getPageContent();
+}, 'get');
 
 // get admin users page
 
@@ -64,6 +67,7 @@ Route::add('/admin/deleteUser', function () {
 Route::add('/admin/admin-jazz', function () {
     require(__DIR__ . "/../views/pages/admin/admin-jazz.php");
 }, 'get');
+
 
 
 

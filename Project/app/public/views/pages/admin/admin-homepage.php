@@ -1,6 +1,6 @@
 
 
-//This page is created to be able to edit homepage content.
+
 
 <?php require(__DIR__ . "/../../partials/admin-partials/admin-navbar.php"); ?>
 

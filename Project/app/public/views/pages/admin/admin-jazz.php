@@ -1,6 +1,5 @@
 
 
-//This page is created to be able to edit jazz content.
 
 <?php require(__DIR__ . "/../../partials/admin-partials/admin-navbar.php"); ?>
 

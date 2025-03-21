@@ -1,13 +1,13 @@
 <?php
 
-require_once(__DIR__ . "/../models/StoriesModel.php");
+
 
 class StoriesController
 {
     private $storiesModel;
     public function __construct()
     {
-        $this->storiesModel = new StoriesModel();
+        //$this->storiesModel = new StoriesModel();
     }
 
     public function getAllStories()

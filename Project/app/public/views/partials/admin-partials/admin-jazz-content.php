@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Jazz Page Editor</h1>
-    <div class="save-indicator" id="saveIndicator">Değişiklikler kaydediliyor...</div>
+    <div class="save-indicator" id="saveIndicator">Uploading...</div>
     
     <!-- Info Cards Section -->
     <div class="section" id="infoPageSection">
