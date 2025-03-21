@@ -14,7 +14,6 @@ class UserController
             session_start();
         }
     }
-
     public function register()
     {
         // Grab form fields

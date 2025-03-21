@@ -40,7 +40,7 @@
                         <a class="nav-link" href="#">Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin-user">Users</a>
+                        <a class="nav-link" href="/admin/users">Users</a>
                     </li>
                 </ul>
             </div>
@@ -52,15 +52,14 @@
 </html>
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-    }
-
     #navbar {
         background: linear-gradient(to right, #004b73, #0078a6);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        border-radius: 5px;
-        margin-bottom: 20px;
+        width: 95%;
+        max-width: 1200px;
+        margin: 10px auto;
+        padding: 10px 20px;
+        border-radius: 10px;
     }
 
     .navbar-brand {
@@ -71,7 +70,7 @@
 
     .nav-link {
         color: white !important;
-        padding: 12px 16px;
+        padding: 8px 12px;
         font-size: 1.1rem;
         transition: background-color 0.3s ease;
     }
@@ -79,27 +78,5 @@
     .nav-link:hover {
         background-color: rgba(255, 255, 255, 0.2);
         border-radius: 5px;
-    }
-
-    .navbar-toggler-icon {
-        background-color: white;
-    }
-
-    .main {
-        padding: 20px;
-        background: #f4f4f4;
-        min-height: 100vh;
-    }
-
-    /* Responsive menu */
-    @media (max-width: 768px) {
-        .navbar-nav {
-            text-align: center;
-        }
-
-        .nav-link {
-            padding: 12px 20px;
-            font-size: 1.2rem;
-        }
     }
 </style>
