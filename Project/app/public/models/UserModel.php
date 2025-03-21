@@ -1,38 +1,108 @@
 <?php
 
-require_once(__DIR__ . "/BaseModel.php");
+require_once(__DIR__ . '/BaseModel.php');
 
 class UserModel extends BaseModel
 {
-    public function __construct()
+    private $collectionName = 'Users';
+
+    // get all users 
+    public function getAllUsers()
     {
-        parent::__construct();
+        $filter = [];
+        $result = $this->executeQuery($this->collectionName, $filter);
+        return $result;
+    }
+    //get user by userid
+    public function getUserByUserId($id)
+    {
+        $filter = ['_id' => new MongoDB\BSON\ObjectId($id)];
+        $user = $this->executeQuery($this->collectionName, $filter);
+        return $user;
+    }
+    // get users by role - filter by role 
+    public function getUsersByRole($role)
+    {
+        $filter = ['role' => $role];
+        $result = $this->executeQuery($this->collectionName, $filter);
+        return $result;
+    }
+    public function getUserByEmail($email)
+    {
+        $filter = ['email' => $email];
+        $result = $this->executeQuery($this->collectionName, $filter);
+        return !empty($result) ? $result[0] : null;
+    }
+    // create user for login form. Role set to the customer by default.
+    public function createUser($data)
+    {
+        $doc = [
+            'full_name'   => $data['full_name'],
+            'username'    => $data['username'],
+            'email'       => $data['email'],
+            'password'    => $data['password'],  // Already hashed
+            'role'        => 'customer',         // auto-set here
+            'created_at'  => new MongoDB\BSON\UTCDateTime()
+        ];
+
+        // Build the bulk write operation
+        $bulkWrite = new MongoDB\Driver\BulkWrite;
+        $bulkWrite->insert($doc);
+        // Execute write
+        $result = $this->executeWrite($bulkWrite, $this->collectionName);
+
+        if ($result && $result->getInsertedCount() === 1) {
+            return true;
+        }
+        return false;
+    }
+    // create user in in the admin panel
+    public function createUserAdminPanel($data)
+    {
+        $doc = [
+            'full_name'   => $data['full_name'],
+            'username'    => $data['username'],
+            'email'       => $data['email'],
+            'password'    => password_hash($data['password'], PASSWORD_BCRYPT),  // Hashing password
+            'role'        => $data['role'],  
+            'created_at'  => new MongoDB\BSON\UTCDateTime()
+        ];
+
+        // Build the bulk write operation
+        $bulkWrite = new MongoDB\Driver\BulkWrite;
+        $bulkWrite->insert($doc);
+        // Execute write
+        $result = $this->executeWrite($bulkWrite, $this->collectionName);
+
+        if ($result && $result->getInsertedCount() === 1) {
+            return true;
+        }
+        return false;
     }
 
-    public function getAll()
+    // update user
+    public function updateUser($userId, $data)
     {
-        // demo, this would normally come from the database
-        return [
-            [
-                "id" => 1,
-                "email" => "foo@foo.com",
-                "username" => "foo_user"
-            ],
-            [
-                "id" => 2,
-                "email" => "bar@bar.com",
-                "username" => "bar_user"
-            ],
+        $update = [
+            '$set' => [
+                'full_name' => $data['full_name'],
+                'username'  => $data['username'],
+                'email'     => $data['email'],
+                'role'      => $data['role']
+            ]
         ];
+        $bulkWrite = new MongoDB\Driver\BulkWrite;
+        $bulkWrite->update(
+            ['_id' => new MongoDB\BSON\ObjectId($userId)],
+            $update
+        );
+        return $this->executeWrite($bulkWrite, $this->collectionName);
     }
-
-    public function get($id)
+    //delete user
+    public function delete($filter)
     {
-        // demo, this would normally come from the database
-        return             [
-            "id" => 2,
-            "email" => "bar@bar.com",
-            "username" => "bar_user"
-        ];
+        $bulkWrite = new MongoDB\Driver\BulkWrite();
+        $bulkWrite->delete($filter); // Delete operation with the filter
+        return $this->executeWrite($bulkWrite, $this->collectionName);
     }
 }

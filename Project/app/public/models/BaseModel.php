@@ -1,33 +1,80 @@
 <?php
 
-/**
- * NOTE! this base model handles initializing PDO
- * 
- * To use PDO in a derived class, use self::$pdo
- */
-
 class BaseModel
 {
+    protected $manager;
+    protected $databaseName;
 
-    protected static $pdo;
-
-    function __construct()
+    public function __construct()
     {
-        if (!self::$pdo) {
+        try {
+            // Get MongoDB connection string from environment variable
+            $mongoUri = getenv('MONGO_URI');
 
-            $host = $_ENV["DB_HOST"];
-            $db = $_ENV["DB_NAME"];
-            $user = $_ENV["DB_USER"];
-            $pass = $_ENV["DB_PASSWORD"];
-            $charset = $_ENV["DB_CHARSET"];
+            // Create a new MongoDB Manager 
+            $this->manager = new MongoDB\Driver\Manager($mongoUri);
 
-            $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-            $options = [
-                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            ];
+            // Define database name
+            $this->databaseName = 'HaarlemFestival';
+        } catch (Exception $e) {
+            error_log("MongoDB Connection Error: " . $e->getMessage());
+            die("Database connection failed. Try again later.");
+        }
+    }
 
-            self::$pdo = new PDO($dsn, $user, $pass, $options);
+    protected function executeQuery($collectionName, $filter = [], $options = [])
+    {
+        try {
+            // Execute query
+            $query = new MongoDB\Driver\Query($filter, $options);
+            $cursor = $this->manager->executeQuery("{$this->databaseName}.{$collectionName}", $query);
+            return $cursor->toArray();
+        } catch (Exception $e) {
+            error_log("MongoDB Query Error: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    protected function executeWrite($bulkWrite, $collectionName)
+    {
+        try {
+
+            $writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY);
+
+            // Pass it as an array option
+            $result = $this->manager->executeBulkWrite(
+                "{$this->databaseName}.{$collectionName}",
+                $bulkWrite,
+                ['writeConcern' => $writeConcern]
+            );
+
+            return $result;
+        } catch (Exception $e) {
+            error_log("MongoDB Write Error: " . $e->getMessage());
+            return false;
+        }
+    }
+    // New update method
+    protected function update($collectionName, $filter, $updateData)
+    {
+        try {
+            // Create update operation
+            $update = ['$set' => $updateData]; // Use $set to update fields
+
+            // Create a bulk write object with update operation
+            $bulkWrite = new MongoDB\Driver\BulkWrite();
+            $bulkWrite->update(
+                $filter, // Filter to match the document
+                $update, // Update operation
+                ['multi' => false, 'upsert' => false] // Don't update multiple documents, no upsert
+            );
+
+            // Execute the update operation
+            return $this->executeWrite($bulkWrite, $collectionName);
+
+        } catch (Exception $e) {
+            error_log("Update Error: " . $e->getMessage());
+            return false;
         }
     }
 }
