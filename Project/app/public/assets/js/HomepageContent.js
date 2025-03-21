@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
 const DateButtons = document.getElementsByClassName('eventDate');
 const DateSection = document.getElementById('eventDates');
@@ -35,7 +34,7 @@ const getDayEvents = async (day) => {
 };
 
 const populateEvents = (events) => {
-    const eventType =['jazz', 'history', 'yummy', 'magic', 'storie'];
+    const eventType =['jazz', 'history', 'yummy', 'museum', 'story'];
     for (let i = 0; i < 5; i++) {
         //empty content
         eventContainers[i].innerHTML ="";

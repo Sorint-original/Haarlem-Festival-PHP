@@ -2,16 +2,19 @@
 
 require_once(__DIR__ . "/../models/EventModel.php");
 require_once(__DIR__ . "/../models/TicketModel.php");
+require_once(__DIR__ . "/../models/PageModel.php");
 
 class JazzController
 {
     private $eventModel;
     private $ticketModel;
+    private $pageModel;
     
     public function __construct()
     {
         $this->eventModel = new EventModel();
         $this->ticketModel = new TicketModel();
+        $this->pageModel = new PageModel();
     }
 
     public function getDayPasses(){
@@ -30,13 +33,34 @@ class JazzController
     
         // Fetch events for the day
         $events = $this->eventModel->GetTypeEventsOfDay($day,"jazz");
-        for($i=0; $i<count($events);$i++){
-            $events[$i]->ticket = $this->ticketModel->GetShopTicketsByEventId($events[$i]->_id)[0];
-        }
+        $events = $this->IntegrateTicketsinEvents($events);
 
         // Return events as JSON
         echo json_encode($events);
         exit;
+    }
+
+    public function GetBand($Id){
+        $Band = $this->eventModel->GetBandById(new MongoDB\BSON\ObjectID($Id));
+        return $Band[0];
+    }
+
+    public function GetBandShows($Id){
+        $events = $this->eventModel->GetJazzEventsByBand(new MongoDB\BSON\ObjectID($Id));
+        $events = $this->IntegrateTicketsinEvents($events);
+        return $events;
+    }
+
+    private function IntegrateTicketsinEvents($events){
+        for($i=0; $i<count($events);$i++){
+            $events[$i]->tickets = $this->ticketModel->GetShopTicketsByEventId($events[$i]->_id);
+        }
+        return $events;
+    }
+
+    public function GetJazzPage(){
+        $page = $this->pageModel->getPageById("67dbf703ed593eb7a526a613")[0];
+        return $page;
     }
 
 }

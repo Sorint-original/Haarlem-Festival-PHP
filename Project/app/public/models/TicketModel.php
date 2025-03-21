@@ -14,18 +14,11 @@ class TicketModel extends BaseModel
     }
 
     public function GetShopTicketsByEventId($EventId){
-        $filter = $this->GetEventIdFilter($EventId);
+        $filter = ['EventId' =>$EventId];
         $options = [];
 
         $tickets = $this->executeQuery($this->STicketcollection,$filter,$options);
         return $tickets;
     }
-
-    private function GetEventIdFilter($EventId){
-        // Convert EventId to ObjectId
-        return ['EventId' =>$EventId];
-    }
-
-
 
 }

@@ -25,4 +25,3 @@
     </div>
 </div>
 
-<script src="/assets/js/HomepageContent.js"></script>

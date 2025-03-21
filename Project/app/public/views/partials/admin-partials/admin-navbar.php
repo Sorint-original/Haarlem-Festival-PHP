@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Jazz</a>
+                        <a class="nav-link" href="/admin/admin-jazz">Jazz</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Yummy</a>

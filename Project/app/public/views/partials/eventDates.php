@@ -11,7 +11,7 @@
 
     <!--The event schedule-->
     <div class = "container-fluid d-flex flex-row justify-content-between p-5">
-        <a id="Jazzlist"  class ="eventcard" href="#">
+        <a id="Jazzlist"  class ="eventcard" href="/jazz">
             <ul class = "eventlist d-flex flex-column  align-items-center container-fluid mt-3"></ul>
         </a>
         <a id = "Historylist" class =" eventcard " href="#">
@@ -28,5 +28,3 @@
         </a>
     </div>
 </section>
-
-<script src="/assets/js/HomepageContent.js"></script>
