@@ -28,6 +28,13 @@ body.museum{
 body.jazz{
     background-image: linear-gradient(135deg , #13BEF2, #937AFF , #EB15AE);
 }
+body.stories{
+    background-image: linear-gradient(135deg , #C08402,#C08402, #610627, #A41C42, #CD2B52, #E7325C);
+}
+body.misteranansi{
+    background-image: linear-gradient(135deg , #C08402,#C08402, #610627, #A41C42, #CD2B52, #E7325C);
+}
+
 /* navigation bar styles */
 .navbar {
     height: 10vh;
@@ -45,6 +52,12 @@ body.jazz{
 }
 .navbar.jazz{
     background-image: linear-gradient(to right , #13BEF2, #937AFF , #EB15AE);
+}
+.navbar.stories{
+    background-image: linear-gradient(to right , #C08402,#C08402, #610627, #A41C42, #CD2B52, #E7325C);
+}
+.navbar.misteranansi{
+    background-image: linear-gradient(to right , #C08402,#C08402, #610627, #A41C42, #CD2B52, #E7325C);
 }
 
 
@@ -398,6 +411,11 @@ body.jazz{
 
 
 
+
+
+
+
+
 /* login css */
 
 .login {
@@ -587,6 +605,3 @@ a:hover {
 }
 
 /* Stories */
-body.stories{
-    background-color:linear-gradient(135deg, #C08402, #610627, #A41C42, #CD2B52, #E7325C); 
-}

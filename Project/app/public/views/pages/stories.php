@@ -1,7 +1,7 @@
 <?php
 
 $page_type = "stories"; #this way we can set which color backround is set in the header based on the page type
-$fontColoring = 'fontCdark'; #this is how we define how the font should be colored based on the background
+$fontColoring = 'storiestFont'; #this is how we define how the font should be colored based on the background
 
 
 
