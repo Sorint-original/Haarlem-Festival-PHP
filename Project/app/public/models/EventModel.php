@@ -54,9 +54,9 @@ class EventModel extends BaseModel
         return $Band;
     }
 
-    public function GetJazzByBand($Id){
+    public function GetJazzEventsByBand($Id){
         $filter = ['band' =>$Id];
-        $options = [];
+        $options = ['sort' => ['startTime' => 1]];
 
         $Shows = $this->executeQuery($this->collectionName,$filter,$options);
         return $Shows;

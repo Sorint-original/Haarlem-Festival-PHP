@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
             TimeList.innerHTML += `<p class="h3 ">${start.getUTCHours()}:${String(start.getUTCMinutes()).padStart(2, '0')} - ${end.getUTCHours()}:${String(end.getUTCMinutes()).padStart(2, '0')}</p>`
             LocationList.innerHTML += `<p class="h3 ">${event.location}</p>`
             SeatsList.innerHTML += `<p class="h3 ">${event.availableSeats}</p>`
-            if(typeof event.ticket !== 'undefined'){
-                PriceList.innerHTML += `<p class="h3 ">€${event.ticket.price}</p>`
+            if(typeof event.tickets[0] !== 'undefined'){
+                PriceList.innerHTML += `<p class="h3 ">€${event.tickets[0].price}</p>`
             }
             else{
                 PriceList.innerHTML += `<p class="h3 ">Free entry</p>`

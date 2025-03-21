@@ -10,16 +10,22 @@ Route::add('/admin', function () {
 
 // get admin users page
 
-// get admin homepage data
-Route::add('/admin/admin-homepage', function () {
+// get admin page data
+Route::add('/admin/get-page', function () {
     $controller = new AdminController();
     $controller->getPageContent();
 }, 'get');
-// update admin homepage data
-Route::add('/admin/admin-homepage', function () {
+
+// update admin page data
+Route::add('/admin/update-page', function () {
     $controller = new AdminController();
     $controller->updatePage();
 }, 'post');
+
+// go to jazz edit admin page
+Route::add('/admin/admin-jazz', function () {
+    require(__DIR__ . "/../views/pages/admin/admin-jazz.php");
+}, 'get');
 
 
 
