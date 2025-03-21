@@ -8,7 +8,7 @@
 <body>
     <div class="container">
         <h1>Homepage Editor</h1>
-        <div class="save-indicator" id="saveIndicator">Değişiklikler kaydediliyor...</div>
+        <div class="save-indicator" id="saveIndicator">Updating...</div>
         
         <!-- Info Cards Section -->
         <div class="section" id="infoCardsSection">

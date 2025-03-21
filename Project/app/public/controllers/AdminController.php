@@ -1,5 +1,10 @@
 <?php
 
+// json_encode => Converts PHP data types (array, object, etc.) to JSON format.
+// json_decode => Converts JSON format data from JavaScript to PHP data types (usually array or object).
+// Create and Update: Data is sent in the request body because these operations involve creating or modifying multiple fields of the resource.
+// Delete: Only the ID of the resource is needed, so it's passed in the query string (URL) instead of the body.
+
 require_once(__DIR__ . "/../models/PageModel.php");
 require_once(__DIR__ . "/../models/UserModel.php");
 
@@ -38,13 +43,7 @@ class AdminController
             exit;
         }
         $result = $this->pageModel->updatePage($pageId, $pageData);
-
-        if ($result) {
-            echo json_encode(['success' => 'Page updated successfully']);
-        } else {
-            echo json_encode(['error' => 'Page update failed']);
-        }
-        exit;
+        echo json_encode($result);
     }
     // get all users 
     public function getAllUsers()
@@ -52,17 +51,22 @@ class AdminController
         $users = $this->userModel->getAllUsers();
         echo json_encode($users);
     }
-    //get user by user id 
+    // get user by user id
     public function getUserByUserId()
     {
         $id = $_GET['id'] ?? null;
-        if (!$id) {
-            echo json_encode(['error' => 'Missing ID']);
-            exit;
-        }
         $user = $this->userModel->getUserByUserId($id);
-
         echo json_encode($user);
+    }
+    // create user in the admin panel
+    public function createUserAdminPanel()
+    {
+        $input = file_get_contents('php://input');
+        $data = json_decode($input, true);
+        
+        $result = $this->userModel->createUserAdminPanel($data);
+        echo json_encode($result);
+        
     }
 
     // update user
@@ -74,40 +78,14 @@ class AdminController
         $userId = $data['id'] ?? null;
         $userData = $data['userData'] ?? null;
 
-        if (!$userId || !$userData) {
-            echo json_encode(['error' => 'Missing user ID or data']);
-            exit;
-        }
-
         $result = $this->userModel->updateUser($userId, $userData);
-
-        if ($result) {
-            echo json_encode(['success' => 'User updated successfully']);
-        } else {
-            echo json_encode(['error' => 'User update failed']);
-        }
-        exit;
+        echo json_encode($result);
     }
-
     // delete user
     public function deleteUser()
     {
-        $input = file_get_contents('php://input');
-        $data = json_decode($input, true);
-
-        $userId = $data['id'] ?? null;
-
-        if (!$userId) {
-            echo json_encode(['error' => 'Missing user ID']);
-            exit;
-        }
+        $userId = $_GET['id'] ?? null;
         $result = $this->userModel->delete(['_id' => new MongoDB\BSON\ObjectId($userId)]);
-
-        if ($result) {
-            echo json_encode(['success' => 'User deleted successfully']);
-        } else {
-            echo json_encode(['error' => 'User delete failed']);
-        }
-        exit;
+        echo json_encode($result);
     }
 }

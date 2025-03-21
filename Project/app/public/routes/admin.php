@@ -26,7 +26,6 @@ Route::add('/admin/getUserById', function () {
     $controller->getUserByUserId();
 }, 'get');
 
-
 // get all users
 Route::add('/admin/users-getAllUsers', function () {
     $controller = new AdminController();
@@ -39,13 +38,18 @@ Route::add('/admin/updateUser', function () {
     $controller->updateUser();
 }, 'post');
 
-// add user
+// create user
+Route::add('/admin/addUser', function () {
+    $controller = new AdminController();
+    $controller->createUserAdminPanel();
+}, 'post');
+
 
 // delete user
 Route::add('/admin/deleteUser', function () {
     $controller = new AdminController();
     $controller->deleteUser();
-}, 'post');
+}, 'delete');
 
 
 

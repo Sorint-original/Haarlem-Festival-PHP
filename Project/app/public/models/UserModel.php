@@ -14,16 +14,16 @@ class UserModel extends BaseModel
         return $result;
     }
     //get user by userid
-    public function getUserByUserId($id){
+    public function getUserByUserId($id)
+    {
         $filter = ['_id' => new MongoDB\BSON\ObjectId($id)];
-        $result=$this->executeQuery($this->collectionName,$filter);
-        return $result;
+        $user = $this->executeQuery($this->collectionName, $filter);
+        return $user;
     }
-    
     // get users by role - filter by role 
     public function getUsersByRole($role)
     {
-        $filter = ['role' => $role];  // Role göre filtreleme yap
+        $filter = ['role' => $role];
         $result = $this->executeQuery($this->collectionName, $filter);
         return $result;
     }
@@ -33,7 +33,7 @@ class UserModel extends BaseModel
         $result = $this->executeQuery($this->collectionName, $filter);
         return !empty($result) ? $result[0] : null;
     }
-    // create user
+    // create user for login form. Role set to the customer by default.
     public function createUser($data)
     {
         $doc = [
@@ -56,6 +56,30 @@ class UserModel extends BaseModel
         }
         return false;
     }
+    // create user in in the admin panel
+    public function createUserAdminPanel($data)
+    {
+        $doc = [
+            'full_name'   => $data['full_name'],
+            'username'    => $data['username'],
+            'email'       => $data['email'],
+            'password'    => password_hash($data['password'], PASSWORD_BCRYPT),  // Hashing password
+            'role'        => $data['role'],  
+            'created_at'  => new MongoDB\BSON\UTCDateTime()
+        ];
+
+        // Build the bulk write operation
+        $bulkWrite = new MongoDB\Driver\BulkWrite;
+        $bulkWrite->insert($doc);
+        // Execute write
+        $result = $this->executeWrite($bulkWrite, $this->collectionName);
+
+        if ($result && $result->getInsertedCount() === 1) {
+            return true;
+        }
+        return false;
+    }
+
     // update user
     public function updateUser($userId, $data)
     {
@@ -67,23 +91,18 @@ class UserModel extends BaseModel
                 'role'      => $data['role']
             ]
         ];
-
         $bulkWrite = new MongoDB\Driver\BulkWrite;
         $bulkWrite->update(
             ['_id' => new MongoDB\BSON\ObjectId($userId)],
             $update
         );
-        $result = $this->executeWrite($bulkWrite, $this->collectionName);
-        return $result;
+        return $this->executeWrite($bulkWrite, $this->collectionName);
     }
-
     //delete user
     public function delete($filter)
     {
         $bulkWrite = new MongoDB\Driver\BulkWrite();
         $bulkWrite->delete($filter); // Delete operation with the filter
-
-        // Execute the delete operation
         return $this->executeWrite($bulkWrite, $this->collectionName);
     }
 }
