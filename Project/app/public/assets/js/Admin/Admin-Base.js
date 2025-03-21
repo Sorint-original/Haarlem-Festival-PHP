@@ -1,3 +1,6 @@
+// Admin Base File manages the base functionality of the admin panel.
+
+// Get page content
 async function getPageContent(pageId) {
     try {
       const response = await fetch(`/admin/get-page?id=${pageId}`);
