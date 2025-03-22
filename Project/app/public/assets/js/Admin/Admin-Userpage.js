@@ -15,7 +15,13 @@ async function fetchUsers() {
                 <td>${user.username || "N/A"}</td>
                 <td>${user.email || "N/A"}</td>
                 <td>${user.role || "N/A"}</td>
-                <td>${user.created_at ? new Date(user.created_at.$date || user.created_at ).toLocaleString(): "N/A" }</td>
+                <td>${
+                  user.created_at
+                    ? new Date(
+                        user.created_at.$date || user.created_at
+                      ).toLocaleString()
+                    : "N/A"
+                }</td>
                 <td class="actions">
                     <button class="edit-btn" onclick="editUser('${userId}')">Edit</button>
                     <button class="delete-btn" onclick="deleteUser('${userId}')">Delete</button>
@@ -26,6 +32,42 @@ async function fetchUsers() {
     console.error("Error fetching users:", error);
   }
 }
+// Filter users by role
+document.getElementById("filterRole").addEventListener("change", function () {
+  const selectedRole = this.value;
+  const tableRows = document
+    .getElementById("userTableBody")
+    .getElementsByTagName("tr");
+
+  Array.from(tableRows).forEach((row) => {
+    const roleCell = row.getElementsByTagName("td")[3]; // Assuming role is the 4th column
+    const role = roleCell.textContent.trim().toLowerCase(); // Get role and normalize
+
+    if (selectedRole === "" || role === selectedRole) {
+      row.style.display = ""; // Show row if selected role matches or All is selected
+    } else {
+      row.style.display = "none"; // Hide row if role doesn't match selected role
+    }
+  });
+});
+// Search by username
+document.getElementById("searchUser").addEventListener("input", function () {
+  const searchText = this.value.toLowerCase();
+  const tableRows = document
+    .getElementById("userTableBody")
+    .getElementsByTagName("tr");
+
+  Array.from(tableRows).forEach((row) => {
+    const nameCell = row.getElementsByTagName("td")[0];
+    const name = nameCell.textContent.trim().toLowerCase();
+    if (name.includes(searchText)) {
+      row.style.display = "";
+    } else {
+      row.style.display = "none";
+    }
+  });
+});
+
 // Create user
 async function createUser(event) {
   event.preventDefault();
@@ -74,7 +116,8 @@ async function editUser(userId) {
     const id = user._id.$oid ? user._id.$oid : user._id;
 
     document.getElementById("updateUserId").value = id;
-    document.getElementById("updateFullName").value =user.full_name || user.name || "";
+    document.getElementById("updateFullName").value =
+      user.full_name || user.name || "";
     document.getElementById("updateUsername").value = user.username || "";
     document.getElementById("updateEmail").value = user.email || "";
     document.getElementById("updateRole").value = user.role || "";
