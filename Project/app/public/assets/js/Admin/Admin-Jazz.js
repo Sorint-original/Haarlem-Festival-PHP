@@ -10,8 +10,6 @@ function collectPageData(){
     }   
 }
 
-
-
 document.addEventListener("DOMContentLoaded", async function () {
     // Hard-coded page ID
     const pageId = "67dbf703ed593eb7a526a613";

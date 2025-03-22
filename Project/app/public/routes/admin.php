@@ -1,7 +1,7 @@
 <?php
 require_once(__DIR__ . "/../controllers/AdminController.php");
 
-// FOR ALL PAGES - GET AND UPDATE DATA:
+// FOR ALL ADMIN PAGES - GET AND UPDATE DATA:
 //for all pages - get data
 Route::add('/admin/get-page', function () {
 
@@ -64,7 +64,11 @@ Route::add('/admin/admin-jazz', function () {
     require(__DIR__ . "/../views/pages/admin/admin-jazz.php");
 }, 'get');
 
-
+// MUSEUM (ADMIN PANEL)
+// go to museum page
+Route::add('/admin/admin-museum', function () {
+    require(__DIR__ . "/../views/pages/admin/admin-museum.php");
+}, 'get');
 
 
 
