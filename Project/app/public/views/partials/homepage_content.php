@@ -13,7 +13,10 @@ require(__DIR__ . "/../partials/welcoming.php");
 // event dates
 require(__DIR__ . "/../partials/eventDates.php");
 
-// map
+// map ?>
+<div class="map-container align-self-center">
+    <div class="map" id="map"></div>
+</div>
 
-// faq 
+<?php // faq 
 require(__DIR__ . "/../partials/faq.php");

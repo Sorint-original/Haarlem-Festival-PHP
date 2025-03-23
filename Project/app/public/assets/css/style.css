@@ -323,6 +323,120 @@ body.misteranansi{
 }
 
 /* Map Style */
+.map-container{
+    aspect-ratio: 1/1;
+    width: 50%;
+    height: auto;
+}
+.map {
+    width: 100%;
+    height: 100%;
+}
+
+.marker-container {
+    position: relative;
+    height: 100%;
+    width: 28%;
+}
+
+.marker-container > h1 {
+    text-align: center;
+    margin: 10px;
+}
+
+.marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 10px;
+    height: 230px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    margin: 10px;
+}
+
+.input-group > input {
+    padding: 5px;
+    outline: none;
+    font-size: 17px;
+    width: 170px;
+}
+
+.marker > button {
+    width: 95%;
+    padding: 5px;
+    font-size: 17px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background-color: rgb(255, 255, 255);
+}
+
+.marker > button:hover {
+    background-color: rgb(220, 220, 220);
+}
+
+.marked > h2 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#markedLocations {
+    overflow-y: auto;
+    height: 300px;
+    list-style: none;
+}
+
+#markedLocations > li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#markedLocations > li div {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 90%;
+    margin: 10px;
+}
+
+#markedLocations > li div button {
+    font-size: 16px;
+    color: rgb(0, 0, 255);
+    text-decoration: underline;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#markedLocations > li div button:hover {
+    color: rgb(88, 88, 255);
+    text-decoration: none;
+}
+
+#markedLocations > li > button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    margin-left: 20px;
+    color: rgb(220, 20, 20);
+    cursor: pointer;
+    width: 20px;
+}
+
+#markedLocations > li > button:hover {
+    background-color: rgb(220, 200, 200);
+    color: rgb(240, 10, 10);
+}
 
 /* FAQ Style */
 .accordion{
