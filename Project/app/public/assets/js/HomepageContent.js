@@ -8,31 +8,31 @@ const eventContainers = document.getElementsByClassName('eventlist');
 const jazzPin = L.icon({
     iconUrl: '/../assets/images/complexLayouts/jazzPin.png', // URL to your custom icon
     iconSize: [40, 40], // Size of the icon
-    iconAnchor: [20, 40], // Point of the icon which will correspond to the marker's location
+    iconAnchor: [4, 36], // Point of the icon which will correspond to the marker's location
     popupAnchor: [1, -34] // Point from which the popup should open relative to the iconAnchor
 });
 const yummyPin = L.icon({
     iconUrl: '/../assets/images/complexLayouts/yummyPin.png', // URL to your custom icon
     iconSize: [40, 40], // Size of the icon
-    iconAnchor: [20, 40], // Point of the icon which will correspond to the marker's location
+    iconAnchor: [4, 36], // Point of the icon which will correspond to the marker's location
     popupAnchor: [1, -34] // Point from which the popup should open relative to the iconAnchor
 });
 const historyPin = L.icon({
     iconUrl: '/../assets/images/complexLayouts/historyPin.png', // URL to your custom icon
     iconSize: [40, 40], // Size of the icon
-    iconAnchor: [20, 40], // Point of the icon which will correspond to the marker's location
+    iconAnchor: [4, 36], // Point of the icon which will correspond to the marker's location
     popupAnchor: [1, -34] // Point from which the popup should open relative to the iconAnchor
 });
 const museumPin = L.icon({
     iconUrl: '/../assets/images/complexLayouts/museumPin.png', // URL to your custom icon
     iconSize: [40, 40], // Size of the icon
-    iconAnchor: [20, 40], // Point of the icon which will correspond to the marker's location
+    iconAnchor: [4, 36], // Point of the icon which will correspond to the marker's location
     popupAnchor: [1, -34] // Point from which the popup should open relative to the iconAnchor
 });
 const storyPin = L.icon({
     iconUrl: '/../assets/images/complexLayouts/storiePin.png', // URL to your custom icon
     iconSize: [40, 40], // Size of the icon
-    iconAnchor: [20, 40], // Point of the icon which will correspond to the marker's location
+    iconAnchor: [4, 36], // Point of the icon which will correspond to the marker's location
     popupAnchor: [1, -34] // Point from which the popup should open relative to the iconAnchor
 });
 
@@ -104,6 +104,7 @@ function removeAllMarkers() {
 const populateEvents = (events) => {
     const eventType =['jazz', 'history', 'yummy', 'museum', 'story'];
     const Pins =[jazzPin,historyPin,yummyPin,museumPin,storyPin];
+    const links =["/jazz","/history","/yummy","/museum","/stories"];
     const addedCoordinates = new Set();
     removeAllMarkers();
     for (let i = 0; i < 5; i++) {
@@ -134,6 +135,9 @@ const populateEvents = (events) => {
                     addedCoordinates.add(coordKey);
                      // Create and add the marker to the map
                     const marker = L.marker([lat, lng], { icon: Pins[i] }).addTo(map);
+                    marker.on('click', () => {
+                        window.open(links[i], "_blank"); // Open link in a new tab
+                    });
                     markers.push(marker); // Store the marker in the array
                 }
 
