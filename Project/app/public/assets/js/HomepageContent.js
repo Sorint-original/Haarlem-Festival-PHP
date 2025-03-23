@@ -104,6 +104,7 @@ function removeAllMarkers() {
 const populateEvents = (events) => {
     const eventType =['jazz', 'history', 'yummy', 'museum', 'story'];
     const Pins =[jazzPin,historyPin,yummyPin,museumPin,storyPin];
+    const links =["/jazz","/history","/yummy","/museum","/stories"];
     const addedCoordinates = new Set();
     removeAllMarkers();
     for (let i = 0; i < 5; i++) {
@@ -134,6 +135,9 @@ const populateEvents = (events) => {
                     addedCoordinates.add(coordKey);
                      // Create and add the marker to the map
                     const marker = L.marker([lat, lng], { icon: Pins[i] }).addTo(map);
+                    marker.on('click', () => {
+                        window.open(links[i], "_blank"); // Open link in a new tab
+                    });
                     markers.push(marker); // Store the marker in the array
                 }
 
