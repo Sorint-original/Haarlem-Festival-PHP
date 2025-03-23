@@ -17,6 +17,10 @@ body {
 body.homepage{
     background-image: linear-gradient(135deg , #F7F4E9, #FF7A6D, #FF6B9E);
 }
+/* history-page colors */
+.history-background {
+    background: linear-gradient(to right, #F7F4E9, #FF7A6D, #FF6B9E);
+}
 /* yummy-page colors */
 body.yummy {
     background: linear-gradient(to bottom, #A0E4F1 0%, #5BB2C6 50%, #F9F9F9 100%);
@@ -52,6 +56,9 @@ body.misteranansi{
 }
 .navbar.jazz{
     background-image: linear-gradient(to right , #13BEF2, #937AFF , #EB15AE);
+}
+.navbar.history{
+    background-image: linear-gradient(to right , #F7F4E9, #FF7A6D, #FF6B9E);
 }
 .navbar.stories{
     background-image: linear-gradient(to right , #C08402,#C08402, #610627, #A41C42, #CD2B52, #E7325C);

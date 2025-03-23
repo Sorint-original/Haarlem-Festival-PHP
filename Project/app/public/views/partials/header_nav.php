@@ -10,7 +10,7 @@
             </a>
         </li>
         <li class = "nav-item <?php if($page_type =="history") echo "current"; ?> p-2 h-100">
-            <a class="d-flex  nav-link NavHeader p-0 h-100" href="#">
+            <a class="d-flex  nav-link NavHeader p-0 h-100" href="/history">
                 <img src="/assets/favicons/history.png" class="image-fluid align-self-center favicon"><div class="align-self-center">History</div>
             </a>
         </li>
