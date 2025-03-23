@@ -21,6 +21,11 @@ body.homepage{
 .history-background {
     background: linear-gradient(to right, #F7F4E9, #FF7A6D, #FF6B9E);
 }
+.first-map-image {
+    width: 80%; /* Adjust the size of the first map image */
+    max-width: 400px; /* Set a maximum width */
+    height: auto; /* Maintain aspect ratio */
+}
 /* yummy-page colors */
 body.yummy {
     background: linear-gradient(to bottom, #A0E4F1 0%, #5BB2C6 50%, #F9F9F9 100%);
