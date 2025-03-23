@@ -1,18 +1,18 @@
 <section class="littleonesstories">
     <div class="story-cards-container">
         <!-- Stories for the Little Ones and Families -->
-        <h2>Stories for the Little Ones and Families</h2>
+        <h2 id="category">Stories for the Little Ones and Families</h2>
         <div class="story-card1">
             <img src="/assets/images/winnieDePooh.png" alt="Story 1">
             <div class="content">
-                <h3>Winnie De Poeh</h3>
+                <h3 id="title">Winnie De Poeh</h3>
                 <div class="story-details">
-                <p>Language: <strong>Dutch</strong></p>
-                <p>Age: <strong>4+</strong></p>
-                <p>Info: <strong>A story for the whole family.</strong></p>
-                <p>Day and Time: <strong>Thursday at 16:00 - 17:00</strong></p>
-                <p>Location: <strong>Verhalenhuis Haarlem</strong></p>
-                <p>Address: <strong>Van Egmondstraat 7, 2024 XL, Haarlem</strong></p>
+                <p id="languages">Language: <strong>Dutch</strong></p>
+                <p id="age">Age: <strong>4+</strong></p>
+                <p id="info">Info: <strong>A story for the whole family.</strong></p>
+                <p id="startTime">Day and Time: <strong>Thursday at 16:00 - 17:00</strong></p>
+                <p id="endTime">Day and Time: <strong>Thursday at 16:00 - 17:00</strong></p>
+                <p id="location">Location: <strong>Verhalenhuis Haarlem</strong></p>
                 <p>Price: <strong>€ 6.00</strong></p>
                 </div>
             </div>
@@ -27,7 +27,6 @@
                 <p>Info: <strong>A story for the whole family.</strong></p>
                 <p>Day and Time: <strong>Friday at 16:00 -17:00</strong></p>
                 <p>Location: <strong>Corrie ten Boom huis</strong></p>
-                <p>Address: <strong>Barteljorisstraat 19, 2011 RA, Haarlem</strong></p>
                 <p>Price: <strong>Pay As You Like</strong></p>
                 </div>
             </div>
