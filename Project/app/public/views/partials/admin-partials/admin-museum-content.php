@@ -1,134 +1,124 @@
 <div class="container">
     <h1>Museum Page Editor</h1>
-    <div class="save-indicator" id="saveIndicator">Updating...</div>
-    
+    <div class="save-indicator" id="saveIndicator">Uploading...</div>
     <!-- Intro Section -->
-    <div class="section" id="introSection">
-        <h2>Intro</h2>
-        <label for="intro1">Title:</label>
-        <div id="intro1" class="editable-field" contenteditable="true"></div>
-        
-        <label for="intro2">Subtitle:</label>
-        <div id="intro2" class="editable-field" contenteditable="true"></div>
-        
-        <label for="intro3">Heading:</label>
-        <div id="intro3" class="editable-field" contenteditable="true"></div>
-        
-        <label for="info">Description:</label>
-        <div id="info" class="editable-content" contenteditable="true"></div>
-    </div>
-    
-    <!-- Teyler Section -->
-    <div class="section teyler-section" id="teylerSection">
-        <h2>Teyler Section</h2>
-        <label for="teyler-title">Title:</label>
-        <div id="teyler-title" class="editable-field intro" contenteditable="true"></div>
-        
-        <label for="teyler-desc1">Description 1:</label>
-        <div id="teyler-desc1" class="editable-content info-text-1" contenteditable="true"></div>
-        
-        <label for="teyler-desc2">Description 2:</label>
-        <div id="teyler-desc2" class="editable-content info-text-2" contenteditable="true"></div>
-        
-        <!-- Teyler FAQ Section -->
-        <div class="faq-editor">
-            <h3>Teylers-FAQs</h3>
-            <div id="teyler-faq-container">
-                <!-- 5 Fixed FAQ Items -->
-                <div class="faq-item">
-                    <label>Question 1:</label>
-                    <div class="faq-question editable-field teyler-question-0" contenteditable="true"></div>
-                    <label>Answer 1:</label>
-                    <div class="faq-answer editable-content teyler-answer-0" contenteditable="true"></div>
-                </div>
-                
-                <div class="faq-item">
-                    <label>Question 2:</label>
-                    <div class="faq-question editable-field teyler-question-1" contenteditable="true"></div>
-                    <label>Answer 2:</label>
-                    <div class="faq-answer editable-content teyler-answer-1" contenteditable="true"></div>
-                </div>
-                
-                <div class="faq-item">
-                    <label>Question 3:</label>
-                    <div class="faq-question editable-field teyler-question-2" contenteditable="true"></div>
-                    <label>Answer 3:</label>
-                    <div class="faq-answer editable-content teyler-answer-2" contenteditable="true"></div>
-                </div>
-                
-                <div class="faq-item">
-                    <label>Question 4:</label>
-                    <div class="faq-question editable-field teyler-question-3" contenteditable="true"></div>
-                    <label>Answer 4:</label>
-                    <div class="faq-answer editable-content teyler-answer-3" contenteditable="true"></div>
-                </div>
-                
-                <div class="faq-item">
-                    <label>Question 5:</label>
-                    <div class="faq-question editable-field teyler-question-4" contenteditable="true"></div>
-                    <label>Answer 5:</label>
-                    <div class="faq-answer editable-content teyler-answer-4" contenteditable="true"></div>
-                </div>
-            </div>
+    <div class="section" id="infoPageSection">
+        <h1>Intro Section</h1>
+        <div class="card">
+            <label for="pageTitle">Title:</label>
+            <div id="intro1" class="editable-field" contenteditable="true"></div>
+
+            <label for="pageSubtitle">Subtitle:</label>
+            <div id="intro2" class="editable-field" contenteditable="true"></div>
+
+            <label for="pageHeading">Heading:</label>
+            <div id="intro3" class="editable-field" contenteditable="true"></div>
+
+            <label for="pageDescription">Description:</label>
+            <div id="info" class="editable-field" contenteditable="true"></div>
         </div>
     </div>
     
-    <!-- Lorentz Section -->
-    <div class="section lorentz-section" id="lorentzSection">
-        <h2>Lorentz Section</h2>
-        <label for="lorentz-title">Title:</label>
-        <div id="lorentz-title" class="editable-field intro" contenteditable="true"></div>
-        
-        <label for="lorentz-desc1">Description 1:</label>
-        <div id="lorentz-desc1" class="editable-content info-text-1" contenteditable="true"></div>
-        
-        <label for="lorentz-desc2">Description 2:</label>
-        <div id="lorentz-desc2" class="editable-content info-text-2" contenteditable="true"></div>
-        
-        <!-- Lorentz FAQ Section -->
-        <div class="faq-editor">
-            <h3>Lorentz-FAQs</h3>
-            <div id="lorentz-faq-container">
-                <!-- 5 Fixed FAQ Items -->
-                <div class="faq-item">
-                    <label>Question 1:</label>
-                    <div class="faq-question editable-field lorentz-question-0" contenteditable="true"></div>
-                    <label>Answer 1:</label>
-                    <div class="faq-answer editable-content lorentz-answer-0" contenteditable="true"></div>
+    <!-- Teyler Section -->
+    <div class="section" id="teylerSection">
+        <h1>Teyler Section</h1>
+
+        <!-- Title -->
+        <div class="card">
+            <label for="teylerTitle">Title:</label>
+            <div id="teylerTitle" class="editable-field" contenteditable="true"></div>
+        </div>
+
+        <!-- Description 1 -->
+        <div class="card">
+            <label for="teylerDescription1">Description 1:</label>
+            <div id="teylerDescription1" class="editable-field" contenteditable="true"></div>
+        </div>
+
+        <!-- Description 2 -->
+        <div class="card">
+            <label for="teylerDescription2">Description 2:</label>
+            <div id="teylerDescription2" class="editable-field" contenteditable="true"></div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="card">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div id="teylerFAQContainer">
+                <div class="faq-item" contenteditable="true">
+                    <h3>Question 1</h3>
+                    <p>Answer 1</p>
                 </div>
-                
-                <div class="faq-item">
-                    <label>Question 2:</label>
-                    <div class="faq-question editable-field lorentz-question-1" contenteditable="true"></div>
-                    <label>Answer 2:</label>
-                    <div class="faq-answer editable-content lorentz-answer-1" contenteditable="true"></div>
+                <div class="faq-item" contenteditable="true">
+                    <h3>Question 2</h3>
+                    <p>Answer 2</p>
                 </div>
-                
-                <div class="faq-item">
-                    <label>Question 3:</label>
-                    <div class="faq-question editable-field lorentz-question-2" contenteditable="true"></div>
-                    <label>Answer 3:</label>
-                    <div class="faq-answer editable-content lorentz-answer-2" contenteditable="true"></div>
+                <div class="faq-item" contenteditable="true">
+                    <h3>Question 3</h3>
+                    <p>Answer 3</p>
                 </div>
-                
-                <div class="faq-item">
-                    <label>Question 4:</label>
-                    <div class="faq-question editable-field lorentz-question-3" contenteditable="true"></div>
-                    <label>Answer 4:</label>
-                    <div class="faq-answer editable-content lorentz-answer-3" contenteditable="true"></div>
+                <div class="faq-item" contenteditable="true">
+                    <h3>Question 4</h3>
+                    <p>Answer 4</p>
                 </div>
-                
-                <div class="faq-item">
-                    <label>Question 5:</label>
-                    <div class="faq-question editable-field lorentz-question-4" contenteditable="true"></div>
-                    <label>Answer 5:</label>
-                    <div class="faq-answer editable-content lorentz-answer-4" contenteditable="true"></div>
+                <div class="faq-item" contenteditable="true">
+                    <h3>Question 5</h3>
+                    <p>Answer 5</p>
                 </div>
             </div>
         </div>
     </div>
 
-    
+    <!-- Lorentz Section -->
+    <div class="section" id="lorentzSection">
+        <h1>Lorentz Section</h1>
+
+        <!-- Title -->
+        <div class="card">
+            <label for="lorentzTitle">Title:</label>
+            <div id="lorentzTitle" class="editable-field" contenteditable="true"></div>
+        </div>
+
+        <!-- Description 1 -->
+        <div class="card">
+            <label for="lorentzDescription1">Description 1:</label>
+            <div id="lorentzDescription1" class="editable-field" contenteditable="true"></div>
+        </div>
+
+        <!-- Description 2 -->
+        <div class="card">
+            <label for="lorentzDescription2">Description 2:</label>
+            <div id="lorentzDescription2" class="editable-field" contenteditable="true"></div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="card">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div id="lorentzFAQContainer">
+                <div class="faq-item" contenteditable="true">
+                    <h3>Question 1</h3>
+                    <p>Answer 1</p>
+                </div>
+                <div class="faq-item" contenteditable="true">
+                    <h3>Question 2</h3>
+                    <p>Answer 2</p>
+                </div>
+                <div class="faq-item" contenteditable="true">
+                    <h3>Question 3</h3>
+                    <p>Answer 3</p>
+                </div>
+                <div class="faq-item" contenteditable="true">
+                    <h3>Question 4</h3>
+                    <p>Answer 4</p>
+                </div>
+                <div class="faq-item" contenteditable="true">
+                    <h3>Question 5</h3>
+                    <p>Answer 5</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="responseMessage" class="response" style="display: none;"></div>
 </div>
 
