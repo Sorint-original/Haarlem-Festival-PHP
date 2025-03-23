@@ -14,3 +14,6 @@ require(__DIR__ . "/../partials/museum-partials/teyler-section.php");
 require(__DIR__ . "/../partials/museum-partials/lorentz-section.php");
 
 require(__DIR__ . "/../partials/footer.php");
+
+?>
+<script src="/assets/js/Museum.js"></script>

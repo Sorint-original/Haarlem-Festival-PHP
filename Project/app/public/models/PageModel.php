@@ -1,5 +1,6 @@
-<?php
 
+<?php
+// Model class for handling page data.
 require_once(__DIR__ . "/BaseModel.php");
 
 class PageModel extends BaseModel{
@@ -12,6 +13,7 @@ class PageModel extends BaseModel{
     }
 
     // get page by id 
+
     public function getPageById($id)
     {
         $filter = ['_id' => new MongoDB\BSON\ObjectId($id)];
@@ -26,6 +28,5 @@ class PageModel extends BaseModel{
         // Use the update method from BaseModel
         return $this->update($this->collectionName, $filter, $data);
     }
-
 }
 
