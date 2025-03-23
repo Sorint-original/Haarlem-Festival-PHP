@@ -124,7 +124,6 @@ const populateEvents = (events) => {
             
             if (typeof event.coordinates !== 'undefined' ) {
                 
-            
                 // Convert coordinates from strings to numbers
                 const lat = parseFloat(event.coordinates[0]);
                 const lng = parseFloat(event.coordinates[1]);
