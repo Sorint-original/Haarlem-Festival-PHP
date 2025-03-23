@@ -1,12 +1,12 @@
 console.log("Stories.js loaded");
 document.addEventListener("DOMContentLoaded", function () {
-    const storiesIntroPageId = "67d0bd7123dbaed6b3acb8df";
+    const storiesIntroPageId = "67dd353e7391ffc81f8dbfc1";
     const introApiUrl = `/get-stories-content?id=${storiesIntroPageId}`;
 
-    const pricingPageId = "67dc1259cbdf5d8951e31afb";
+    const pricingPageId = "67dd37e77391ffc81f8dbfd3";
     const pricingApiUrl = `/get-stories-content?id=${pricingPageId}`;
 
-    const donationCardPageId = "67dc3a4bcbdf5d8951e31afc"; // Donation card için ID
+    const donationCardPageId = "67dd38197391ffc81f8dbfd8"; // Donation card için ID
     const donationApiUrl = `/get-stories-content?id=${donationCardPageId}`;
  
 
@@ -18,6 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // DONATION CARD Bölümünü Güncelle
     fetchPageContent(donationApiUrl, "donation-card");
+
+    // STORY CARDS Bölümünü Güncelle
+    fetchStoriesContent(storiesApiUrl);
 
 
     function fetchPageContent(apiUrl, section) {

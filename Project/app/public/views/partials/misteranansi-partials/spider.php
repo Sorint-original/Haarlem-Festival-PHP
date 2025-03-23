@@ -1,15 +1,19 @@
 <section class="anansi_spider">
     <div class="container">
-        <h2> Anansi The Spider</h2>
+        <h2 id="spiderTitle"> Anansi The Spider</h2>
         <div class="row">
             <!-- 1. Satır -->
             <div class="row-item-anansi-thespider">
                 <img src="/assets/images/Spider.png" alt="A story">
-                <p>
-                    One of the most well-known folk stories from around the world...
+                <div class="spiderInfos">
+                <p id="spiderInfo">
+                    yuklenmedi cnm
                     <br><br>
-                    The story of Anansi the Spider originates from the Ashanti people of Ghana. It is one of the best-known of the tales they took with them when they were taken captive during the slave trade.
                 </p>
+                <p id="spiderInfo2">
+                yuklenmedi cnm
+                </p>
+                </div>
             </div>
         </div>
     </div>
@@ -17,9 +21,9 @@
 <section>
     <div class="row-item">
         <div class="secondrow">
-            <p>
-                Are you interested in Mister Anansi's stories? Then check out his schedule at the Haarlem Festival and enjoy a live performance!
-            </p>
+            <p id="callToAction">
+            yuklenmedi cnm
+         </p>
 
         </div>
     </div>
@@ -30,6 +34,13 @@
         color: white;
         margin-top: 50px;
     }
+
+    .spiderInfos{
+        gap: 40px;
+        display: grid;
+    }
+
+    
 
     .row {
         display: flex;

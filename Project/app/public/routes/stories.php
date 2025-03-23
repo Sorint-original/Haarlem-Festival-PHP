@@ -15,3 +15,6 @@ Route::add('/get-stories-content', function () {
     $controller = new StoriesController();
     $controller->getPageContent();
 }, 'get');
+
+//get events controllerda olusturdugum fonksiyonu cagiriyorum, controllerda da modeli cagirmistim.
+//bu linki java scriptte fetch yaparken kullanacagim
