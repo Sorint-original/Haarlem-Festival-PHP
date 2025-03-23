@@ -8,31 +8,31 @@ const eventContainers = document.getElementsByClassName('eventlist');
 const jazzPin = L.icon({
     iconUrl: '/../assets/images/complexLayouts/jazzPin.png', // URL to your custom icon
     iconSize: [40, 40], // Size of the icon
-    iconAnchor: [20, 40], // Point of the icon which will correspond to the marker's location
+    iconAnchor: [4, 36], // Point of the icon which will correspond to the marker's location
     popupAnchor: [1, -34] // Point from which the popup should open relative to the iconAnchor
 });
 const yummyPin = L.icon({
     iconUrl: '/../assets/images/complexLayouts/yummyPin.png', // URL to your custom icon
     iconSize: [40, 40], // Size of the icon
-    iconAnchor: [20, 40], // Point of the icon which will correspond to the marker's location
+    iconAnchor: [4, 36], // Point of the icon which will correspond to the marker's location
     popupAnchor: [1, -34] // Point from which the popup should open relative to the iconAnchor
 });
 const historyPin = L.icon({
     iconUrl: '/../assets/images/complexLayouts/historyPin.png', // URL to your custom icon
     iconSize: [40, 40], // Size of the icon
-    iconAnchor: [20, 40], // Point of the icon which will correspond to the marker's location
+    iconAnchor: [4, 36], // Point of the icon which will correspond to the marker's location
     popupAnchor: [1, -34] // Point from which the popup should open relative to the iconAnchor
 });
 const museumPin = L.icon({
     iconUrl: '/../assets/images/complexLayouts/museumPin.png', // URL to your custom icon
     iconSize: [40, 40], // Size of the icon
-    iconAnchor: [20, 40], // Point of the icon which will correspond to the marker's location
+    iconAnchor: [4, 36], // Point of the icon which will correspond to the marker's location
     popupAnchor: [1, -34] // Point from which the popup should open relative to the iconAnchor
 });
 const storyPin = L.icon({
     iconUrl: '/../assets/images/complexLayouts/storiePin.png', // URL to your custom icon
     iconSize: [40, 40], // Size of the icon
-    iconAnchor: [20, 40], // Point of the icon which will correspond to the marker's location
+    iconAnchor: [4, 36], // Point of the icon which will correspond to the marker's location
     popupAnchor: [1, -34] // Point from which the popup should open relative to the iconAnchor
 });
 
