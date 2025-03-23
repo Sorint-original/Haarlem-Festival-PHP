@@ -5,7 +5,7 @@ require_once(__DIR__ . "/BaseModel.php");
 
 class PageModel extends BaseModel{
     
-    protected $collectionName='Stories';
+    protected $collectionName='Pages';
 
     public function __construct()
     {
