@@ -1,4 +1,3 @@
-
 <?php
 // Model class for handling page data.
 require_once(__DIR__ . "/BaseModel.php");
