@@ -1,11 +1,7 @@
 <?php
 $page_type = "history"; // This way we can set which color background is set in the header based on the page type
 $slides = [ 
-    'front slide 1.png',
-    'front slide 2.png',
-    'front slide 3.png',
-    'front slide 4.png',
-    'front slide 5.png'
+    'history slide.png'
 ];
 
 $title = "History";
@@ -174,17 +170,24 @@ echo '<style>
     /* New class for the first map image */
     .first-map-image {
         width: 100%; /* Set to 100% of the container */
-        max-width: 375px; /* Set a maximum width to increase size by 25% */
-        height: auto; /* Maintain aspect ratio */
-    }
-
-    /* Class for the second map image */
-    .second-map-image {
-        width: 100%; /* Set to 100% of the container */
-        max-width: 375px; /* Set a maximum width to increase size by 25% */
+        max-width: 1500px; 
         height: auto; /* Maintain aspect ratio */
     }
 </style>';
+
+// Function to render card content
+function renderCardContent($title, $description, $imageUrl) {
+    return '
+    <div class="flex flex-wrap grow gap-6 items-start px-6 pt-6 pb-10 w-full bg-white rounded-lg border-8 border-yellow-600 border-solid min-h-56 min-w-60 max-md:px-5 max-md:mt-10">
+        <img src="' . htmlspecialchars($imageUrl) . '" class="object-contain shrink-0 w-40 aspect-square min-h-40 min-w-40" />
+        <div class="flex-1 shrink basis-0 min-w-40">
+            <div class="w-full">
+                <div class="text-2xl font-semibold tracking-tight leading-tight text-stone-900">' . htmlspecialchars($title) . '</div>
+                <div class="mt-2 text-base leading-6 text-neutral-500">' . htmlspecialchars($description) . '</div>
+            </div>
+        </div>
+    </div>';
+}
 
 // Main content
 echo '<div class="flex overflow-hidden flex-col history-background">
@@ -250,41 +253,26 @@ echo '<div class="flex overflow-hidden flex-col history-background">
         Welcome to Haarlem, a city where history whispers through its cobblestone streets and every landmark tells a tale. Get ready to embark on an enchanting journey as we explore three of Haarlem\'s most significant sites, each brimming with cultural heritage and architectural splendor.
     </div>
     <div class="mt-48 w-full max-w-[1765px] max-md:mt-10 max-md:max-w-full" space="164">
-        <div class="flex gap-5 max-md:flex-col">
-            <div class="w-[33%] max-md:ml-0 max-md:w-full">
-                <div class="flex flex-wrap grow gap-6 items-start px-6 pt-6 pb-10 w-full bg-white rounded-lg border-8 border-yellow-600 border-solid min-h-56 min-w-60 max-md:px-5 max-md:mt-10">
-                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/34e462f2a6997b9257e414c0d724c6fa0c91960f?placeholderIfAbsent=true&apiKey=6302e5c8c82a438b9c48016c50e62161" class="object-contain shrink-0 w-40 aspect-square min-h-40 min-w-40" />
-                    <div class="flex-1 shrink basis-0 min-w-40">
-                        <div class="w-full">
-                            <div class="text-2xl font-semibold tracking-tight leading-tight text-stone-900">St Bavokerk</div>
-                            <div class="mt-2 text-base leading-6 text-neutral-500">You\'ll be captivated by the grandeur of this Gothic masterpiece, a cornerstone of Haarlem\'s spiritual life since the 13th century.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="ml-5 w-[33%] max-md:ml-0 max-md:w-full">
-                <div class="flex flex-wrap grow gap-6 items-start px-6 pt-6 pb-2.5 w-full bg-white rounded-lg border-8 border-yellow-600 border-solid min-h-56 min-w-60 max-md:px-5 max-md:mt-10">
-                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9b2bc57fd7720b1273d7f98e290c8b34bee923de?placeholderIfAbsent=true&apiKey=6302e5c8c82a438b9c48016c50e62161" class="object-contain shrink-0 w-40 aspect-square min-h-40 min-w-40" />
-                    <div class="flex-1 shrink basis-0 min-w-40">
-                        <div class="w-full">
-                            <div class="text-2xl font-semibold tracking-tight leading-tight text-stone-900">Jopenkerk</div>
-                            <div class="mt-2 text-base leading-6 text-neutral-500">A former church that has been transformed into a lively brewery. Here, you\'ll experience Haarlem\'s brewing tradition firsthand and enjoy a refreshing break amidst its unique ambiance.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="ml-5 w-[33%] max-md:ml-0 max-md:w-full">
-                <div class="flex flex-wrap grow gap-6 items-start px-6 pt-6 pb-10 w-full bg-white rounded-lg border-8 border-yellow-600 border-solid min-h-56 min-w-60 max-md:px-5 max-md:mt-10">
-                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/79f46310479b807a6f7d3a04ca618f34d5085448?placeholderIfAbsent=true&apiKey=6302e5c8c82a438b9c48016c50e62161" class="object-contain shrink-0 w-40 aspect-square min-h-40 min-w-40" />
-                    <div class="flex-1 shrink basis-0 min-w-40">
-                        <div class="w-full">
-                            <div class="text-2xl font-semibold tracking-tight leading-tight text-stone-900">Molen De Adriaan</div>
-                            <div class="mt-2 text-base leading-6 text-neutral-500">It stands as a testament to the city\'s industrious spirit. Ascend to its viewing platform for breathtaking views of Haarlem and learn about the vital role this windmill played in the community\'s history.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="flex gap-5 max-md:flex-col">';
+        
+// Render CardContent for each landmark with images
+echo renderCardContent(
+    "St Bavokerk", 
+    "You'll be captivated by the grandeur of this Gothic masterpiece, a cornerstone of Haarlem's spiritual life since the 13th century.",
+    "https://cdn.builder.io/api/v1/image/assets/TEMP/34e462f2a6997b9257e414c0d724c6fa0c91960f?placeholderIfAbsent=true&apiKey=6302e5c8c82a438b9c48016c50e62161"
+);
+echo renderCardContent(
+    "Jopenkerk", 
+    "A former church that has been transformed into a lively brewery. Here, you'll experience Haarlem's brewing tradition firsthand and enjoy a refreshing break amidst its unique ambiance.",
+    "https://cdn.builder.io/api/v1/image/assets/TEMP/9b2bc57fd7720b1273d7f98e290c8b34bee923de?placeholderIfAbsent=true&apiKey=6302e5c8c82a438b9c48016c50e62161"
+);
+echo renderCardContent(
+    "Molen De Adriaan", 
+    "It stands as a testament to the city's industrious spirit. Ascend to its viewing platform for breathtaking views of Haarlem and learn about the vital role this windmill played in the community's history.",
+    "https://cdn.builder.io/api/v1/image/assets/TEMP/79f46310479b807a6f7d3a04ca618f34d5085448?placeholderIfAbsent=true&apiKey=6302e5c8c82a438b9c48016c50e62161"
+);
+
+echo '        </div>
     </div>
     <div class="mt-40 text-5xl leading-none text-black max-md:mt-10 max-md:text-4xl">
         Tour tickets
@@ -308,8 +296,8 @@ echo '<div class="flex overflow-hidden flex-col history-background">
                         </span>
                         <ul>
                             <li>Explore Iconic Landmarks: Visit the breathtaking St. Bavo Church, a masterpiece of Gothic architecture, and discover the rich history behind its magnificent walls.</li>
-                            <li>Savor Local Brews: Take a break at Jopenkerk, a unique brewery housed in a former church, and indulge in the flavors of Haarlem\'s brewing heritage.</li>
-                            <li>Marvel at Historic Windmills: Conclude your adventure at Molen de Adriaan, where you\'ll enjoy stunning views and learn about the city\'s industrious past.</li>
+                            <li>Savor Local Brews: Take a break at Jopenkerk, a unique brewery housed in a former church, and indulge in the flavors of Haarlems brewing heritage.</li>
+                            <li>Marvel at Historic Windmills: Conclude your adventure at Molen de Adriaan, where youll enjoy stunning views and learn about the citys industrious past.</li>
                         </ul>
                         <br />
                         <span style="font-family: Merienda One, -apple-system, Roboto, Helvetica, sans-serif; font-size: 30px;">
@@ -318,7 +306,7 @@ echo '<div class="flex overflow-hidden flex-col history-background">
                         <ul>
                             <li>Expert guides sharing captivating stories and insights</li>
                             <li>A friendly atmosphere filled with fellow history enthusiasts</li>
-                            <li>The chance to create lasting memories in one of the Netherlands\' most charming cities</li>
+                            <li>The chance to create lasting memories in one of the Netherlands most charming cities</li>
                         </ul>
                         <br />
                     </div>
