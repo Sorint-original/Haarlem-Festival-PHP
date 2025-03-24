@@ -8,6 +8,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $loggedIn = isset($_SESSION['user_id']); 
+$isadmin=isset($_SESSION['role']);
 ?>
 
 <head>
