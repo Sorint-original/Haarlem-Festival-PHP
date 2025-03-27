@@ -11,7 +11,7 @@ class HistoryController
         $this->pageModel = new PageModel();
     }
     public function GetHistoryPage(){
-        $page = $this->pageModel->getPageById("67dbf703ed593eb7a526a613")[0];
+        $page = $this->pageModel->getPageById("67e5484886b6f03e6b7d0934")[0];
         return $page;
     }
 }
