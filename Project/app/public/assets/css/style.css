@@ -1,6 +1,3 @@
-
-
-
 /* Base typography */
 
 .H2{
@@ -167,6 +164,14 @@ body.misteranansi{
 .overlay-text.jazz{
     font-size: 7vw;
     background: linear-gradient(to right,#13BEF2,#937AFF,#EB15AE);
+    background-size: 100% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 5px transparent;
+}
+
+.overlay-text.yummy{
+    font-size: 7vw;
+    background: linear-gradient(to right, #A0E4F1, #5BB2C6, #F9F9F9);
     background-size: 100% 100%;
     -webkit-background-clip: text;
     -webkit-text-stroke: 5px transparent;
@@ -710,25 +715,40 @@ a:hover {
 
 /* Yummy_Main_page */
 
-/* Yummy Intro Section */
+/* Yummy Introduction Section Styles */
 .yummy-intro {
-    padding: 60px 0;
+    background-color: rgba(160, 228, 241, 0.1);
+    padding: 3rem 0;
 }
 
-.intro-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    font-style: italic;
+.yummy-intro h2 {
+    color: #333;
+    font-family: 'Merienda', cursive;
+    margin-bottom: 2rem;
 }
 
-.intro-text {
-    font-size: 1.2rem;
-    line-height: 1.6;
-}
-.card.bg-light{
-    background-color: rgba(239, 236, 205, 0.7) !important;
+.yummy-intro .intro-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 2rem;
 }
 
+.note-box {
+    background: linear-gradient(to bottom, rgba(125, 126, 132, 0.3), rgba(160, 228, 241, 0.1));
+    border-radius: 15px;
+    padding: 20px !important;
+    margin: 30px auto !important;
+    box-shadow: 0 4px 15px rgba(91, 178, 198, 0.1);
+    border: 1px solid rgba(91, 178, 198, 0.2);
+    color: #2a6b7c !important;
+    font-size: 0.95rem !important;
+    max-width: 90% !important;
+}
+
+.note-box strong {
+    color: #1d4d5a;
+}
 
 /* Teyler's Museum */
 .mysection{
@@ -758,4 +778,46 @@ a:hover {
     color: white;
 }
 
-/* Stories */
+
+/* --- Restaurant Carousel Arrow Styles --- */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    font-size: 2.5rem;
+    background: #fff;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #222;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    opacity: 0.95;
+}
+.carousel-arrow.left {
+    left: -28px;
+}
+.carousel-arrow.right {
+    right: -28px;
+}
+.carousel-arrow:hover {
+    background: #FF7A6D;
+    color: #fff;
+    box-shadow: 0 6px 24px rgba(255,122,109,0.15);
+}
+.carousel-arrow:disabled {
+    display: none;
+}
+
+.carousel-wrapper {
+    position: relative;
+    min-height: 600px; /* Match card height */
+    display: flex;
+    align-items: center;
+}

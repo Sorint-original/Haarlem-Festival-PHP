@@ -44,3 +44,7 @@ Route::add('/jazz/band/([a-z-0-9-]*)', function ($bandId) {
     require_once(__DIR__ . "/../views/pages/jazzBand.php"); // load the view
 });
 
+//YUMMY
+require_once(__DIR__ . "/yummy.php");
+
+

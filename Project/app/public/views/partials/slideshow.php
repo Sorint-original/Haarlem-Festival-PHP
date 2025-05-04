@@ -1,4 +1,3 @@
-
 <script>
     $(function(){
         // Check if there is more than one image in the slideshow
