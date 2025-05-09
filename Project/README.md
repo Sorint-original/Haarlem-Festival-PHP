@@ -1,3 +1,15 @@
+## Login Credentials
+Admin:
+  - email:admin@gmail.com
+  - password:123
+Employee:
+  - email:employee@gmail.com
+  - password:123
+Customer:
+  - email:customer@gmail.com
+  - password:123
+
+
 # PHP Web Development Boilerplate
 
 ## About

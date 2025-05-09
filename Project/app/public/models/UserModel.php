@@ -10,7 +10,23 @@ class UserModel extends BaseModel
     public function getAllUsers()
     {
         $filter = [];
-        $result = $this->executeQuery($this->collectionName, $filter);
+        $options = [
+            // projection => to include only specific fields or format them in a certain way.
+            'projection' => [
+                'full_name' => 1,
+                'username' => 1,
+                'email' => 1,
+                'role' => 1,
+                '_id' => 1,
+                'created_at' => [
+                    '$dateToString' => [
+                        'format' => '%Y-%m-%d %H:%M:%S',
+                        'date' => '$created_at'
+                    ]
+                ]
+            ]
+        ];
+        $result = $this->executeQuery($this->collectionName, $filter, $options);
         return $result;
     }
     //get user by userid
@@ -64,7 +80,7 @@ class UserModel extends BaseModel
             'username'    => $data['username'],
             'email'       => $data['email'],
             'password'    => password_hash($data['password'], PASSWORD_BCRYPT),  // Hashing password
-            'role'        => $data['role'],  
+            'role'        => $data['role'],
             'created_at'  => new MongoDB\BSON\UTCDateTime()
         ];
 
