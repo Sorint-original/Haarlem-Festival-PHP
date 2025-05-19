@@ -134,3 +134,20 @@ label {
     display: none;
     z-index: 1000;
 }
+
+
+/* TinyMCE Editor Styles */
+.tinymce-editor {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    min-height: 20px;
+}
+
+.tinymce-editor[data-tinymce="true"] {
+    min-height: 100px;
+}

@@ -16,10 +16,9 @@
         <div class="w-100">
           <div class="info-text">
             <h3 class="intro"></h3>
-            <p>
-            </p>
-            <p>
-            </p>
+            <div class="desc1"></div>
+            <div class="desc2"></div>
+
             <!--FAQ-->
             <div class="faq-container w-100 ">
               <div class="row g-0">

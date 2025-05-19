@@ -11,19 +11,29 @@ const getPageContent = async (pageId) => {
     return await response.json();
 };
 
-//assign the elements in HTML to the data in the given intro object.
 const populateIntroContent = (intro) => {
-    document.querySelector('.intro1').textContent = intro.title ;
-    document.querySelector('.intro2').textContent = intro.subtitle;
-    document.querySelector('.intro3').textContent = intro.heading;
-    document.querySelector('.info').textContent = intro.description;
+    document.querySelector('.intro1').innerHTML = intro.title1 || '';
+    document.querySelector('.intro2').innerHTML = intro.title2 || '';
+    document.querySelector('.intro3').innerHTML = intro.title3 || '';
+    document.querySelector('.info').innerHTML = intro.text || '';
 };
+
+// Populate FAQ accordion with the provided FAQ data
 const populateFAQ = (faqContainer, faqData) => {
-    faqContainer.innerHTML = '';  
+    if (!faqContainer) return;
+    faqContainer.innerHTML = '';
+    
+    // Check if faqData exists and is an array
+    if (!faqData || !Array.isArray(faqData)) {
+        console.warn('No FAQ data available or data is not in expected format');
+        return;
+    }
+    
     // Accordion container
     const accordionDiv = document.createElement('div');
     accordionDiv.classList.add('accordion');
     accordionDiv.setAttribute('id', 'faqAccordion');
+    
     // FAQ items are added dynamically
     faqData.forEach((faq, index) => {
         const faqId = `faqItem${index}`;
@@ -49,45 +59,71 @@ const populateFAQ = (faqContainer, faqData) => {
     faqContainer.appendChild(accordionDiv);
 };
 
-// teyler section 
+// Populate the Teyler section with content from the database
 const populateTeylerSection = (section) => {
-    document.querySelector('.teyler-section .intro').textContent = section.title;
-    document.querySelector('.teyler-section .info-text p:nth-of-type(1)').textContent = section.description1;
-    document.querySelector('.teyler-section .info-text p:nth-of-type(2)').textContent = section.description2;
     
+document.querySelector('.teyler-section .intro').innerHTML = section.title || '';
+document.querySelector('.teyler-section .desc1').innerHTML = section.description1 || '';
+document.querySelector('.teyler-section .desc2').innerHTML = section.description2 || '';
+
+
     const faqContainer = document.querySelector('.teyler-section .faq-container');
-    populateFAQ(faqContainer, section.faq);
-  
-    
+    if (faqContainer && section.faq && Array.isArray(section.faq)) {
+        populateFAQ(faqContainer, section.faq);
+    } else if (faqContainer) {
+        console.warn('No valid FAQ data found for Teyler section');
+    }
 };
-// Lorentz section
+
+// Populate the Lorentz section with content from the database
 const populateLorentzSection = (section) => {
-   
-    document.querySelector('.lorentz-section .intro').textContent = section.title;
-    document.querySelector('.lorentz-section .info-text p:nth-of-type(1)').textContent = section.description1;
-    document.querySelector('.lorentz-section .info-text p:nth-of-type(2)').textContent = section.description2;
+    document.querySelector('.lorentz-section .intro').innerHTML = section.title || '';
+    document.querySelector('.lorentz-section .desc1').innerHTML = section.description1 || '';
+    document.querySelector('.lorentz-section .desc2').innerHTML = section.description2 || '';
 
     const faqContainer = document.querySelector('.lorentz-section .faq-container');
-    populateFAQ(faqContainer, section.faq);
-
-
+    if (faqContainer && section.faq && Array.isArray(section.faq)) {
+        populateFAQ(faqContainer, section.faq);
+    } else if (faqContainer) {
+        console.warn('No valid FAQ data found for Lorentz section');
+    }
 };
+
 // Event listener for DOMContentLoaded
 // This ensures the script runs after the DOM is fully loaded
-
 document.addEventListener('DOMContentLoaded', async function() {
     try {
         const pageId = '67df2e743c854e2a5df0566a';
         const data = await getPageContent(pageId);
+        console.log("Received data:", data); // For debugging
 
-        const intro = data[0].intro;
-        const section = data[0]["teyler-section"];
-        const lorentzSection = data[0]["lorentz-section"];
-        populateIntroContent(intro);
-        populateTeylerSection(section);
-        populateLorentzSection(lorentzSection);
-    }
-    catch (error) {
+        if (data && data.length > 0) {
+            const pageData = data[0];
+            
+            // Use intro data
+            if (pageData.intro) {
+                populateIntroContent(pageData.intro);
+            } else {
+                console.warn('Intro data not found');
+            }
+            
+            // Use teylerSection data
+            if (pageData.teylerSection) {
+                populateTeylerSection(pageData.teylerSection);
+            } else {
+                console.warn('Teyler section data not found');
+            }
+            
+            // Use lorentzSection data
+            if (pageData.lorentzSection) {
+                populateLorentzSection(pageData.lorentzSection);
+            } else {
+                console.warn('Lorentz section data not found');
+            }
+        } else {
+            console.error('No data returned from API');
+        }
+    } catch (error) {
         console.error('Error:', error);
     }
 });
