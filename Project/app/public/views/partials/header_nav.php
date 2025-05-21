@@ -25,7 +25,7 @@
             </a>
         </li>
         <li class = "nav-item <?php if($page_type =="stories") echo "current"; ?> p-2 h-100">
-            <a class="d-flex  nav-link NavHeader p-0 h-100" href="#">
+            <a class="d-flex  nav-link NavHeader p-0 h-100" href="/stories">
                 <img src="/assets/favicons/stories.png" class="image-fluid align-self-center favicon"><div class="align-self-center">Stories</div>
             </a>
         </li>
