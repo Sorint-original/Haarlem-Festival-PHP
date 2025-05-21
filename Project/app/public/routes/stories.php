@@ -5,9 +5,7 @@ require_once(__DIR__ . "/../controllers/StoriesController.php");
 Route::add('/stories', function () {
     //  is simply loading a static page
     // view the user routes for example following the MVC pattern
-   
-    $controller = new StoriesController();
-    $controller->getStories();
+    require(__DIR__ . "/../views/pages/stories.php");
 
 });
 
