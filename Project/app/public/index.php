@@ -30,6 +30,7 @@ require_once(__DIR__ . "/routes/museum.php");
 require_once(__DIR__ . "/routes/stories.php");
 require_once(__DIR__ . "/routes/misteranansi.php");
 require_once(__DIR__ . "/routes/admin.php");
+require_once(__DIR__ . "/routes/tickets.php");
 
 
 
