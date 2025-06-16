@@ -778,3 +778,7 @@ a:hover {
     border: #000 solid 1px;
     height:800px;
 }
+
+#ticket-display li{
+    list-style-type: none;
+}

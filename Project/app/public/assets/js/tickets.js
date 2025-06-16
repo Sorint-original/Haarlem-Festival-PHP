@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const displayList = document.getElementById('ticket-display');
 
     const urlParams = new URLSearchParams(window.location.search);
-    var currentEvent =  urlParams.get('event') ?? '0';
-    var currentDay = urlParams.get('day')?? '0';
+    var currentEvent = Number(urlParams.get('event')) ?? 0;  // Force number conversion
+    var currentDay = Number(urlParams.get('day')) ?? 0;
 
     EventButtons[currentEvent].classList.add("active");
     DayButtons[currentDay].classList.add("active");
@@ -46,28 +46,28 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const UpdateTicketList = async () => {
-        console.log(eventTypes[currentEvent]);
         var events  = await getEventsAndTickets(eventTypes[currentEvent],currentDay);
-        //clear the lists
-        displayList.innerHTML ='';
         //extra steps based on event type
         //display based on current event
         DisplayeventsTickets(events);
     }
 
     const DisplayeventsTickets =(events) =>{
+        displayList.innerHTML ='';
         events.forEach(event => {
             var start = new Date(parseInt(event.startTime.$date.$numberLong));
             var end= new Date(parseInt(event.endTime.$date.$numberLong));
             switch(currentEvent) {
                 case 0://Jazz
-                if(typeof event.tickets[0] !== 'undefined'){
-                    displayList.innerHTML += `<li><p class="h3 ">${event.title} 
-                    ${start.getUTCHours()}:${String(start.getUTCMinutes()).padStart(2, '0')} - ${end.getUTCHours()}:${String(end.getUTCMinutes()).padStart(2, '0')} 
-                    ${event.location} 
-                    (${event.availableSeats} seats left): 
-                    €${event.tickets[0].price}</p></li>`;
-                }
+                    if(typeof event.tickets[0] != 'undefined'){
+                        displayList.innerHTML += `<li><p class="h3 ">${event.title} 
+                        ${start.getUTCHours()}:${String(start.getUTCMinutes()).padStart(2, '0')} - ${end.getUTCHours()}:${String(end.getUTCMinutes()).padStart(2, '0')} 
+                        ${event.location} 
+                        (${event.availableSeats} seats left): 
+                        €${event.tickets[0].price}
+                        <button class ="h4 jazz-btn  p-2 ms-5" onclick="addTicket('${event.tickets[0]._id.$oid}'>Buy Tickets</button></p></li>`;
+
+                    }
                     break;
                 case 1://story
                     
@@ -85,5 +85,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
+    function addTicket(ticketId) {
+        
+        
+    }
 
+    UpdateTicketList();
 });

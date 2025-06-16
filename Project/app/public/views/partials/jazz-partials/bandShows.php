@@ -11,7 +11,10 @@
                 else{echo "Free Entry";}
                   ?>
             </p>
-            <button class ="h4 jazz-btn  p-2">Buy Tickets</button>
+            <?php 
+                if(isset($show->tickets[0])){echo '<button class ="h4 jazz-btn  p-2" href="/tickets">Buy Tickets</button>';}
+            ?>
+            
         </div>
     <?php }?>
 </section>
