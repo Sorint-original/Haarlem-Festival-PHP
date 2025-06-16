@@ -45,15 +45,38 @@ document.addEventListener('DOMContentLoaded', () => {
         return await response.json(); // Assuming the server returns JSON data
     };
 
+    const getSpecialJazzPasses = async () => {
+        const response = await fetch('/tickets/jazzPasses', { // URL remains unchanged
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+        if (!response.ok) {
+            throw new Error('Failed to fetch events');
+        }
+        return await response.json(); // Assuming the server returns JSON data
+    };
+    const JazzExtraStep = async ()=>{
+        var passes = await getSpecialJazzPasses();
+        displayList.innerHTML += `<li><p class="h3 "> All-Access pass for a day - €35 <button class ="h4 jazz-btn  p-2 ms-5" onclick="addtoCart('${passes['daypass']._id.$oid}')">Buy Tickets</button></p></li>`;
+        displayList.innerHTML += `<li><p class="h3 "> All-Access pass for 4 days - €35 <button class ="h4 jazz-btn  p-2 ms-5" onclick="addtoCart('${passes['weekpass']._id.$oid}')">Buy Tickets</button></p></li>`;
+    };
+
     const UpdateTicketList = async () => {
+        displayList.innerHTML ='';
         var events  = await getEventsAndTickets(eventTypes[currentEvent],currentDay);
         //extra steps based on event type
+        switch(currentEvent) {
+            case 0://Jazz
+                await JazzExtraStep();
+                break;
+        }
         //display based on current event
         DisplayeventsTickets(events);
-    }
+    };
 
     const DisplayeventsTickets =(events) =>{
-        displayList.innerHTML ='';
         events.forEach(event => {
             var start = new Date(parseInt(event.startTime.$date.$numberLong));
             var end= new Date(parseInt(event.endTime.$date.$numberLong));
@@ -65,8 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${event.location} 
                         (${event.availableSeats} seats left): 
                         €${event.tickets[0].price}
-                        <button class ="h4 jazz-btn  p-2 ms-5" onclick="addTicket('${event.tickets[0]._id.$oid}'>Buy Tickets</button></p></li>`;
-
+                        <button class ="h4 jazz-btn  p-2 ms-5" onclick="addtoCart('${event.tickets[0]._id.$oid}')">Buy Tickets</button></p></li>`;
                     }
                     break;
                 case 1://story
@@ -85,8 +107,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-    function addTicket(ticketId) {
-        
+    const createListItem = async (ticket_id) => {
+        const response = await fetch("/ticket/addInCart", { // URL remains unchanged
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ ticket_id }),// Send the day and type in the request body
+        });
+        if (!response.ok) {
+            throw new Error('Failed to fetch events');
+        }
+        return await response.json(); // Assuming the server returns JSON data
+    };
+
+    
+
+    function addtoCart(ticketId) {
+        createListItem(ticketId);
         
     }
 

@@ -19,10 +19,17 @@ Route::add('/tickets/get-eventstickets', function () {
     $controller->getEventsandTickets();
 }, 'post');
 
+Route::add('/tickets/jazzPasses', function () {
+    $controller = new JazzController();
+    $JazzPasses = $controller->getDayPasses();
+    echo json_encode($JazzPasses);
+}, 'get');
+
 
 
 
 //route to add ticket in the cart
-Route::add('/ticket/([a-z-0-9-]*/add)', function ($shopTicketId) {
+Route::add('/ticket/addInCart)', function () {
     $controller = new PurchaseController(); // create a new user controller
-});
+    $controller->addTicketInCart();
+}, 'post');
