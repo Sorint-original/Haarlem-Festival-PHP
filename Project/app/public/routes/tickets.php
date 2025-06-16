@@ -6,8 +6,11 @@ Route::add('/tickets', function () {
         header('Location: /login'); // Redirect to login page
         exit();
     }
-    // homepage is simply loading a static page
-    // view the user routes for example following the MVC pattern
+    //Getting the users cart
+    $controller = new PurchaseController();
+    $cart = $controller->HandleCart();
+
+    //Getting started with the tickets page
     require(__DIR__ . "/../views/pages/tickets.php");
 });
 
@@ -15,3 +18,11 @@ Route::add('/tickets/get-eventstickets', function () {
     $controller = new PurchaseController();
     $controller->getEventsandTickets();
 }, 'post');
+
+
+
+
+//route to add ticket in the cart
+Route::add('/ticket/([a-z-0-9-]*/add)', function ($shopTicketId) {
+    $controller = new PurchaseController(); // create a new user controller
+});

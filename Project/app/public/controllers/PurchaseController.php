@@ -2,17 +2,21 @@
 
 require_once(__DIR__ . "/../models/EventModel.php");
 require_once(__DIR__ . "/../models/TicketModel.php");
+require_once(__DIR__ . "/../models/CartModel.php");
 
 
 class PurchaseController
 {
     private $eventModel;
     private $ticketModel;
+    private $cartModel;
 
     public function __construct()
     {
         $this->eventModel = new EventModel();
         $this->ticketModel = new TicketModel();
+        $this->cartModel = new CartModel();
+
     }
 
     public function getEventsandTickets() {
@@ -38,5 +42,14 @@ class PurchaseController
             $events[$i]->tickets = $this->ticketModel->GetShopTicketsByEventId($events[$i]->_id);
         }
         return $events;
+    }
+
+    public function HandleCart(){
+        $cart = $this->cartModel->getCartByUserId($_SESSION['user_id']);
+        if($cart == null){
+            $this->cartModel->AddCart($_SESSION['user_id']);
+            $cart = $this->cartModel->getCartByUserId($_SESSION['user_id']);
+        }
+        return $cart;
     }
 }
