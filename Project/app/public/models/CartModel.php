@@ -38,5 +38,16 @@ class CartModel extends BaseModel{
         }
         return false;
     }
+
+    public function addInCart($itemId, $user_id){
+
+        $bulkWrite = new MongoDB\Driver\BulkWrite;
+        $bulkWrite->update(
+            ['user_id' => new MongoDB\BSON\ObjectId($user_id)], // Filter
+            ['$push' => ['CartItems' => $itemId]], // Update
+            ['multi' => false] // Options
+        );
+        $this->executeWrite($bulkWrite, $this->collectionName);
+    }
     
 }

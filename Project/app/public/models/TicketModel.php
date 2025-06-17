@@ -21,4 +21,12 @@ class TicketModel extends BaseModel
         return $tickets;
     }
 
+    public function GetShopTicketById($_Id){
+        $filter = ['_id' => new MongoDB\BSON\ObjectId($_Id)];
+        $options = [];
+
+        $ticket = $this->executeQuery($this->STicketcollection,$filter,$options);
+        return $ticket;
+    }
+
 }

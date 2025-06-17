@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
         }
         //display based on current event
-        DisplayeventsTickets(events);
+        await DisplayeventsTickets(events);
     };
 
     const DisplayeventsTickets =(events) =>{
@@ -108,25 +108,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const createListItem = async (ticket_id) => {
-        const response = await fetch("/ticket/addInCart", { // URL remains unchanged
+        console.log(ticket_id);
+        const response = await fetch("/tickets/addInCart", { // URL remains unchanged
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ ticket_id }),// Send the day and type in the request body
+            body: JSON.stringify({ ticket_id })// Send the day and type in the request body
         });
         if (!response.ok) {
             throw new Error('Failed to fetch events');
         }
-        return await response.json(); // Assuming the server returns JSON data
+        return  response.json(); // Assuming the server returns JSON data
     };
 
+    const getCart = async ()=>{
+        const response = await fetch("/tickets/cart", { // URL remains unchanged
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+        if (!response.ok) {
+            throw new Error('Failed to fetch events');
+        }
+        return  response.json(); // Assuming the server returns JSON data
+    }
     
 
-    function addtoCart(ticketId) {
+    window.addtoCart = function(ticketId) {
         createListItem(ticketId);
-        
+        //Update Cart
     }
 
+    
+    getCart();
     UpdateTicketList();
 });

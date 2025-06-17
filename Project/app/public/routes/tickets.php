@@ -8,8 +8,6 @@ Route::add('/tickets', function () {
     }
     //Getting the users cart
     $controller = new PurchaseController();
-    $cart = $controller->HandleCart();
-
     //Getting started with the tickets page
     require(__DIR__ . "/../views/pages/tickets.php");
 });
@@ -26,10 +24,14 @@ Route::add('/tickets/jazzPasses', function () {
 }, 'get');
 
 
-
-
 //route to add ticket in the cart
-Route::add('/ticket/addInCart)', function () {
+Route::add('/tickets/addInCart', function () {
     $controller = new PurchaseController(); // create a new user controller
     $controller->addTicketInCart();
+}, 'post');
+
+//route to get cart
+Route::add('/tickets/cart', function () {
+    $controller = new PurchaseController(); // create a new user controller
+    $controller->HandleCart();
 }, 'post');
