@@ -17,6 +17,11 @@ body {
 body.homepage{
     background-image: linear-gradient(135deg , #F7F4E9, #FF7A6D, #FF6B9E);
 }
+
+body.tickets{
+    background-image: linear-gradient(135deg , #8D62F2, #5D90B5, #E0F564);
+}
+
 /* history-page colors */
 body.history{
     background-image: linear-gradient(135deg , #F7F4E9, #FF7A6D, #FF6B9E);
@@ -51,6 +56,10 @@ body.misteranansi{
 
 .navbar.homepage {
     background-image: linear-gradient(to right , #F7F4E9, #FF7A6D, #FF6B9E);
+}
+
+.navbar.tickets {
+    background-image: linear-gradient(to right , #8D62F2, #5D90B5, #E0F564);
 }
 /* yummy-nav colors */
 .navbar.yummy {
@@ -781,3 +790,30 @@ a:hover {
 }
 
 /* Stories */
+
+
+
+
+/* Ticket */
+
+.ticket-interface{
+    background: rgba(255, 255, 255, 0.7);
+    border-radius:  50px;
+    border: #000 solid 1px;
+    height:800px;
+}
+
+.cart-interface{
+    background: rgba(255, 255, 255, 0.7);
+    border-radius:  50px;
+    border: #000 solid 1px;
+    min-height:200px;
+}
+
+#ticket-display li{
+    list-style-type: none;
+}
+
+#cart-display li{
+    list-style-type: none;
+}

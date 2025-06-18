@@ -19,7 +19,9 @@ require(__DIR__ . "/../partials/slideshow.php");
 
 <header class="display-3 text-center py-3"><?php echo $page->header; ?></header>
 
-<p class="h3 text-center  w-75 align-self-center"><?php echo $page->text; ?></p>
+
+<?php echo $page->text; ?>
+
 
 <?php
 require(__DIR__ . "/../partials/jazz-partials/jazz_schedule.php");

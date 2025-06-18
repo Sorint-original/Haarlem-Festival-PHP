@@ -37,6 +37,15 @@ class EventModel extends BaseModel
         return $events;
     }
 
+    public function GetEventById($event_id){
+         $filter = ['_id' => $event_id];
+        $event = $this->executeQuery($this->collectionName, $filter);
+        if ($event == null){
+            return null;
+        }
+        return $event[0];
+    }
+
     private function GetDayFilter($day){
         $startOfDay = new MongoDB\BSON\UTCDateTime(strtotime($this->dates[$day]) * 1000);
         $endOfDay = new MongoDB\BSON\UTCDateTime(strtotime($this->dates[$day] . ' +1 day') * 1000);

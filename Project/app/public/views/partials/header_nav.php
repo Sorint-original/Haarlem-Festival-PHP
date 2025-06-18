@@ -29,8 +29,8 @@
                 <img src="/assets/favicons/stories.png" class="image-fluid align-self-center favicon"><div class="align-self-center">Stories</div>
             </a>
         </li>
-        <li class = "nav-item <?php if($page_type =="ticket") echo "current"; ?> p-2 h-100">
-            <a class="d-flex  nav-link NavHeader p-0 h-100" href="#">
+        <li class = "nav-item <?php if($page_type =="tickets") echo "current"; ?> p-2 h-100">
+            <a class="d-flex  nav-link NavHeader p-0 h-100" href="/tickets">
                 <img src="/assets/favicons/ticket.png" class="image-fluid align-self-center favicon"><div class="align-self-center">Tickets</div>
             </a>
         </li>
@@ -38,7 +38,7 @@
         <!-- if is logged in show profile -->
             <li class = "nav-item  p-2 h-100">
                 <a class="d-flex  nav-link NavHeader p-0 h-100" href="#">
-                    <img src="/assets/favicons/login.png" class="image-fluid align-self-center favicon"><div class="align-self-center">Profile</div>
+                    <img src="/assets/favicons/login.png" class="image-fluid align-self-center favicon"><div class="align-self-center">Logout</div>
                 </a>
             </li>
         <?php else: ?>
