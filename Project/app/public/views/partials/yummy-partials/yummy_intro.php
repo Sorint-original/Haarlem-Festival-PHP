@@ -9,5 +9,3 @@
 <div class="note-box text-center">
     <strong>Note:</strong> <?php echo htmlspecialchars($page->note ?? ''); ?>
 </div> 
-
-sfdgd
