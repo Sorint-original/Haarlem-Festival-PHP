@@ -34,4 +34,4 @@ Route::add('/tickets/addInCart', function () {
 Route::add('/tickets/cart', function () {
     $controller = new PurchaseController(); // create a new user controller
     $controller->HandleCart();
-}, 'post');
+}, 'get');

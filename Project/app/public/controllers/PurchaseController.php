@@ -50,6 +50,7 @@ class PurchaseController
         for($i=0; $i<count($cart->CartItems);$i++){
             $cart->CartItems[$i]= $this->listItemModel->getListItemById($cart->CartItems[$i]);
             $cart->CartItems[$i]->ticket = $this->ticketModel->GetShopTicketById($cart->CartItems[$i]->ticket_id);
+            $cart->CartItems[$i]->event = $this->eventModel->GetEventById($cart->CartItems[$i]->ticket->EventId);
         }
         return $cart;
     }
@@ -61,9 +62,9 @@ class PurchaseController
             $cart = $this->cartModel->getCartByUserId($_SESSION['user_id']);
         }
         else{
-            $cart = IntegrateListItemsInCart($cart);
+            $cart = $this->IntegrateListItemsInCart($cart);
         }
-        return json_encode($cart);
+        echo json_encode($cart);
     }
 
 
@@ -76,13 +77,13 @@ class PurchaseController
         $ticket_id = $data['ticket_id'];
         $ticket = $this->ticketModel->GetShopTicketById($ticket_id);
         $cart = $this->cartModel->getCartByUserId($_SESSION['user_id']);
-        $listItem = $this->listItemModel->getListIteminCart($cart[0],$ticket[0]);
+        $listItem = $this->listItemModel->getListIteminCart($cart,$ticket);
         if($listItem == null){
-            $newItemId=$this->listItemModel->addListItem($ticket[0]);
+            $newItemId=$this->listItemModel->addListItem($ticket);
             $this->cartModel->addInCart($newItemId,$_SESSION['user_id']);
-            return json_encode('updated');
+            echo json_encode('updated');
         }
-        return json_encode('unchanged');
+        echo json_encode('unchanged');
 
     }
 }

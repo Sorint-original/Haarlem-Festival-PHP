@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const EventButtons =document.getElementsByClassName('eventbtn');
     const DayButtons =document.getElementsByClassName('daybtn');
     const displayList = document.getElementById('ticket-display');
+    const cartList = document.getElementById('cart-display');
+    const cartTotal = document.getElementById('CartTotal');
 
     const urlParams = new URLSearchParams(window.location.search);
     var currentEvent = Number(urlParams.get('event')) ?? 0;  // Force number conversion
@@ -82,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
             var end= new Date(parseInt(event.endTime.$date.$numberLong));
             switch(currentEvent) {
                 case 0://Jazz
-                    if(typeof event.tickets[0] != 'undefined'){
+                    if(typeof event.tickets[0] != 'undefined'){//My events with no ticket are free entry and you don't need to buy anything
                         displayList.innerHTML += `<li><p class="h3 ">${event.title} 
                         ${start.getUTCHours()}:${String(start.getUTCMinutes()).padStart(2, '0')} - ${end.getUTCHours()}:${String(end.getUTCMinutes()).padStart(2, '0')} 
                         ${event.location} 
@@ -108,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const createListItem = async (ticket_id) => {
-        console.log(ticket_id);
         const response = await fetch("/tickets/addInCart", { // URL remains unchanged
             method: 'POST',
             headers: {
@@ -141,7 +142,38 @@ document.addEventListener('DOMContentLoaded', () => {
         //Update Cart
     }
 
-    
-    getCart();
+    const UpdateCart = async ()=>{
+        cart = await getCart();
+        TotalPrice = 0;
+        cartList.innerHTML = '';
+        //displayCart
+        //each cart Item is a listItem but it also contains, Item.ticket, Item.event
+        cart.CartItems.forEach(Item =>{
+            TotalPrice += Item.ticket.price * Item.amount;
+            if(Item.event){
+                var start = new Date(parseInt(Item.event.startTime.$date.$numberLong));
+                var end= new Date(parseInt(Item.event.endTime.$date.$numberLong));
+                cartList.innerHTML += `<li class="d-flex flex-row justify-content-between py-1"><p class="h3 m-0">${Item.event.title} 
+                    ${start.getUTCHours()}:${String(start.getUTCMinutes()).padStart(2, '0')} - ${end.getUTCHours()}:${String(end.getUTCMinutes()).padStart(2, '0')} 
+                    ${Item.event.location} </p>
+                    <div class="d-flex flex-row  align-items-center"><p class="h3 m-0 pe-1">€${Item.ticket.price * Item.amount}</p>
+                    <button class="btn btn-success bi bi-dash-lg"></button>
+                    <p class="h3 m-0 px-1">${Item.amount}</p>
+                    <button class="btn btn-success bi bi-plus-lg"></button>
+                    <button class ="h4 btn btn-danger p-2 m-0 ms-1">Remove from cart</button></div></li>`;
+            }
+            else{ /// for tickets that are not designeted for specific events like jazz week pass
+                cartList.innerHTML += `<li class="d-flex flex-row justify-content-between py-1"><p class="h3 m-0">${Item.ticket.EventId}</p>
+                    <div class="d-flex flex-row  align-items-center"><p class="h3 m-0 pe-1">€${Item.ticket.price * Item.amount}</p>
+                    <button class="btn btn-success bi bi-dash-lg"></button>
+                    <p class="h3 m-0 px-1">${Item.amount}</p>
+                    <button class="btn btn-success bi bi-plus-lg"></button>
+                    <button class ="h4 btn btn-danger p-2 m-0 ms-1">Remove from cart</button></div></li>`;
+            }
+        })
+        cartTotal.innerHTML = `Total : €${TotalPrice}`;
+    }
+
+    UpdateCart();
     UpdateTicketList();
 });

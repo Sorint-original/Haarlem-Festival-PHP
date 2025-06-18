@@ -30,14 +30,13 @@ class ListItemModel extends BaseModel{
             '_id' => $item_id
         ];
         $listItem = $this->executeQuery($this->collectionName, $filter);
-        return $listItem;
+        return $listItem[0];
     }
 
     public function addListItem($ticket)
     {
         $doc = [
             'ticket_id'  => $ticket->_id,
-            'subtotal' => $ticket->price ,
             'amount' => 1
         ];
 

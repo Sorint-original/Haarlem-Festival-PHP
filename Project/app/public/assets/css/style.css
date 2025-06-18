@@ -779,6 +779,17 @@ a:hover {
     height:800px;
 }
 
+.cart-interface{
+    background: rgba(255, 255, 255, 0.7);
+    border-radius:  50px;
+    border: #000 solid 1px;
+    min-height:200px;
+}
+
 #ticket-display li{
+    list-style-type: none;
+}
+
+#cart-display li{
     list-style-type: none;
 }

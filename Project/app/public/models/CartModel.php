@@ -16,14 +16,13 @@ class CartModel extends BaseModel{
     {
         $filter = ['user_id' => new MongoDB\BSON\ObjectId($user_id)];
         $CartData = $this->executeQuery($this->collectionName, $filter);
-        return $CartData;
+        return $CartData[0];
     }
 
     public function addCart($user_id)
     {
         $doc = [
             'user_id'   =>  new MongoDB\BSON\ObjectId($user_id),
-            'totalSum'  => 0,
             'CartItems' => []
         ];
 
