@@ -37,7 +37,6 @@ class PurchaseController
 
         // Return events as JSON
         echo json_encode($events);
-        exit;
     }
 
     private function IntegrateTicketsinEvents($events){
@@ -46,13 +45,12 @@ class PurchaseController
         }
         return $events;
     }
-    private function IntegrateListItemsInCart($cart){
-        for($i=0; $i<count($cart->CartItems);$i++){
-            $cart->CartItems[$i]= $this->listItemModel->getListItemById($cart->CartItems[$i]);
-            $cart->CartItems[$i]->ticket = $this->ticketModel->GetShopTicketById($cart->CartItems[$i]->ticket_id);
-            $cart->CartItems[$i]->event = $this->eventModel->GetEventById($cart->CartItems[$i]->ticket->EventId);
-        }
-        return $cart;
+
+    private function GetListItem($ListItemId){
+        $item = $this->listItemModel->getListItemById($ListItemId);
+        $item ->ticket = $this->ticketModel->GetShopTicketById($item->ticket_id);
+        $item ->event = $this->eventModel->GetEventById($item->ticket->EventId);
+        return $item;
     }
 
     public function HandleCart(){
@@ -62,7 +60,9 @@ class PurchaseController
             $cart = $this->cartModel->getCartByUserId($_SESSION['user_id']);
         }
         else{
-            $cart = $this->IntegrateListItemsInCart($cart);
+            for($i=0; $i<count($cart->CartItems);$i++){
+                $cart->CartItems[$i]= $this->GetListItem($cart->CartItems[$i]);
+            }
         }
         echo json_encode($cart);
     }
@@ -79,11 +79,35 @@ class PurchaseController
         $cart = $this->cartModel->getCartByUserId($_SESSION['user_id']);
         $listItem = $this->listItemModel->getListIteminCart($cart,$ticket);
         if($listItem == null){
-            $newItemId=$this->listItemModel->addListItem($ticket);
+            $newItemId = $this->listItemModel->addListItem($ticket);
             $this->cartModel->addInCart($newItemId,$_SESSION['user_id']);
-            echo json_encode('updated');
+            $newItem = $this->GetListItem($newItemId);
+            echo json_encode($newItem);
+            exit;
         }
         echo json_encode('unchanged');
 
+    }
+
+    public function RemoveFromCart(){
+        // Read the raw input from the request body
+        $input = file_get_contents('php://input');
+        $data = json_decode($input, true);
+    
+        // Get the filters from the request body
+        $lItem_id = $data['lItem_id'];
+        $this->cartModel->RemoveFromCart($lItem_id,$_SESSION['user_id']);//remove from cart
+        $this->listItemModel->RemoveListItem($lItem_id);
+    }
+
+    public function UpdateAmount(){
+        // Read the raw input from the request body
+        $input = file_get_contents('php://input');
+        $data = json_decode($input, true);
+    
+        // Get the filters from the request body
+        $lItem_id = $data['lItem_id'];
+        $amount = $data['amount'];
+        $this->listItemModel->UpdateListItem($lItem_id,$amount);
     }
 }

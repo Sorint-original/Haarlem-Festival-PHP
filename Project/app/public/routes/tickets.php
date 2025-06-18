@@ -29,9 +29,20 @@ Route::add('/tickets/addInCart', function () {
     $controller = new PurchaseController(); // create a new user controller
     $controller->addTicketInCart();
 }, 'post');
+//route to remove ticket in the cart
+Route::add('/tickets/removeFromCart', function () {
+    $controller = new PurchaseController(); // create a new user controller
+    $controller->RemoveFromCart();
+}, 'delete');
+//route to increase the amount of a list-item in the cart
+Route::add('/tickets/updateAmount', function () {
+    $controller = new PurchaseController(); // create a new user controller
+    $controller->UpdateAmount();
+}, 'patch');
 
 //route to get cart
 Route::add('/tickets/cart', function () {
     $controller = new PurchaseController(); // create a new user controller
     $controller->HandleCart();
 }, 'get');
+
