@@ -66,7 +66,7 @@ class ListItemModel extends BaseModel{
             );
 
             // 3. Execute the deletion
-            $result = $this->executeWrite($bulkWrite, 'ListItems'); // Replace 'ListItems' with your collection name
+            $result = $this->executeWrite($bulkWrite, $this->collectionName); // Replace 'ListItems' with your collection name
 
             // 4. Return true if deleted, false if not found
             return $result && $result->getDeletedCount() > 0;
@@ -93,7 +93,7 @@ class ListItemModel extends BaseModel{
             );
 
             // 3. Execute the update using BaseModel's executeWrite
-            $result = $this->executeWrite($bulkWrite, 'ListItems'); // Replace 'ListItems' with your collection name
+            $result = $this->executeWrite($bulkWrite, $this->collectionName); // Replace 'ListItems' with your collection name
 
             // 4. Return true if modified, false if not found
             return $result && $result->getModifiedCount() > 0;
