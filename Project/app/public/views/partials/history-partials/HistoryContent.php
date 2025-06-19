@@ -4,8 +4,6 @@ $locationModel = new LocationModel();
 $locations = $locationModel->getAllLocations();
 ?>
 
-<button class="align-self-center h3 history-btn p-2"><?php echo $page->Buttons->scroll; ?></button>
-
 <section class="history-intro py-5 history-background">
   <div class="container">
     <div class="row text-center">
@@ -131,5 +129,7 @@ $locations = $locationModel->getAllLocations();
 
 <div class="d-flex justify-content-around">
  <a href="/history/schedule" class="btn btn-outline-dark history-btn p-2 h3">View Schedule</a>
-  <button class="h3 history-btn p-2"><?php echo $page->Buttons->buy; ?></button>
+  <a href="/tickets" class="btn btn-outline-dark history-btn p-2 h3">
+  <?php echo $page->Buttons->buy; ?>
+</a>
 </div>
