@@ -46,3 +46,12 @@ Route::add('/tickets/cart', function () {
     $controller->HandleCart();
 }, 'get');
 
+//route to increase the amount of a list-item in the cart
+Route::add('/tickets/emptyCart', function () {
+    $controller = new PurchaseController(); // create a new user controller
+    $controller->EmptyCart();
+}, 'patch');
+
+
+// PAYMENT PAGE
+

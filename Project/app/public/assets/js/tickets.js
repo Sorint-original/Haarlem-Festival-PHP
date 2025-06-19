@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const displayList = document.getElementById('ticket-display');
     const cartList = document.getElementById('cart-display');
     const cartTotal = document.getElementById('CartTotal');
+    const EmptyButton = document.getElementById('EmptyCart');
 
     const urlParams = new URLSearchParams(window.location.search);
     var currentEvent = Number(urlParams.get('event')) ?? 0;  // Force number conversion
@@ -14,6 +15,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     EventButtons[currentEvent].classList.add("active");
     DayButtons[currentDay].classList.add("active");
+
+    EmptyButton.addEventListener('click', () => {
+            emptyCart();
+            cart.CartItems = [];
+            cartList.innerHTML = '';
+            UpdateTotalSum();
+        });
 
 
     Array.from(EventButtons).forEach((button, index) => {
@@ -123,6 +131,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         return  response.json(); 
     }
 
+    const emptyCart = async()=>{
+        const response = await fetch("/tickets/emptyCart", { // URL remains unchanged
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+        if (!response.ok) {
+            throw new Error('Failed to fetch events');
+        }
+    }
+
     const createListItem = async (ticket_id) => {
         const response = await fetch("/tickets/addInCart", { // URL remains unchanged
             method: 'POST',
@@ -193,7 +213,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     ${start.getUTCHours()}:${String(start.getUTCMinutes()).padStart(2, '0')} - ${end.getUTCHours()}:${String(end.getUTCMinutes()).padStart(2, '0')} 
                     ${Item.event.location} </p>
                     <div class="d-flex flex-row  align-items-center"><p class="h3 m-0 pe-1 item-price">€${Item.ticket.price * Item.amount}</p>
-                    <button class="btn btn-success bi bi-dash-lg" data-action="decrease"></button>
+                    <button class="btn btn-danger bi bi-dash-lg" data-action="decrease"></button>
                     <p class="h3 m-0 px-1 item-amount">${Item.amount}</p>
                     <button class="btn btn-success bi bi-plus-lg" data-action="increase"></button>
                     <button class ="h4 btn btn-danger p-2 m-0 ms-1" data-action="remove">Remove from cart</button></div></li>`;
@@ -201,7 +221,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             else{ /// for tickets that are not designeted for specific events like jazz week pass
                 cartList.innerHTML += `<li class="d-flex flex-row justify-content-between py-1" data-item-id="${Item._id.$oid}"><p class="h3 m-0">${Item.ticket.EventId}</p>
                     <div class="d-flex flex-row  align-items-center"><p class="h3 m-0 pe-1 item-price">€${Item.ticket.price * Item.amount}</p>
-                    <button class="btn btn-success bi bi-dash-lg" data-action="decrease"></button>
+                    <button class="btn btn-danger bi bi-dash-lg" data-action="decrease"></button>
                     <p class="h3 m-0 px-1 item-amount">${Item.amount}</p>
                     <button class="btn btn-success bi bi-plus-lg" data-action="increase"></button>
                     <button class ="h4 btn btn-danger p-2 m-0 ms-1" data-action="remove">Remove from cart</button></div></li>`;

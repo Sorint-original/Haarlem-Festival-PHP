@@ -110,4 +110,12 @@ class PurchaseController
         $amount = $data['amount'];
         $this->listItemModel->UpdateListItem($lItem_id,$amount);
     }
+
+    public function EmptyCart(){
+        $cart = $this->cartModel->getCartByUserId($_SESSION['user_id']);
+        for($i=0; $i<count($cart->CartItems);$i++){
+            $this->listItemModel->RemoveListItem($cart->CartItems[$i]);
+        }
+        $this->cartModel->EmptyCart($_SESSION['user_id']);
+}
 }

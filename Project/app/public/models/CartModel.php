@@ -64,7 +64,7 @@ class CartModel extends BaseModel{
             );
 
             // 3. Execute the update using BaseModel's executeWrite
-            $result = $this->executeWrite($bulkWrite, 'Carts'); // Replace 'Carts' with your collection name
+            $result = $this->executeWrite($bulkWrite, $this->collectionName); // Replace 'Carts' with your collection name
 
             // 4. Return true if modified, false if not found/no change
             return $result && $result->getModifiedCount() > 0;
@@ -75,5 +75,31 @@ class CartModel extends BaseModel{
             return false;
         }
     }
+
+    public function EmptyCart($userId) {
+    try {
+        // 1. Convert user ID to MongoDB ObjectId
+        $userObjectId = new MongoDB\BSON\ObjectId($userId);
+
+        // 2. Create bulk write operation to empty the array
+        $bulkWrite = new MongoDB\Driver\BulkWrite();
+        $bulkWrite->update(
+            ['user_id' => $userObjectId], // Filter: find cart by user
+            ['$set' => ['CartItems' => []]], // Set CartItems to empty array
+            ['multi' => false] // Only update one document
+        );
+
+        // 3. Execute the update using BaseModel's executeWrite
+        $result = $this->executeWrite($bulkWrite, $this->collectionName);
+
+        // 4. Return true if modified, false if not found/no change
+        return $result && $result->getModifiedCount() > 0;
+
+    } catch (Exception $e) {
+        // Log error and return false
+        error_log("Error emptying cart: " . $e->getMessage());
+        return false;
+    }
+}
     
 }
