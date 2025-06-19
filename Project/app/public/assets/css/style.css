@@ -17,8 +17,19 @@ body {
 body.homepage{
     background-image: linear-gradient(135deg , #F7F4E9, #FF7A6D, #FF6B9E);
 }
+
 body.tickets{
     background-image: linear-gradient(135deg , #8D62F2, #5D90B5, #E0F564);
+}
+
+/* history-page colors */
+body.history{
+    background-image: linear-gradient(135deg , #F7F4E9, #FF7A6D, #FF6B9E);
+}
+.first-map-image {
+    width: 80%; /* Adjust the size of the first map image */
+    max-width: 400px; /* Set a maximum width */
+    height: auto; /* Maintain aspect ratio */
 }
 /* yummy-page colors */
 body.yummy {
@@ -59,6 +70,9 @@ body.misteranansi{
 }
 .navbar.jazz{
     background-image: linear-gradient(to right , #13BEF2, #937AFF , #EB15AE);
+}
+.navbar.history{
+    background-image: linear-gradient(to right , #F7F4E9, #FF7A6D, #FF6B9E);
 }
 .navbar.stories{
     background-image: linear-gradient(to right , #C08402,#C08402, #610627, #A41C42, #CD2B52, #E7325C);
@@ -489,7 +503,6 @@ body.misteranansi{
 
 /* Footer Links */
 .myfooter {
-    margin-top: 50px;
     width: 100%;
     margin-left: 0;
     padding-left: 0;
@@ -714,7 +727,18 @@ a:hover {
     border-radius: 4rem;
     transition: opacity 200ms linear;
 }
+/* History_Main_page */
+.history-btn{
+    background-color:transparent;
+    border: 5px solid black;
+    width: fit-content;
+}
 
+.history-btn:hover{
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+
+}
 /* Yummy_Main_page */
 
 /* Yummy Intro Section */

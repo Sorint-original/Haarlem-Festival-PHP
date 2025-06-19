@@ -26,6 +26,7 @@ require_once(__DIR__ . "/routes/index.php");
 require_once(__DIR__ . "/routes/login.php");
 require_once(__DIR__ . "/routes/jazz.php");
 require_once(__DIR__ . "/routes/yummy.php");
+require_once(__DIR__ . "/routes/history.php");
 require_once(__DIR__ . "/routes/museum.php");
 require_once(__DIR__ . "/routes/stories.php");
 require_once(__DIR__ . "/routes/misteranansi.php");
