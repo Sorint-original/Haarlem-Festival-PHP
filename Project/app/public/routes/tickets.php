@@ -54,4 +54,16 @@ Route::add('/tickets/emptyCart', function () {
 
 
 // PAYMENT PAGE
+Route::add('/purchase', function () {
+    //checks if logged in
+    if (!isset($_SESSION['user_id'])) {
+        header('Location: /login'); // Redirect to login page
+        exit();
+    }
+    //Getting the users cart
+    $controller = new PurchaseController();
+    $cart = $controller->HandleCart();
+    //Getting started with the tickets page
+    require(__DIR__ . "/../views/pages/purchase.php");
+});
 
