@@ -112,15 +112,21 @@ class PurchaseController
         $this->listItemModel->RemoveListItem($lItem_id);
     }
 
-    public function UpdateAmount(){
+    public function UpdateAmount($increment){
         // Read the raw input from the request body
         $input = file_get_contents('php://input');
         $data = json_decode($input, true);
     
         // Get the filters from the request body
         $lItem_id = $data['lItem_id'];
-        $amount = $data['amount'];
-        $this->listItemModel->UpdateListItem($lItem_id,$amount);
+        $item = $this->GetListItem($lItem_id);
+        if($item->amount +$increment <  $item->event->availableSeats){
+            $this->listItemModel->UpdateListItem($lItem_id,$item->amount +$increment);
+            echo true;
+        }
+        else{
+            echo false;
+        }
     }
 
     public function EmptyCart(){
@@ -138,7 +144,11 @@ class PurchaseController
         for($i=0; $i<count($cart->CartItems);$i++){
             for($j=0; $j<$cart->CartItems[$i]->amount;$j++){
                 $newClientTicket=$this->ticketModel->GenerateNewClientTicket($cart->CartItems[$i]->ticket_id);
-                $newClientTickets[] = $newClientTicket;
+                $newClientTickets[] = $newClientTicket;//create Client Ticket
+            }
+            //decrease seats left
+            if($cart->CartItems[$i]->ticket->seatingNumber >0){
+                $this->eventModel->DecreaseSeats($cart->CartItems[$i]->ticket->EventId,$cart->CartItems[$i]->ticket->seatingNumber*$cart->CartItems[$i]->amount);
             }
         }
         //create order
