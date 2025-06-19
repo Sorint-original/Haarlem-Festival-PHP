@@ -27,5 +27,14 @@ class PageModel extends BaseModel{
         // Use the update method from BaseModel
         return $this->update($this->collectionName, $filter, $data);
     }
+    public function getPageByIdentifier($identifier)
+{
+    $filter = ['pageIdentifier' => $identifier];
+    $query = new MongoDB\Driver\Query($filter);
+    $cursor = $this->manager->executeQuery($this->databaseName . '.Pages', $query);
+    $pages = $cursor->toArray();
+    return count($pages) > 0 ? $pages[0] : null;
+}
+
 }
 

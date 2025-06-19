@@ -70,6 +70,14 @@ class EventModel extends BaseModel
         $Shows = $this->executeQuery($this->collectionName,$filter,$options);
         return $Shows;
     }
+    //History SubCollection
+    public function getAllHistoryEvents()
+    {
+        $filter = ['type' => 'history'];
+        $query = new MongoDB\Driver\Query($filter);
+        $cursor = $this->manager->executeQuery($this->databaseName . '.Events', $query);
+        return $cursor->toArray();
+    }
 
     public function DecreaseSeats($event_id, $decreasedSeats) {
         try {
@@ -88,6 +96,15 @@ class EventModel extends BaseModel
             error_log("Error decreasing seats: " . $e->getMessage());
             return false;
         }
+    }
+
+
+    public function getHistoryEventsByDate($date)
+    {
+        $filter = ['type' => 'history', 'date' => $date];
+        $query = new MongoDB\Driver\Query($filter);
+        $cursor = $this->manager->executeQuery($this->databaseName . '.Events', $query);
+        return $cursor->toArray();
     }
 
 }
