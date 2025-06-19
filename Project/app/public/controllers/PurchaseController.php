@@ -3,6 +3,7 @@
 require_once(__DIR__ . "/../models/EventModel.php");
 require_once(__DIR__ . "/../models/TicketModel.php");
 require_once(__DIR__ . "/../models/CartModel.php");
+require_once(__DIR__ . "/../models/OrderModel.php");
 require_once(__DIR__ . "/../models/ListItemModel.php");
 
 
@@ -11,6 +12,7 @@ class PurchaseController
     private $eventModel;
     private $ticketModel;
     private $cartModel;
+    private $orderModel;
     private $listItemModel;
 
     public function __construct()
@@ -18,6 +20,7 @@ class PurchaseController
         $this->eventModel = new EventModel();
         $this->ticketModel = new TicketModel();
         $this->cartModel = new CartModel();
+        $this->orderModel = new OrderModel();
         $this->listItemModel = new ListItemModel();
 
     }
@@ -126,5 +129,26 @@ class PurchaseController
             $this->listItemModel->RemoveListItem($cart->CartItems[$i]);
         }
         $this->cartModel->EmptyCart($_SESSION['user_id']);
-}
+    }
+
+    public function CompleteCheckout(){
+        $cart = $this->GetCart();
+        //createClientTickets
+        $newClientTickets = [];
+        for($i=0; $i<count($cart->CartItems);$i++){
+            for($j=0; $j<$cart->CartItems[$i]->amount;$j++){
+                $newClientTicket=$this->ticketModel->GenerateNewClientTicket($cart->CartItems[$i]->ticket_id);
+                $newClientTickets[] = $newClientTicket;
+            }
+        }
+        //create order
+        $this->orderModel->TransformIntoOrder($cart,$_SESSION['user_id'],$newClientTickets);
+        //send email based on order etc.
+
+        //emptycart
+        $this->cartModel->EmptyCart($_SESSION['user_id']);
+
+    }
+
+
 }

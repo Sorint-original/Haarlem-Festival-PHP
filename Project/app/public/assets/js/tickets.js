@@ -230,7 +230,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         if(Item.event){
                 var start = new Date(parseInt(Item.event.startTime.$date.$numberLong));
                 var end= new Date(parseInt(Item.event.endTime.$date.$numberLong));
+                const startDate = `${String(start.getUTCMonth() + 1).padStart(2, '0')}-${String(start.getUTCDate()).padStart(2, '0')}`;
                 cartList.innerHTML += `<li class="d-flex flex-row justify-content-between py-1" data-item-id="${Item._id.$oid}"><p class="h3 m-0" >${Item.event.title} 
+                    ${startDate}
                     ${start.getUTCHours()}:${String(start.getUTCMinutes()).padStart(2, '0')} - ${end.getUTCHours()}:${String(end.getUTCMinutes()).padStart(2, '0')} 
                     ${Item.event.location} </p>
                     <div class="d-flex flex-row  align-items-center"><p class="h3 m-0 pe-1 item-price">€${Item.ticket.price * Item.amount}</p>

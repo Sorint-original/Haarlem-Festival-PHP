@@ -67,3 +67,11 @@ Route::add('/purchase', function () {
     require(__DIR__ . "/../views/pages/purchase.php");
 });
 
+//route to increase the amount of a list-item in the cart
+Route::add('/checkout-success', function () {
+    $controller = new PurchaseController(); // create a new user controller
+    $controller->CompleteCheckout();
+
+    header("Location: /tickets" );
+});
+

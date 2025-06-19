@@ -36,4 +36,26 @@ class TicketModel extends BaseModel
         return $ticket[0];
     }
 
+    public function GenerateNewClientTicket($STicketId){
+        try {      
+
+            // 3. Create the Cticket document
+            $CTicketDocument = [
+                'shopTicketId' => $STicketId,
+                'status' => "Available",
+                'createdAt' => new MongoDB\BSON\UTCDateTime() // Add creation timestamp
+            ];
+            
+            // 4. Insert into orders collection
+            $bulkWrite = new MongoDB\Driver\BulkWrite();
+            $insertedId = $bulkWrite->insert($CTicketDocument);
+            $result = $this->executeWrite($bulkWrite, 'ClientTickets');
+            return (string)$insertedId;// return id of new client ticket
+        }
+        catch (Exception $e) {
+            error_log("Error transforming cart to order: " . $e->getMessage());
+            return false;
+        }
+    }
+
 }
