@@ -103,13 +103,34 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }
                     break;
                 case 1://story
-                    
+                     if(typeof event.tickets[0] != 'undefined'){//My events with no ticket are free entry and you don't need to buy anything
+                        displayList.innerHTML += `<li><p class="h3 ">${event.title} 
+                        ${start.getUTCHours()}:${String(start.getUTCMinutes()).padStart(2, '0')} - ${end.getUTCHours()}:${String(end.getUTCMinutes()).padStart(2, '0')} 
+                        ${event.location} 
+                        (${event.availableSeats} seats left): 
+                        €${event.tickets[0].price}
+                        <button class ="h4 jazz-btn  p-2 ms-5" onclick="addtoCart('${event.tickets[0]._id.$oid}')">Buy Tickets</button></p></li>`;
+                    }
                     break;
                 case 2://history
-                    
+                     if(typeof event.tickets[0] != 'undefined'){//My events with no ticket are free entry and you don't need to buy anything
+                        displayList.innerHTML += `<li><p class="h3 ">${event.title} 
+                        ${start.getUTCHours()}:${String(start.getUTCMinutes()).padStart(2, '0')} - ${end.getUTCHours()}:${String(end.getUTCMinutes()).padStart(2, '0')} 
+                        ${event.location} 
+                        (${event.availableSeats} seats left): 
+                        €${event.tickets[0].price}
+                        <button class ="h4 jazz-btn  p-2 ms-5" onclick="addtoCart('${event.tickets[0]._id.$oid}')">Buy Tickets</button></p></li>`;
+                    }
                     break;
                 case 3://yummy
-                    
+                     if(typeof event.tickets[0] != 'undefined'){//My events with no ticket are free entry and you don't need to buy anything
+                        displayList.innerHTML += `<li><p class="h3 ">${event.title} 
+                        ${start.getUTCHours()}:${String(start.getUTCMinutes()).padStart(2, '0')} - ${end.getUTCHours()}:${String(end.getUTCMinutes()).padStart(2, '0')} 
+                        ${event.location} 
+                        (${event.availableSeats} seats left): 
+                        €${event.tickets[0].price}
+                        <button class ="h4 jazz-btn  p-2 ms-5" onclick="addtoCart('${event.tickets[0]._id.$oid}')">Buy Tickets</button></p></li>`;
+                    }
                     break;
                 
             }

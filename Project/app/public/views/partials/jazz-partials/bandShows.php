@@ -12,7 +12,7 @@
                   ?>
             </p>
             <?php 
-                if(isset($show->tickets[0])){echo '<button class ="h4 jazz-btn  p-2" href="/tickets">Buy Tickets</button>';}
+                if(isset($show->tickets[0])){echo '<a class="text-dark" href="/tickets"><button class ="h4 jazz-btn  p-2" href="/tickets">Buy Tickets</button></a>';}
             ?>
             
         </div>

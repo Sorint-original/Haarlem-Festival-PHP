@@ -7,7 +7,7 @@
             <p class ="h1">All-Access pass for a day - €<?php echo $JazzPasses['daypass']->price; ?></p>
             <p class ="h1">All-Access pass for 4 days - €<?php echo $JazzPasses['weekpass']->price; ?></p>
         </div>
-        <button class ="h1 jazz-btn ms-5 p-4" href="/tickets">Buy Tickets</button>
+        <a href="/tickets" class="text-dark"><button class ="h1 jazz-btn ms-5 p-4">Buy Tickets</button></a>
     </div>
     <menu id= "jazz-day" class = " w-100 p-0 m-0 d-flex flex-row justify-content-between align-items-center"> 
         <button type="button"  id="PrevDay"><img src = "/assets/images/jazz/Prev.png"></button>
