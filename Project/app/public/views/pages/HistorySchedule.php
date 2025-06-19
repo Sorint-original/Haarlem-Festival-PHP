@@ -227,7 +227,7 @@ function renderSchedule() {
       <td>${slot.language}</td>
       <td>${slot.seatsLeft}</td>
       <td>€${slot.price.toFixed(2)}</td>
-      <td><button class="btn btn-sm btn-primary">Book now</button></td>
+      <a href="/tickets" class="btn btn-sm btn-primary">Book now</a>
     `;
     rowsContainer.appendChild(tr);
   });

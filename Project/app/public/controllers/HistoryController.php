@@ -42,6 +42,12 @@ class HistoryController
     {
         return $this->pageModel->getPageByIdentifier("history-tour-info");
     }
+    public function tickets()
+    {
+        $model = new EventModel();
+        $historyEvents = $model->getAllHistoryEvents();
+        include(__DIR__ . '/../views/history/tickets.php');
+    }
 
 }
 

@@ -22,6 +22,9 @@ require(__DIR__ . "/../partials/header.php");
 <?php if ($location): ?>
 <section class="history-intro py-5 history-background">
   <div class="container text-center">
+    <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap">
+      <a href="/history" class="btn btn-outline-dark go-back-btn">← Back to History</a>
+    </div>
     <h2 class="text-black"><?php echo htmlspecialchars($location->title); ?></h2>
     <p class="text-black lead"><?php echo htmlspecialchars($location->description); ?></p>
   </div>
@@ -41,32 +44,50 @@ require(__DIR__ . "/../partials/header.php");
     </div>
 
     <div class="col-md-6">
-      <?php if ($location->slug === 'st-bavo'): ?>
-        <img src="/assets/images/history/Saint%20Bravo%201.jpg" class="img-sixty-right mb-4" alt="St Bavo 1">
-        <img src="/assets/images/history/Saint%20Bravo%202.jpg" class="img-sixty-right mb-4" alt="St Bavo 2">
-        <img src="/assets/images/history/Saint%20Bravo%203.jpg" class="img-sixty-right mb-4" alt="St Bavo 3">
-        <img src="/assets/images/history/Saint%20Bravo%204.png" class="img-sixty-right mb-4" alt="St Bavo 4">
-      <?php elseif ($location->slug === 'jopenkerk'): ?>
-        <img src="/assets/images/jopenkerk_1.jpg" class="img-sixty-right mb-4" alt="Jopenkerk 1">
-        <img src="/assets/images/jopenkerk_2.jpg" class="img-sixty-right mb-4" alt="Jopenkerk 2">
-      <?php elseif ($location->slug === 'molen-adriaan'): ?>
-        <img src="/assets/images/molen_adriaan_1.jpg" class="img-sixty-right mb-4" alt="Molen Adriaan 1">
-        <img src="/assets/images/molen_adriaan_2.jpg" class="img-sixty-right mb-4" alt="Molen Adriaan 2">
-        <?php elseif ($location->slug === 'grote-markt'): ?>
-        <img src="/assets/images/history/grote_markt_1.jpg" class="img-sixty-right mb-4" alt="Grote Markt">
-      <?php elseif ($location->slug === 'de-hallen'): ?>
-        <img src="/assets/images/history/de_hallen_1.jpg" class="img-sixty-right mb-4" alt="De Hallen">
-      <?php elseif ($location->slug === 'proveniershof'): ?>
-        <img src="/assets/images/history/proveniershof_1.jpg" class="img-sixty-right mb-4" alt="Proveniershof">
-      <?php elseif ($location->slug === 'waalse-kerk'): ?>
-        <img src="/assets/images/history/waalse_kerk_1.jpg" class="img-sixty-right mb-4" alt="Waalse Kerk Haarlem">
-      <?php elseif ($location->slug === 'amsterdamse-poort'): ?>
-        <img src="/assets/images/history/amsterdamse_poort_1.jpg" class="img-sixty-right mb-4" alt="Amsterdamse Poort">
-      <?php elseif ($location->slug === 'hof-van-bakenes'): ?>
-        <img src="/assets/images/history/hof_van_bakenes_1.jpg" class="img-sixty-right mb-4" alt="Hof van Bakenes">
-      <?php else: ?>
-        <p><em>No images available for this location.</em></p>
-      <?php endif; ?>
+  <?php if ($location->slug === 'st-bavo'): ?>
+    <img src="/assets/images/history/Saint Bravo 1.jpg" class="img-sixty-right mb-4" alt="St Bavo 1">
+    <img src="/assets/images/history/Saint Bravo 2.jpg" class="img-sixty-right mb-4" alt="St Bavo 2">
+    <img src="/assets/images/history/Saint Bravo 3.jpg" class="img-sixty-right mb-4" alt="St Bavo 3">
+    <img src="/assets/images/history/Saint Bravo 4.png" class="img-sixty-right mb-4" alt="St Bavo 4">
+
+  <?php elseif ($location->slug === 'jopenkerk'): ?>
+    <img src="/assets/images/history/Jopenkerk 1.jpg" class="img-sixty-right mb-4" alt="Jopenkerk 1">
+    <img src="/assets/images/history/Jopenkerk 2.jpg" class="img-sixty-right mb-4" alt="Jopenkerk 2">
+
+  <?php elseif ($location->slug === 'molen-adriaan'): ?>
+    <img src="/assets/images/history/Molen de Adriaan 1.jpg" class="img-sixty-right mb-4" alt="Molen de Adriaan 1">
+    <img src="/assets/images/history/Molen de Adriaan 2.jpg" class="img-sixty-right mb-4" alt="Molen de Adriaan 2">
+
+  <?php elseif ($location->slug === 'grote-markt'): ?>
+    <img src="/assets/images/history/Grote Markt 1.jpg" class="img-sixty-right mb-4" alt="Grote Markt 1">
+    <img src="/assets/images/history/Grote Markt 2.jpg" class="img-sixty-right mb-4" alt="Grote Markt 2">
+    <img src="/assets/images/history/Grote Markt 3.jpg" class="img-sixty-right mb-4" alt="Grote Markt 3">
+
+  <?php elseif ($location->slug === 'de-hallen'): ?>
+    <img src="/assets/images/history/De Hallen 1.jpg" class="img-sixty-right mb-4" alt="De Hallen 1">
+    <img src="/assets/images/history/De Hallen 2.jpg" class="img-sixty-right mb-4" alt="De Hallen 2">
+
+  <?php elseif ($location->slug === 'proveniershof'): ?>
+    <img src="/assets/images/history/Proveniershof 1.jpg" class="img-sixty-right mb-4" alt="Proveniershof 1">
+    <img src="/assets/images/history/Proveniershof 2.jpg" class="img-sixty-right mb-4" alt="Proveniershof 2">
+    <img src="/assets/images/history/Proveniershof 3.jpg" class="img-sixty-right mb-4" alt="Proveniershof 3">
+
+  <?php elseif ($location->slug === 'waalse-kerk'): ?>
+    <img src="/assets/images/history/Waalse kerk 1.jpg" class="img-sixty-right mb-4" alt="Waalse Kerk 1">
+    <img src="/assets/images/history/Waalse kerk 2.jpg" class="img-sixty-right mb-4" alt="Waalse Kerk 2">
+
+  <?php elseif ($location->slug === 'amsterdamse-poort'): ?>
+    <img src="/assets/images/history/Amsterdamse Poort 1.jpg" class="img-sixty-right mb-4" alt="Amsterdamse Poort">
+
+  <?php elseif ($location->slug === 'hof-van-bakenes'): ?>
+    <img src="/assets/images/history/Hof van Bakens 1.jpg" class="img-sixty-right mb-4" alt="Hof van Bakenes 1">
+    <img src="/assets/images/history/Hof van Bakens 2.jpg" class="img-sixty-right mb-4" alt="Hof van Bakenes 2">
+
+  <?php else: ?>
+    <p><em>No images available for this location.</em></p>
+  <?php endif; ?>
+</div>
+
     </div>
   </div>
 </div>
