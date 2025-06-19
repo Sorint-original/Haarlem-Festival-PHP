@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             var end= new Date(parseInt(event.endTime.$date.$numberLong));
             switch(currentEvent) {
                 case 0://Jazz
-                    if(typeof event.tickets[0] != 'undefined'){//My events with no ticket are free entry and you don't need to buy anything
+                    if(typeof event.tickets[0] != 'undefined' && event.availableSeats > 0){//My events with no ticket are free entry and you don't need to buy anything
                         displayList.innerHTML += `<li><p class="h3 ">${event.title} 
                         ${start.getUTCHours()}:${String(start.getUTCMinutes()).padStart(2, '0')} - ${end.getUTCHours()}:${String(end.getUTCMinutes()).padStart(2, '0')} 
                         ${event.location} 
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }
                     break;
                 case 1://story
-                     if(typeof event.tickets[0] != 'undefined'){//My events with no ticket are free entry and you don't need to buy anything
+                     if(typeof event.tickets[0] != 'undefined' && event.availableSeats > 0){//My events with no ticket are free entry and you don't need to buy anything
                         displayList.innerHTML += `<li><p class="h3 ">${event.title} 
                         ${start.getUTCHours()}:${String(start.getUTCMinutes()).padStart(2, '0')} - ${end.getUTCHours()}:${String(end.getUTCMinutes()).padStart(2, '0')} 
                         ${event.location} 
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }
                     break;
                 case 2://history
-                     if(typeof event.tickets[0] != 'undefined'){//My events with no ticket are free entry and you don't need to buy anything
+                     if(typeof event.tickets[0] != 'undefined' && event.availableSeats > 0){//My events with no ticket are free entry and you don't need to buy anything
                         displayList.innerHTML += `<li><p class="h3 ">${event.title} 
                         ${start.getUTCHours()}:${String(start.getUTCMinutes()).padStart(2, '0')} - ${end.getUTCHours()}:${String(end.getUTCMinutes()).padStart(2, '0')} 
                         ${event.location} 
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }
                     break;
                 case 3://yummy
-                     if(typeof event.tickets[0] != 'undefined'){//My events with no ticket are free entry and you don't need to buy anything
+                     if(typeof event.tickets[0] != 'undefined' && event.availableSeats > 0){//My events with no ticket are free entry and you don't need to buy anything
                         displayList.innerHTML += `<li><p class="h3 ">${event.title} 
                         ${start.getUTCHours()}:${String(start.getUTCMinutes()).padStart(2, '0')} - ${end.getUTCHours()}:${String(end.getUTCMinutes()).padStart(2, '0')} 
                         ${event.location} 
@@ -191,13 +191,28 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
 
-    const UpdateListItem = async (lItem_id,amount) => {
-        const response = await fetch("/tickets/updateAmount", { // URL remains unchanged
+    const IncreaseListItem = async (lItem_id,amount) => {
+        const response = await fetch("/tickets/IncreaseAmount", { // URL remains unchanged
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ lItem_id, amount })// Send the day and type in the request body
+        });
+        if (!response.ok) {
+            throw new Error('Failed to fetch events');
+        }
+
+        return response.json(); //falls or true
+    };
+
+    const DecreaseListItem = async (lItem_id) => {
+        const response = await fetch("/tickets/DecreaseAmount", { // URL remains unchanged
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ lItem_id })// Send the day and type in the request body
         });
         if (!response.ok) {
             throw new Error('Failed to fetch events');
@@ -230,7 +245,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         if(Item.event){
                 var start = new Date(parseInt(Item.event.startTime.$date.$numberLong));
                 var end= new Date(parseInt(Item.event.endTime.$date.$numberLong));
+                const startDate = `${String(start.getUTCMonth() + 1).padStart(2, '0')}-${String(start.getUTCDate()).padStart(2, '0')}`;
                 cartList.innerHTML += `<li class="d-flex flex-row justify-content-between py-1" data-item-id="${Item._id.$oid}"><p class="h3 m-0" >${Item.event.title} 
+                    ${startDate}
                     ${start.getUTCHours()}:${String(start.getUTCMinutes()).padStart(2, '0')} - ${end.getUTCHours()}:${String(end.getUTCMinutes()).padStart(2, '0')} 
                     ${Item.event.location} </p>
                     <div class="d-flex flex-row  align-items-center"><p class="h3 m-0 pe-1 item-price">€${Item.ticket.price * Item.amount}</p>
@@ -277,12 +294,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log(cart.CartItems);
         } else {
             if(action === 'increase'){
-                cart.CartItems[index].amount +=1;
+                if(await IncreaseListItem(itemId)){
+                    cart.CartItems[index].amount +=1;
+                }
             }
             else{
+                await DecreaseListItem(itemId)
                 cart.CartItems[index].amount -=1;
             }
-            await UpdateListItem(itemId,cart.CartItems[index].amount);
             // Update the amount display
             const amountElement = listItem.querySelector('.item-amount');
             amountElement.textContent = cart.CartItems[index].amount;

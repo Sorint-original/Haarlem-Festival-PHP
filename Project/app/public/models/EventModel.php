@@ -79,6 +79,26 @@ class EventModel extends BaseModel
         return $cursor->toArray();
     }
 
+    public function DecreaseSeats($event_id, $decreasedSeats) {
+        try {
+            // Execute the update operation
+            $bulkWrite = new MongoDB\Driver\BulkWrite();
+            $bulkWrite->update(
+                ['_id' => $event_id], // Filter: find cart by user
+                ['$inc' => ['availableSeats' => -$decreasedSeats]], // Remove from array
+                ['multi' => false] // Only update one document
+            );
+            
+            // Return true if the document was found and modified
+            return $result->getModifiedCount() > 0;
+        } catch (Exception $e) {
+            // Log or handle the error appropriately
+            error_log("Error decreasing seats: " . $e->getMessage());
+            return false;
+        }
+    }
+
+
     public function getHistoryEventsByDate($date)
     {
         $filter = ['type' => 'history', 'date' => $date];
@@ -86,4 +106,5 @@ class EventModel extends BaseModel
         $cursor = $this->manager->executeQuery($this->databaseName . '.Events', $query);
         return $cursor->toArray();
     }
+
 }

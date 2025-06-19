@@ -31,12 +31,11 @@ foreach ($cart->CartItems as $item) {
 $checkoutSession = $stripe->checkout->sessions->create([
     'line_items' => $lineItems,
     'mode' => 'payment',
-    'success_url' => 'http://localhost/checkout-success.php?provider_session_id={CHECKOUT_SESSION_ID}',
+    'success_url' => 'http://localhost/checkout-success',
     'cancel_url' => 'http://localhost/tickets'
 ]);
 
 // Retrieve provider_session_id. Store in database.
-//$checkoutSession->id;
 
 // Send user to Stripe
 header('Content-Type: application/json');
