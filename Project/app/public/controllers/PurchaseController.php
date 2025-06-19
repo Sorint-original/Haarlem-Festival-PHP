@@ -147,7 +147,7 @@ class PurchaseController
                 $newClientTickets[] = $newClientTicket;//create Client Ticket
             }
             //decrease seats left
-            if($cart->CartItems[$i]->ticket->seatingNumber >0){
+            if($cart->CartItems[$i]->ticket->seatingNumber > 0){
                 $this->eventModel->DecreaseSeats($cart->CartItems[$i]->ticket->EventId,$cart->CartItems[$i]->ticket->seatingNumber*$cart->CartItems[$i]->amount);
             }
         }

@@ -88,9 +88,8 @@ class EventModel extends BaseModel
                 ['$inc' => ['availableSeats' => -$decreasedSeats]], // Remove from array
                 ['multi' => false] // Only update one document
             );
-            
             // Return true if the document was found and modified
-            return $result->getModifiedCount() > 0;
+            $this->executeWrite($bulkWrite, $this->collectionName);
         } catch (Exception $e) {
             // Log or handle the error appropriately
             error_log("Error decreasing seats: " . $e->getMessage());
