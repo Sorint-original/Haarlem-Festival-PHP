@@ -4,28 +4,28 @@ require_once 'lib/stripe-php-17.4.0-beta.1/init.php';
 
 $stripe = new \Stripe\StripeClient($STRIPE_SECRET_KEY);
 
-$lineItems = [
-    [
+$lineItems = [];
+    
+foreach ($cart->CartItems as $item) {
+    $productName = $item->event->title ?? $item->ticket->EventId;
+    if (isset($item->event)) {
+        $description = date('M l d H:i-',((int) (string) $item->event->startTime)/ 1000).date('H:i',((int) (string) $item->event->endTime)/ 1000)." | ".$item->event->location;
+    } else {
+        $description = 'Event Ticket';
+    }
+    
+    array_push($lineItems, [
         'price_data' => [
-            'currency' => 'usd',
+            'currency' => 'eur',
             'product_data' => [
-                'name' => 'Fried Rice',
+                'name' => $productName,
+                'description' => $description,
             ],
-            'unit_amount' => 9.99 * 100,    //  convert to cents
+            'unit_amount' => (int)($item->ticket->price * 100),
         ],
-        'quantity' => 1,
-    ],
-    [
-        'price_data' => [
-            'currency' => 'usd',
-            'product_data' => [
-                'name' => 'Fried Noodle',
-            ],
-            'unit_amount' => 11.99 * 100,   //  convert to cents
-        ],
-        'quantity' => 2,
-    ]
-];
+        'quantity' => (int)$item->amount,
+    ]);
+    }
 
 // Create Stripe checkout session
 $checkoutSession = $stripe->checkout->sessions->create([

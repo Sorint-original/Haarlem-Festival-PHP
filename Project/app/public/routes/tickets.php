@@ -62,7 +62,7 @@ Route::add('/purchase', function () {
     }
     //Getting the users cart
     $controller = new PurchaseController();
-    $cart = $controller->HandleCart();
+    $cart = $controller->GetCart();
     //Getting started with the tickets page
     require(__DIR__ . "/../views/pages/purchase.php");
 });

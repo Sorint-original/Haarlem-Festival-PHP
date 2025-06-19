@@ -65,6 +65,15 @@ class PurchaseController
             }
         }
         echo json_encode($cart);
+        return $cart;
+    }
+
+    public function GetCart(){
+        $cart = $this->cartModel->getCartByUserId($_SESSION['user_id']);
+        for($i=0; $i<count($cart->CartItems);$i++){
+            $cart->CartItems[$i]= $this->GetListItem($cart->CartItems[$i]);
+        }
+        return $cart;
     }
 
 
