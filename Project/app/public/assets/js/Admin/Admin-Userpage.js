@@ -11,21 +11,48 @@ async function fetchUsers() {
       const userId = user._id.$oid ? user._id.$oid : user._id;
       const row = document.createElement("tr");
       row.innerHTML = `
-                <td>${user.full_name || user.name || "N/A"}</td>
+                <td>${user.full_name || user.name || "N/A"}</td> 
                 <td>${user.username || "N/A"}</td>
                 <td>${user.email || "N/A"}</td>
                 <td>${user.role || "N/A"}</td>
-                <td>${user.created_at ? new Date(user.created_at.$date || user.created_at ).toLocaleString(): "N/A" }</td>
+                <td>${user.created_at || "N/A"}</td>
                 <td class="actions">
                     <button class="edit-btn" onclick="editUser('${userId}')">Edit</button>
                     <button class="delete-btn" onclick="deleteUser('${userId}')">Delete</button>
                 </td>`;
       tableBody.appendChild(row);
     });
+    
+    // Apply filters after loading data
+    filterUsers();
   } catch (error) {
     console.error("Error fetching users:", error);
   }
 }
+// Combined filter function
+function filterUsers() {
+    const selectedRole = document.getElementById("filterRole").value.toLowerCase();
+    const searchText = document.getElementById("searchUser").value.toLowerCase();
+    const tableRows = document.getElementById("userTableBody").getElementsByTagName("tr");
+
+    Array.from(tableRows).forEach((row) => {
+        // Get the cells in the row
+        const nameCell = row.getElementsByTagName("td")[0];
+        const roleCell = row.getElementsByTagName("td")[3];
+        
+        const name = nameCell.textContent.toLowerCase();
+        const role = roleCell.textContent.toLowerCase();
+
+        const matchesRole = selectedRole === "" || role === selectedRole;
+        const matchesName = name.includes(searchText);
+
+        row.style.display = matchesRole && matchesName ? "" : "none";
+    });
+}
+// Event listeners for filters
+document.getElementById("filterRole").addEventListener("change", filterUsers);
+document.getElementById("searchUser").addEventListener("input", filterUsers);
+
 // Create user
 async function createUser(event) {
   event.preventDefault();
@@ -74,7 +101,8 @@ async function editUser(userId) {
     const id = user._id.$oid ? user._id.$oid : user._id;
 
     document.getElementById("updateUserId").value = id;
-    document.getElementById("updateFullName").value =user.full_name || user.name || "";
+    document.getElementById("updateFullName").value =
+      user.full_name || user.name || "";
     document.getElementById("updateUsername").value = user.username || "";
     document.getElementById("updateEmail").value = user.email || "";
     document.getElementById("updateRole").value = user.role || "";

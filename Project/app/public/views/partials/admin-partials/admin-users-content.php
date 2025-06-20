@@ -1,6 +1,22 @@
 <div class="container">
     <h2>User List</h2>
-    <button id="createUserBtn" class="action-btn create-btn">Create New User</button>
+    <div id="action-container">
+        <button id="createUserBtn" class="action-btn create-btn">Create New User</button>
+        <div>
+            <label for="filterRole">Filter by Role:</label>
+            <select id="filterRole">
+                <option value="">All</option>
+                <option value="customer">Customer</option>
+                <option value="admin">Admin</option>
+                <option value="employee">Employee</option>
+            </select>
+        </div>
+        <div>
+            <label for="searchUser">Search by Full Name:</label>
+            <input type="text" id="searchUser" placeholder="Enter name..." />
+        </div>
+    </div>
+
     <table>
         <thead>
             <tr>
@@ -100,9 +116,16 @@
 <script src="/assets/js/Admin/Admin-Userpage.js"></script>
 
 <style>
-    .create-btn{
-        background-color:rgb(198, 99, 13);
+    #createUserBtn,
+    #filterRole,
+    #searchUser {
+        margin-right: 55px;
     }
+
+    .create-btn {
+        background-color: rgb(198, 99, 13);
+    }
+
     .container {
         max-width: 900px;
         margin: 50px auto;
@@ -237,5 +260,17 @@
 
     .form-actions button:hover {
         opacity: 0.8;
+    }
+
+    #action-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    #filterRole,
+    #searchUser {
+        margin-right: 20px;
     }
 </style>

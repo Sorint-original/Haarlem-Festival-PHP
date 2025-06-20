@@ -1,26 +1,30 @@
 <?php
 
+require_once(__DIR__ . "/../models/PageModel.php");
+require_once(__DIR__ . "/../models/EventModel.php");
 
 
 class StoriesController
 {
-    private $storiesModel;
+    private $pageModel;
+    private $eventModel;
     public function __construct()
     {
-        //$this->storiesModel = new StoriesModel();
+      $this->pageModel = new PageModel();
+      $this->eventModel = new EventModel();
+      //$this->storiesModel = new StoriesModel();
+
     }
 
-    public function getAllStories()
-    {
-        return $this->storiesModel->GetAllStories();
-    }
-
-    public function getStories() {
-        // Fetch stories
-        $stories = $this->getAllStories();
-        // Return stories as JSON
-        echo json_encode($stories);
+    public function getPageContent(){
+        $id = $_GET['id'] ?? null;
+        if (!$id) {
+            echo json_encode(['error' => 'Missing ID']);
+            exit;
+        }
+        echo json_encode($this->pageModel->getPageById($id));
         exit;
     }
+    // public function getEvent(){
 
 }

@@ -17,6 +17,20 @@ body {
 body.homepage{
     background-image: linear-gradient(135deg , #F7F4E9, #FF7A6D, #FF6B9E);
 }
+
+body.tickets{
+    background-image: linear-gradient(135deg , #8D62F2, #5D90B5, #E0F564);
+}
+
+/* history-page colors */
+body.history{
+    background-image: linear-gradient(135deg , #F7F4E9, #FF7A6D, #FF6B9E);
+}
+.first-map-image {
+    width: 80%; /* Adjust the size of the first map image */
+    max-width: 400px; /* Set a maximum width */
+    height: auto; /* Maintain aspect ratio */
+}
 /* yummy-page colors */
 body.yummy {
     background: linear-gradient(to bottom, #A0E4F1 0%, #5BB2C6 50%, #F9F9F9 100%);
@@ -28,6 +42,13 @@ body.museum{
 body.jazz{
     background-image: linear-gradient(135deg , #13BEF2, #937AFF , #EB15AE);
 }
+body.stories{
+    background-image: linear-gradient(135deg , #C08402,#C08402, #610627, #A41C42, #CD2B52, #E7325C);
+}
+body.misteranansi{
+    background-image: linear-gradient(135deg , #C08402,#C08402, #610627, #A41C42, #CD2B52, #E7325C);
+}
+
 /* navigation bar styles */
 .navbar {
     height: 10vh;
@@ -35,6 +56,10 @@ body.jazz{
 
 .navbar.homepage {
     background-image: linear-gradient(to right , #F7F4E9, #FF7A6D, #FF6B9E);
+}
+
+.navbar.tickets {
+    background-image: linear-gradient(to right , #8D62F2, #5D90B5, #E0F564);
 }
 /* yummy-nav colors */
 .navbar.yummy {
@@ -45,6 +70,15 @@ body.jazz{
 }
 .navbar.jazz{
     background-image: linear-gradient(to right , #13BEF2, #937AFF , #EB15AE);
+}
+.navbar.history{
+    background-image: linear-gradient(to right , #F7F4E9, #FF7A6D, #FF6B9E);
+}
+.navbar.stories{
+    background-image: linear-gradient(to right , #C08402,#C08402, #610627, #A41C42, #CD2B52, #E7325C);
+}
+.navbar.misteranansi{
+    background-image: linear-gradient(to right , #C08402,#C08402, #610627, #A41C42, #CD2B52, #E7325C);
 }
 
 
@@ -310,6 +344,120 @@ body.jazz{
 }
 
 /* Map Style */
+.map-container{
+    aspect-ratio: 1/1;
+    width: 50%;
+    height: auto;
+}
+.map {
+    width: 100%;
+    height: 100%;
+}
+
+.marker-container {
+    position: relative;
+    height: 100%;
+    width: 28%;
+}
+
+.marker-container > h1 {
+    text-align: center;
+    margin: 10px;
+}
+
+.marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 10px;
+    height: 230px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    margin: 10px;
+}
+
+.input-group > input {
+    padding: 5px;
+    outline: none;
+    font-size: 17px;
+    width: 170px;
+}
+
+.marker > button {
+    width: 95%;
+    padding: 5px;
+    font-size: 17px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background-color: rgb(255, 255, 255);
+}
+
+.marker > button:hover {
+    background-color: rgb(220, 220, 220);
+}
+
+.marked > h2 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#markedLocations {
+    overflow-y: auto;
+    height: 300px;
+    list-style: none;
+}
+
+#markedLocations > li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#markedLocations > li div {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 90%;
+    margin: 10px;
+}
+
+#markedLocations > li div button {
+    font-size: 16px;
+    color: rgb(0, 0, 255);
+    text-decoration: underline;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#markedLocations > li div button:hover {
+    color: rgb(88, 88, 255);
+    text-decoration: none;
+}
+
+#markedLocations > li > button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    margin-left: 20px;
+    color: rgb(220, 20, 20);
+    cursor: pointer;
+    width: 20px;
+}
+
+#markedLocations > li > button:hover {
+    background-color: rgb(220, 200, 200);
+    color: rgb(240, 10, 10);
+}
 
 /* FAQ Style */
 .accordion{
@@ -355,7 +503,6 @@ body.jazz{
 
 /* Footer Links */
 .myfooter {
-    margin-top: 50px;
     width: 100%;
     margin-left: 0;
     padding-left: 0;
@@ -392,6 +539,11 @@ body.jazz{
 .footer-extra-links {
     gap: 0.1rem;
 }
+
+
+
+
+
 
 
 
@@ -575,7 +727,18 @@ a:hover {
     border-radius: 4rem;
     transition: opacity 200ms linear;
 }
+/* History_Main_page */
+.history-btn{
+    background-color:transparent;
+    border: 5px solid black;
+    width: fit-content;
+}
 
+.history-btn:hover{
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+
+}
 /* Yummy_Main_page */
 
 /* Yummy Intro Section */
@@ -627,3 +790,30 @@ a:hover {
 }
 
 /* Stories */
+
+
+
+
+/* Ticket */
+
+.ticket-interface{
+    background: rgba(255, 255, 255, 0.7);
+    border-radius:  50px;
+    border: #000 solid 1px;
+    height:800px;
+}
+
+.cart-interface{
+    background: rgba(255, 255, 255, 0.7);
+    border-radius:  50px;
+    border: #000 solid 1px;
+    min-height:200px;
+}
+
+#ticket-display li{
+    list-style-type: none;
+}
+
+#cart-display li{
+    list-style-type: none;
+}

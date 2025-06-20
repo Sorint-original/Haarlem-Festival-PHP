@@ -37,6 +37,15 @@ class EventModel extends BaseModel
         return $events;
     }
 
+    public function GetEventById($event_id){
+         $filter = ['_id' => $event_id];
+        $event = $this->executeQuery($this->collectionName, $filter);
+        if ($event == null){
+            return null;
+        }
+        return $event[0];
+    }
+
     private function GetDayFilter($day){
         $startOfDay = new MongoDB\BSON\UTCDateTime(strtotime($this->dates[$day]) * 1000);
         $endOfDay = new MongoDB\BSON\UTCDateTime(strtotime($this->dates[$day] . ' +1 day') * 1000);
@@ -60,6 +69,41 @@ class EventModel extends BaseModel
 
         $Shows = $this->executeQuery($this->collectionName,$filter,$options);
         return $Shows;
+    }
+    //History SubCollection
+    public function getAllHistoryEvents()
+    {
+        $filter = ['type' => 'history'];
+        $query = new MongoDB\Driver\Query($filter);
+        $cursor = $this->manager->executeQuery($this->databaseName . '.Events', $query);
+        return $cursor->toArray();
+    }
+
+    public function DecreaseSeats($event_id, $decreasedSeats) {
+        try {
+            // Execute the update operation
+            $bulkWrite = new MongoDB\Driver\BulkWrite();
+            $bulkWrite->update(
+                ['_id' => $event_id], // Filter: find cart by user
+                ['$inc' => ['availableSeats' => -$decreasedSeats]], // Remove from array
+                ['multi' => false] // Only update one document
+            );
+            // Return true if the document was found and modified
+            $this->executeWrite($bulkWrite, $this->collectionName);
+        } catch (Exception $e) {
+            // Log or handle the error appropriately
+            error_log("Error decreasing seats: " . $e->getMessage());
+            return false;
+        }
+    }
+
+
+    public function getHistoryEventsByDate($date)
+    {
+        $filter = ['type' => 'history', 'date' => $date];
+        $query = new MongoDB\Driver\Query($filter);
+        $cursor = $this->manager->executeQuery($this->databaseName . '.Events', $query);
+        return $cursor->toArray();
     }
 
 }

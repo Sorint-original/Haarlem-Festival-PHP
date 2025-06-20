@@ -14,6 +14,7 @@ class UserController
             session_start();
         }
     }
+    // This function handles user registration
     public function register()
     {
         // Grab form fields
@@ -84,11 +85,16 @@ class UserController
         if (password_verify($password, $user->password)) {
             $_SESSION['user_id'] = (string) $user->_id; 
             $_SESSION['role']    = $user->role;
-
-            echo "Login successful! Welcome, {$user->full_name} ({$user->role}).";
-
+            if ($user->role === 'admin') {
+        
+                header('Location: /admin');
+                exit;
+            }else if ($user->role === 'customer') {
+                header('Location: /');
+                exit;
+            }
         } else {
-            echo "Incorrect password.";
+            header('Location: /login');
         }
     }
 }

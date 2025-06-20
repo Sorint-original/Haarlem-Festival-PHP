@@ -3,6 +3,69 @@ const DateButtons = document.getElementsByClassName('eventDate');
 const DateSection = document.getElementById('eventDates');
 const eventContainers = document.getElementsByClassName('eventlist');
 
+//MAP Setting up
+//Setting the Icons
+const jazzPin = L.icon({
+    iconUrl: '/../assets/images/complexLayouts/jazzPin.png', // URL to your custom icon
+    iconSize: [40, 40], // Size of the icon
+    iconAnchor: [4, 36], // Point of the icon which will correspond to the marker's location
+    popupAnchor: [1, -34] // Point from which the popup should open relative to the iconAnchor
+});
+const yummyPin = L.icon({
+    iconUrl: '/../assets/images/complexLayouts/yummyPin.png', // URL to your custom icon
+    iconSize: [40, 40], // Size of the icon
+    iconAnchor: [4, 36], // Point of the icon which will correspond to the marker's location
+    popupAnchor: [1, -34] // Point from which the popup should open relative to the iconAnchor
+});
+const historyPin = L.icon({
+    iconUrl: '/../assets/images/complexLayouts/historyPin.png', // URL to your custom icon
+    iconSize: [40, 40], // Size of the icon
+    iconAnchor: [4, 36], // Point of the icon which will correspond to the marker's location
+    popupAnchor: [1, -34] // Point from which the popup should open relative to the iconAnchor
+});
+const museumPin = L.icon({
+    iconUrl: '/../assets/images/complexLayouts/museumPin.png', // URL to your custom icon
+    iconSize: [40, 40], // Size of the icon
+    iconAnchor: [4, 36], // Point of the icon which will correspond to the marker's location
+    popupAnchor: [1, -34] // Point from which the popup should open relative to the iconAnchor
+});
+const storyPin = L.icon({
+    iconUrl: '/../assets/images/complexLayouts/storiePin.png', // URL to your custom icon
+    iconSize: [40, 40], // Size of the icon
+    iconAnchor: [4, 36], // Point of the icon which will correspond to the marker's location
+    popupAnchor: [1, -34] // Point from which the popup should open relative to the iconAnchor
+});
+
+
+
+// Coordinates for Haarlem, Netherlands
+const haarlemCoords = [52.3874, 4.6462];
+markers =[];
+
+// Create the map and set the view to Haarlem
+var map = L.map('map', {
+    center: haarlemCoords,
+    zoom: 13,
+    minZoom: 12, // Restrict minimum zoom level
+    maxZoom: 18  // Optional: Restrict maximum zoom level
+});
+
+// Add the tile layer
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {    
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+// Set the maximum bounds to restrict the map to Haarlem and surrounding area
+const southWest = L.latLng(52.35, 4.60);
+const northEast = L.latLng(52.42, 4.70);
+const bounds = L.latLngBounds(southWest, northEast);
+
+map.setMaxBounds(bounds);
+map.on('drag', function() {
+    map.panInsideBounds(bounds, { animate: false });
+});
+
+
 const changeeventDates  = async (image,clickedButton) => {
     //removee current from previous
     Array.from(DateButtons).forEach(button => {
@@ -33,21 +96,59 @@ const getDayEvents = async (day) => {
     return await response.json(); // Assuming the server returns JSON data
 };
 
+function removeAllMarkers() {
+    markers.forEach(marker => map.removeLayer(marker));
+    markers.length = 0; // Clear the array
+}
+
 const populateEvents = (events) => {
     const eventType =['jazz', 'history', 'yummy', 'museum', 'story'];
+    const Pins =[jazzPin,historyPin,yummyPin,museumPin,storyPin];
+    const links =["/jazz","/history","/yummy","/museum","/stories"];
+    const addedCoordinates = new Set();
+    removeAllMarkers();
     for (let i = 0; i < 5; i++) {
         //empty content
         eventContainers[i].innerHTML ="";
-        //add current events
+        //add current events 
         events[eventType[i]].forEach((event) => {
             const start = new Date(parseInt(event.startTime.$date.$numberLong));
             const end= new Date(parseInt(event.endTime.$date.$numberLong));
+            //add event to scheduale card
             eventContainers[i].innerHTML += `
                 <b class= "EventTitle">${event.title}</b>
                 <p>${start.getUTCHours()}:${String(start.getUTCMinutes()).padStart(2, '0')} - ${end.getUTCHours()}:${String(end.getUTCMinutes()).padStart(2, '0')}</p>
             `;
+            //check if i has marker already
+
+            //add marker in array
+            
+            if (typeof event.coordinates !== 'undefined' ) {
+                
+                // Convert coordinates from strings to numbers
+                const lat = parseFloat(event.coordinates[0]);
+                const lng = parseFloat(event.coordinates[1]);
+                const coordKey = `${lat},${lng}`;
+
+                //check if marker already added
+                if(!addedCoordinates.has(coordKey)){
+                    addedCoordinates.add(coordKey);
+                     // Create and add the marker to the map
+                    const marker = L.marker([lat, lng], { icon: Pins[i] }).addTo(map);
+                    marker.on('click', () => {
+                        window.open(links[i], "_blank"); // Open link in a new tab
+                    });
+                    markers.push(marker); // Store the marker in the array
+                }
+
+            } 
+
+
         });
     }
+    markers.forEach((mark) =>{
+        mark.addTo(map);
+    } );
 };
 const specificParameters = ['SchedualeDay1', 'SchedualeDay2', 'SchedualeDay3', 'SchedualeDay4'];
 //add the functions to te buttons
@@ -60,6 +161,14 @@ Array.from(DateButtons).forEach(button => {
 DateButtons[0].click();
 
 });
+
+
+
+
+
+
+
+
 function displayCards(cards) {
     const cardsContainer = document.getElementById("cards-container");
     cardsContainer.innerHTML = '';
@@ -141,6 +250,7 @@ function displayFaq(faqs) {
         console.error('No FAQs found.');
     }
 }
+
 document.addEventListener('DOMContentLoaded', async function() {
     try {
         const pageId = '67ceba162690121d83ed224a'; 
@@ -159,3 +269,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         console.error('Error:', error);
     }
 });
+
+
+
+
