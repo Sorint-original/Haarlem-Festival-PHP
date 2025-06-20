@@ -112,20 +112,23 @@ class PurchaseController
         $this->listItemModel->RemoveListItem($lItem_id);
     }
 
-    public function UpdateAmount($increment){
+    public function UpdateAmount(){
         // Read the raw input from the request body
         $input = file_get_contents('php://input');
         $data = json_decode($input, true);
     
         // Get the filters from the request body
-        $lItem_id = $data['lItem_id'];
+        $lItem_id = new MongoDB\BSON\ObjectId($data['lItem_id']);
+        $increment = $data['increment'];
         $item = $this->GetListItem($lItem_id);
-        if($item->amount +$increment <  $item->event->availableSeats){
+        if($item->amount +$increment <=  $item->event->availableSeats){
             $this->listItemModel->UpdateListItem($lItem_id,$item->amount +$increment);
             echo true;
+            exit;
         }
         else{
             echo false;
+            exit;
         }
     }
 

@@ -35,15 +35,9 @@ Route::add('/tickets/removeFromCart', function () {
     $controller->RemoveFromCart();
 }, 'delete');
 //route to increase the amount of a list-item in the cart
-Route::add('/tickets/IncreaseAmount', function () {
+Route::add('/tickets/UpdateAmount', function () {
     $controller = new PurchaseController(); // create a new user controller
-    $controller->UpdateAmount(+1);
-}, 'patch');
-
-//route to decrease the amount of a list-item in the cart
-Route::add('/tickets/DecreaseAmount', function () {
-    $controller = new PurchaseController(); // create a new user controller
-    $controller->UpdateAmount(-1);
+    $controller->UpdateAmount();
 }, 'patch');
 
 //route to get cart

@@ -191,13 +191,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
 
-    const IncreaseListItem = async (lItem_id,amount) => {
-        const response = await fetch("/tickets/IncreaseAmount", { // URL remains unchanged
+    const UpdateAmount = async (lItem_id,increment) => {
+        console.log(lItem_id);
+        const response = await fetch("/tickets/UpdateAmount", { // URL remains unchanged
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ lItem_id, amount })// Send the day and type in the request body
+            body: JSON.stringify({ lItem_id, increment })// Send the day and type in the request body
         });
         if (!response.ok) {
             throw new Error('Failed to fetch events');
@@ -205,20 +206,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         return response.json(); //falls or true
     };
-
-    const DecreaseListItem = async (lItem_id) => {
-        const response = await fetch("/tickets/DecreaseAmount", { // URL remains unchanged
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ lItem_id })// Send the day and type in the request body
-        });
-        if (!response.ok) {
-            throw new Error('Failed to fetch events');
-        }
-    };
-    
 
     window.addtoCart = async function(ticketId) {
         respons = await createListItem(ticketId);
@@ -294,12 +281,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log(cart.CartItems);
         } else {
             if(action === 'increase'){
-                if(await IncreaseListItem(itemId)){
+                if(await UpdateAmount(itemId, 1)){
                     cart.CartItems[index].amount +=1;
                 }
             }
             else{
-                await DecreaseListItem(itemId)
+                await UpdateAmount(itemId,-1)
                 cart.CartItems[index].amount -=1;
             }
             // Update the amount display
